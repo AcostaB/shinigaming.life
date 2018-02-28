@@ -1,0 +1,65 @@
+body {
+  background-image: url("../Assets/body-background.jpg");
+  background-position-x: center, initial;
+  background-position-y: 120px;
+  background-size: initial, initial;
+  background-repeat: no-repeat, initial;
+  background-attachment: initial, initial;
+  background-origin: initial, initial;
+  background-clip: initial, initial;
+  background-color: rgb(249, 249, 249);
+  height: 100%;
+  background-size: 100% 140%;
+  background-repeat: no-repeat;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-body {
+  padding: 20px 100px 0 100px;
+}
+
+.col-xs-6,
+.col-md-4 {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css?family=Roboto');
+}
+
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.mod-cell, .save-cell {
+  min-width: 60px;
+}

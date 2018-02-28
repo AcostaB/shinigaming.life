@@ -1,0 +1,88 @@
+.limitedUse-name {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Roboto",Helvetica,sans-serif;
+    line-height: 1.1;
+}
+  
+.limitedUse {
+    width: 100%;
+    -webkit-align-items: center;
+    line-height: 2.5;
+}
+  
+.limitedUse-main {
+    display: flex;
+    width: 100%;
+    -webkit-align-items: center;
+}
+  
+.limitedUse-name {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    width: 40%;
+    text-align: left;
+    margin-left: 10px;
+}
+  
+.limitedUse-counter {
+    display: flex;
+    width: 40%;
+    -webkit-align-items: center;
+}
+  
+.limitedUse-uses {
+    font-size: 15px;
+    margin: 0 5px 0 5px;
+    font-family: Roboto,Helvetica,sans-serif;
+}
+  
+.limitedUse-increase-icon {
+    display: inline-block;
+    border-radius: 3px;
+    background-color: #96bf6b;
+    color: #fff;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    font-size: 10px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    height: 20px;
+    width: 27px;
+}
+  
+.limitedUse-increase-icon::before {
+    content: "";
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-image: url("../Assets/plus_minus-white.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+.limitedUse-decrease-icon {
+    display: inline-block;
+    border-radius: 3px;
+    background-color: #96bf6b;
+    color: #fff;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    font-size: 10px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    height: 20px;
+    width: 27px;
+}
+  
+.limitedUse-decrease-icon::before {
+    content: "";
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-image: url("../Assets/plus_minus-white.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -17px 0;
+}

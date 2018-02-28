@@ -1,0 +1,43 @@
+.panel {
+    background: none;
+    position: relative;
+    width: 365px;
+}
+
+.panel-header {
+    background-image: url("../Assets/panel-header.png");
+    background-size: 100% 100%;
+    text-align: center;
+}
+  
+.panel-header-text {
+    text-align: left;
+    font-size: 20px;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 15px 15px;
+    color: #fff;
+}
+  
+.panel-content {
+    border-left: 1px solid #d4d0ce;
+    border-right: 1px solid #d4d0ce;
+    background: #fff;
+    margin-top: -2px;
+    padding: 10px;
+    height: 340px;
+    overflow-y: auto;
+}
+  
+.panel::after {
+    content: "";
+    display: block;
+    background: center 0 transparent url("../Assets/panel-footer.png") no-repeat;
+    background-size: 105% 12px;
+    position: absolute;
+    right: 1px;
+    left: 1px;
+    bottom: -2px;
+    height: 12px;
+}

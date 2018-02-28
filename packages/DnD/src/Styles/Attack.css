@@ -1,0 +1,66 @@
+.attack {
+    display: flex;
+    align-items: center;
+    background-image: url("../Assets/expandable-header.png");
+    z-index: 2;
+    height: 65px;
+    background-size: 100% 65px;
+    display: flex;
+    margin: 5px 5px 5px 5px;
+    -webkit-align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.attack-icon {
+    background: center center transparent url("../Assets/melee_weapon.svg") no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 28px 28px;
+}
+
+.attack-weapon {
+    flex: 1;
+}
+
+.attack-weapon-name {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Roboto,Helvetica,sans-serif;
+    line-height: 1.1;
+}
+
+.attack-weapon-type {
+    color: #979aa4;
+    font-size: 10px;
+    font-family: Roboto,Helvetica,sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1;
+    margin-top: 3px;
+}
+
+.attack-stats {
+    display: flex;
+    text-align: center;
+}
+
+.attack-toHit-label,
+.attack-damage-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.attack-toHit-mod,
+.attack-damage-mod,
+.attack-damage-dice {
+    font-size: 15px;
+    font-family: Roboto,Helvetica,sans-serif;
+}
+
+.attack-toHit-mod.adversity,
+.attack-damage-mod.adversity {
+    color: orange;
+}
