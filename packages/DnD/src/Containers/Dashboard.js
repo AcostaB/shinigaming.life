@@ -10,6 +10,7 @@ import {Attack} from '../Components/Attack.js';
 import {ExpandableItem} from "../Components/Generic/ExpandableItem.js";
 import {Header} from '../Components/Header.js';
 import {LimitedUse} from '../Components/LimitedUse.js';
+import {Item} from '../Components/Item.js';
 import {Panel} from '../Components/Generic/Panel.js';
 import {Skill} from '../Components/Skill.js';
 import { api } from "../API/requests"
@@ -61,25 +62,38 @@ const PassivesPanel = (props) => {
 export class Dashboard extends React.Component {
   constructor() {
     super();
+    const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
+      accumulator[currentValue.id] = currentValue.maxUses; 
+      return accumulator;
+    }, {});
     this.state = {
-      remainingUses: {}, 
-      remainingHealth: character.maximumHealth
+      remainingHealth: character.maximumHealth, 
+      remainingUses: newRemainingUses,
+      inventory: []
     }
-    api.getAllItems().then(res => {
-      console.log("Request to fetch all items finished.");
-      console.log(res);
-    });
   }
 
   componentDidMount() {
-    this.setState((prevState, props) => {
-      const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
-        accumulator[currentValue.id] = currentValue.maxUses; 
-        return accumulator;
-      }, {});
-
-      return {remainingUses: newRemainingUses};
-    });
+    // api.getAllItems().then(res => {
+    //   console.log("Request to fetch all items finished.");
+    //   console.log(res);
+    //   this.setState(() => ({inventory: res.data}));
+    // });
+    const items = [
+      {
+        _id: 1,
+        name: "item1",
+        description: "something",
+        quantity: 1
+      },
+      {
+        _id: 2,
+        name: "item2",
+        description: "something2",
+        quantity: 1
+      }
+    ]
+    this.setState(() => ({inventory: items}));
   }
 
   decreaseHealthHandler = () => {
@@ -98,22 +112,22 @@ export class Dashboard extends React.Component {
       })
   }
 
-  handleDecrease = (id) => {
+  handleLimitedUseDecrease = (id) => {
     this.setState((prevState, props) => { 
       // TODO this is bad. Rewrite. 
       const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
       return {remainingUses: {...prevState.remainingUses, [id]: newValue}}
     });
-  }
+  };
 
-  handleIncrease = (id) => {
+  handleLimitedUseIncrease = (id) => {
     this.setState((prevState, props) => { 
       // TODO this is bad. Rewrite. 
       const maxUses = limitedUses[id - 1].maxUses;
       const newValue = prevState.remainingUses[id] < maxUses ? prevState.remainingUses[id] + 1 : maxUses;
       return {remainingUses: {...prevState.remainingUses, ...{[id]: newValue}}}
     });
-  }
+  };
 
   handleShortRest = () => {
     this.setState((prevState, props) => {
@@ -139,14 +153,42 @@ export class Dashboard extends React.Component {
     });
   }
 
+  handleItemDecrease = (id) => {
+    // this.setState((prevState, props) => { 
+    //   // TODO this is bad. Rewrite. 
+    //   const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
+    //   return {remainingUses: {...prevState.remainingUses, [id]: newValue}}
+    // });
+  };
+
+  handleItemIncrease = (id) => {
+    // this.setState((prevState, props) => { 
+    //   // TODO this is bad. Rewrite. 
+    //   const maxUses = limitedUses[id - 1].maxUses;
+    //   const newValue = prevState.remainingUses[id] < maxUses ? prevState.remainingUses[id] + 1 : maxUses;
+    //   return {remainingUses: {...prevState.remainingUses, ...{[id]: newValue}}}
+    // });
+  };
+
   renderLimitedUses = (limitedUses) => {
     return limitedUses.map((item) => 
       <LimitedUse 
         key={item.id} 
         limitedUse={item} 
         remainingUses={this.state.remainingUses[item.id]}
-        handleDecrease={() => this.handleDecrease(item.id)}
-        handleIncrease={() => this.handleIncrease(item.id)}/>
+        handleDecrease={() => this.handleLimitedUseDecrease(item.id)}
+        handleIncrease={() => this.handleLimitedUseIncrease(item.id)}/>
+    );
+  };
+
+  renderInventory = (inventory) => {
+    return inventory.map((item) => 
+      <Item 
+        key={item._id} 
+        item={item}
+        handleDecrease={() => this.handleItemDecrease(item._id)}
+        handleIncrease={() => this.handleItemIncrease(item._id)}
+      />
     );
   };
 
@@ -186,6 +228,13 @@ export class Dashboard extends React.Component {
             <div className="col-xs-6 col-md-4">
               <div className="dashboard-panel">
                 <AttacksPanel attacks={attacks} adversityMod={adversityMod}/>
+              </div>
+            </div>
+            <div className="col-xs-6 col-md-4">
+              <div className="dashboard-panel">
+                <Panel title="INVENTORY">
+                  {this.renderInventory(this.state.inventory)}
+                </Panel>    
               </div>
             </div>
           </div>
