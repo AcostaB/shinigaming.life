@@ -3,14 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.3",
+    "mongoose": "^5.0.8",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
   },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  },
   "scripts": {
     "start": "react-scripts start",
+    "start-server": "nodemon src/Node/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

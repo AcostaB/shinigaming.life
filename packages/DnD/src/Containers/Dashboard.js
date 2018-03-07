@@ -12,6 +12,7 @@ import {Header} from '../Components/Header.js';
 import {LimitedUse} from '../Components/LimitedUse.js';
 import {Panel} from '../Components/Generic/Panel.js';
 import {Skill} from '../Components/Skill.js';
+import { api } from "../API/requests"
 
 const AbilitiesPanel = (props) => {
   return (
@@ -64,6 +65,10 @@ export class Dashboard extends React.Component {
       remainingUses: {}, 
       remainingHealth: character.maximumHealth
     }
+    api.getAllItems().then(res => {
+      console.log("Request to fetch all items finished.");
+      console.log(res);
+    });
   }
 
   componentDidMount() {
