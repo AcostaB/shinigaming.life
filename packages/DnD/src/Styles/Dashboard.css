@@ -28,3 +28,84 @@
     flex: 1;
     margin: 5px;
 }
+
+.inventory-panel {
+    padding-top: 40px;
+}
+
+.inventory-tabs {
+    left: 0;
+    right: 0;
+    display: flex;
+    position: absolute;
+    z-index: 5;
+    top: 56px;
+}
+
+.inventory-tabs-items {
+    border-left: none;
+    flex: 1;
+    padding: 7px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    font-weight: bold;
+    background-color: #c3c0ba;
+    color: #fff;
+    cursor: pointer;
+}
+
+.inventory-tabs-items.active {
+    background-color: #96bf6b;
+}
+
+.inventory-tabs-currency {
+    flex: 1;
+    padding: 7px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+    font-weight: bold;
+    background-color: #c3c0ba;
+    color: #fff;
+    border-left: 1px solid #fff;
+    cursor: pointer;
+}
+
+.inventory-tabs-currency.active {
+    background-color: #96bf6b;
+}
+
+.currency {
+    position: relative;
+    z-index: 2;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 8px;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 65px;
+}
+
+.currency-label {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.currency-label-primary {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Roboto,Helvetica,sans-serif;
+    line-height: 1.1;
+}
+
+.currency-label-secondary {
+    color: #979aa4;
+    font-size: 10px;
+    font-family: Roboto,Helvetica,sans-serif;
+    text-transform: uppercase;
+}

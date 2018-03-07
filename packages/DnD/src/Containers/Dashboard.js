@@ -2,6 +2,7 @@ import React from 'react';
 import {abilities} from "../Models/Abilities";
 import {attacks} from "../Models/Attacks.js";
 import {character} from '../Models/Character.js';
+import {currency} from '../Models/Currency.js';
 import {leftColumnSkills, rightColumnSkills} from "../Models/Skills.js";
 import {limitedUses} from "../Models/LimitedUses.js";
 import {passives} from "../Models/Passives.js";
@@ -13,7 +14,7 @@ import {LimitedUse} from '../Components/LimitedUse.js';
 import {Item} from '../Components/Item.js';
 import {Panel} from '../Components/Generic/Panel.js';
 import {Skill} from '../Components/Skill.js';
-import { api } from "../API/requests"
+// import { api } from "../API/requests";
 
 const AbilitiesPanel = (props) => {
   return (
@@ -69,7 +70,9 @@ export class Dashboard extends React.Component {
     this.state = {
       remainingHealth: character.maximumHealth, 
       remainingUses: newRemainingUses,
-      inventory: []
+      inventory: [],
+      currencyTabActive: false,
+      currency: currency
     }
   }
 
@@ -192,6 +195,54 @@ export class Dashboard extends React.Component {
     );
   };
 
+  renderCurrency = (currency) => {
+    let value = "";
+
+    const switchCase = key => {
+      switch(key) {
+        case "Platinum":
+          value = "= 10 GP";
+          break;
+        case "Gold":
+          value = "= 10 SP";
+          break;
+        case "Electrum":
+          value = "= 5 SP";
+          break;
+        case "Silver":
+          value = "= 10 CP";
+          break;
+        case "Copper":
+          value = "";
+          break;
+      };
+      return value;
+    };
+
+    return (
+      Object.keys(currency).map(key => 
+        (
+          <div className="expandableItem-header currency">
+            <div className="currency-icon">
+
+            </div>
+            <div className="currency-label">
+              <div className="currency-label-primary">
+                {key}
+              </div>
+              <div className="currency-label-secondary">
+                {switchCase(key)}
+              </div>
+            </div>
+            <div className="currency-input">
+              {currency[key]}
+            </div>
+          </div>
+        )
+      )
+    );
+  }
+
   render() {
     const adversityMod = Math.floor((1-(this.state.remainingHealth/character.maximumHealth)) * 4);
 
@@ -233,7 +284,22 @@ export class Dashboard extends React.Component {
             <div className="col-xs-6 col-md-4">
               <div className="dashboard-panel">
                 <Panel title="INVENTORY">
-                  {this.renderInventory(this.state.inventory)}
+                  <div className="inventory-panel">
+                    <div className="inventory-tabs">
+                      <div 
+                         className={"inventory-tabs-items " + (this.state.currencyTabActive ? "":"active") }
+                         onClick={() => {this.setState({currencyTabActive: false})}}>
+                        Items
+                      </div>
+                      <div 
+                         className={"inventory-tabs-currency " + (this.state.currencyTabActive ? "active":"") }
+                         onClick={() => {this.setState({currencyTabActive: true})}}>
+                        Currency
+                      </div>
+                    </div>
+                    {!this.state.currencyTabActive ? 
+                      this.renderInventory(this.state.inventory) : this.renderCurrency(this.state.currency)}
+                  </div>
                 </Panel>    
               </div>
             </div>
