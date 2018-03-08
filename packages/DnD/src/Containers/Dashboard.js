@@ -3,6 +3,7 @@ import {abilities} from "../Models/Abilities";
 import {attacks} from "../Models/Attacks.js";
 import {character} from '../Models/Character.js';
 import {currency} from '../Models/Currency.js';
+import {Items} from '../Models/Items.js';
 import {leftColumnSkills, rightColumnSkills} from "../Models/Skills.js";
 import {limitedUses} from "../Models/LimitedUses.js";
 import {passives} from "../Models/Passives.js";
@@ -72,7 +73,8 @@ export class Dashboard extends React.Component {
       remainingUses: newRemainingUses,
       inventory: [],
       currencyTabActive: false,
-      currency: currency
+      currency: currency,
+      addNewItemExpanded: true
     }
   }
 
@@ -82,21 +84,8 @@ export class Dashboard extends React.Component {
     //   console.log(res);
     //   this.setState(() => ({inventory: res.data}));
     // });
-    const items = [
-      {
-        _id: 1,
-        name: "item1",
-        description: "something",
-        quantity: 1
-      },
-      {
-        _id: 2,
-        name: "item2",
-        description: "something2",
-        quantity: 1
-      }
-    ]
-    this.setState(() => ({inventory: items}));
+
+    this.setState(() => ({inventory: Items}));
   }
 
   decreaseHealthHandler = () => {
@@ -185,15 +174,60 @@ export class Dashboard extends React.Component {
   };
 
   renderInventory = (inventory) => {
-    return inventory.map((item) => 
-      <Item 
-        key={item._id} 
-        item={item}
-        handleDecrease={() => this.handleItemDecrease(item._id)}
-        handleIncrease={() => this.handleItemIncrease(item._id)}
-      />
+    return (
+      <div>
+        {inventory.map((item) => 
+          <Item 
+            key={item._id} 
+            item={item}
+            handleDecrease={() => this.handleItemDecrease(item._id)}
+            handleIncrease={() => this.handleItemIncrease(item._id)}
+            />
+        )}
+        <div> 
+          <button 
+            className="shortRest" 
+            onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+          >
+            Add item
+          </button>
+          { this.state.addNewItemExpanded && <button 
+            className="shortRest blue" 
+            onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+          >
+            Submit
+          </button>}
+
+          { this.state.addNewItemExpanded && this.renderAddItemForm() }
+        </div>
+      </div>
     );
   };
+
+  renderAddItemForm = () => {
+    return (
+      <div>
+        <div className="addItem-row">
+          <span className="input-label">
+            Name
+          </span>
+          <input className="input" type="text"/>
+        </div>
+        <div className="addItem-row">
+          <span className="input-label">
+            Quantity
+          </span>
+          <input className="input" type="text"/>
+        </div>
+        <div className="addItem-row">
+          <span className="input-label">
+            Description
+          </span>
+          <input className="input" type="text"/>
+        </div>
+      </div>
+    );
+  }
 
   renderCurrency = (currency) => {
     let value = "";
@@ -215,6 +249,8 @@ export class Dashboard extends React.Component {
         case "Copper":
           value = "";
           break;
+        default:
+          break;
       };
       return value;
     };
@@ -222,7 +258,7 @@ export class Dashboard extends React.Component {
     return (
       Object.keys(currency).map(key => 
         (
-          <div className="expandableItem-header currency">
+          <div key={key} className="expandableItem-header currency">
             <div className="currency-icon">
 
             </div>

@@ -76,6 +76,39 @@
     background-color: #96bf6b;
 }
 
+.addItem-row {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.input-label {
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Roboto,Helvetica,sans-serif;
+    line-height: 1.1;
+    flex: 1;
+    align-items: center;
+}
+
+.input {
+    display: block;
+    text-align: left;
+    flex: 1;
+}
+.shortRest.blue {
+    background-color: #021638;
+}
+.submit {
+    display: block;
+    text-align: left;
+    flex: 1;
+}
+
+
+
 .currency {
     position: relative;
     z-index: 2;
