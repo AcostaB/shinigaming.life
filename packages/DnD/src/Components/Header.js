@@ -52,11 +52,13 @@ export class Header extends React.Component {
                         HIT POINTS
                     </div>
                     <div className="header-healthTracker-tracker">   
+                        <button className="header-decrease-icon redButton" onClick={this.props.decreaseHealthBy10Handler}/>
                         <button className="header-decrease-icon" onClick={this.props.decreaseHealthHandler}/>
                         <div className="header-healthTracker-health">
                             {this.props.remainingHealth}/{props.character.maximumHealth}
                         </div>
                         <button className="header-increase-icon" onClick={this.props.increaseHealthHandler}/>
+                        <button className="header-increase-icon redButton" onClick={this.props.increaseHealthBy10Handler}/>
                     </div>
                 </div>
                 <button className="header-inspirationTracker">

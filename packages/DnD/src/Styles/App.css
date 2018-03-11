@@ -24,6 +24,13 @@ body {
 
 .App-body {
   padding: 20px 100px 0 100px;
+
+}
+
+@media (max-width: 800px) {
+  .App-body {
+    padding: 20px 10px 0 20px !important;
+  }
 }
 
 .col-xs-6,

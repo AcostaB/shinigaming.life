@@ -1,7 +1,7 @@
 export const currency = {
-    Platinum: 10,
-    Gold: 0,
-    Electrum: 20,
+    Platinum: 0,
+    Gold: 135,
+    Electrum: 0,
     Silver: 0,
     Copper: 0
 };

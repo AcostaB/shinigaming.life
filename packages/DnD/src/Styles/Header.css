@@ -107,6 +107,11 @@
     height: 20px;
     width: 27px;
 }
+
+.header-increase-icon.redButton{
+    background-color: darkred;
+    margin-left: 10px;
+}
   
 .header-increase-icon::before {
     content: "";
@@ -132,6 +137,11 @@
     width: 27px;
 }
   
+.header-decrease-icon.redButton{
+    background-color: darkred;
+    margin-right: 10px;
+}
+
 .header-decrease-icon::before {
     content: "";
     display: block;

@@ -1,38 +1,50 @@
 export const Items = [
     {
         _id: 1,
-        name: "item1",
-        description: "something",
-        quantity: 1
+        name: "Herb root",
+        description: "Cures poison",
+        quantity: 3
     },
     {
         _id: 2,
-        name: "item2",
-        description: "something2",
-        quantity: 1
+        name: "Colorful feathers",
+        description: "Feathers found in a cave",
+        quantity: 9
     },
     {
         _id: 3,
-        name: "item1",
-        description: "something",
-        quantity: 1
+        name: "Light nuts",
+        description: "When shaken, light up.",
+        quantity: 3
     },
     {
         _id: 4,
-        name: "item2",
-        description: "something2",
-        quantity: 1
+        name: "Monkey fruit",
+        description: "",
+        quantity: 2
     },
     {
         _id: 5,
-        name: "item1",
-        description: "something",
+        name: "Quiver",
+        description: "Holds arrows.",
         quantity: 1
     },
     {
         _id: 6,
-        name: "item2",
-        description: "something2",
+        name: "Arrows",
+        description: "",
+        quantity: 14
+    },
+    {
+        _id: 7,
+        name: "Potion of underwater breathing",
+        description: "",
+        quantity: 1
+    },
+    {
+        _id: 8,
+        name: "Potion of greater healing",
+        description: "",
         quantity: 1
     }
   ]

@@ -113,6 +113,26 @@ export class Dashboard extends React.Component {
       })
   }
 
+  decreaseHealthBy10Handler = () => {
+    this.setState((prevState, props) => {
+      if (prevState.remainingHealth - 10 >= 0) {
+          return {remainingHealth: prevState.remainingHealth - 10};
+      } else {
+        return {remainingHealth: 0};
+      }
+    })
+  }
+
+  increaseHealthBy10Handler = () => {
+    this.setState((prevState, props) => {
+      if (prevState.remainingHealth + 10 <= character.maximumHealth) {
+          return {remainingHealth: prevState.remainingHealth + 10};
+      } else if (prevState.remainingHealth + 10 > character.maximumHealth) {
+        return {remainingHealth: character.maximumHealth};
+      }
+    });
+  }
+
   handleLimitedUseDecrease = (id) => {
     this.setState((prevState, props) => { 
       // TODO this is bad. Rewrite. 
@@ -294,7 +314,13 @@ export class Dashboard extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Header character={character} remainingHealth={this.state.remainingHealth} decreaseHealthHandler={this.decreaseHealthHandler} increaseHealthHandler={this.increaseHealthHandler}/>
+          <Header 
+            character={character} 
+            remainingHealth={this.state.remainingHealth} 
+            decreaseHealthHandler={this.decreaseHealthHandler} 
+            increaseHealthHandler={this.increaseHealthHandler} 
+            decreaseHealthBy10Handler={this.decreaseHealthBy10Handler} 
+            increaseHealthBy10Handler={this.increaseHealthBy10Handler}/>
         </div>
         <div className="App-body">
         <div className="dashboard">
