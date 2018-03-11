@@ -46,7 +46,7 @@ const AttacksPanel = (props) => {
   return (
     <Panel title="ATTACKS">
         <div className="attacks-perAction">
-        Attacks Per Action: 1
+        Attacks Per Action: 2
         </div>
         {props.attacks.map(attack => <Attack key={attack.name} attack={attack} adversityMod={props.adversityMod}/>)}
     </Panel>
@@ -56,7 +56,16 @@ const AttacksPanel = (props) => {
 const PassivesPanel = (props) => {
   return (
     <Panel title="PASSIVES">
-        {props.passives.map(passive => <ExpandableItem key={passive.id} expandableItemHeader={passive.name} expandableItemBody={passive.description}/>)}
+        {props.passives.map(passive => 
+          <ExpandableItem 
+            key={passive.id} 
+            expandableItemHeader={
+              <span className="passive-name">
+                {passive.name}
+              </span>
+            } 
+            expandableItemBody={passive.description}
+          />)}
     </Panel>
   );
 };

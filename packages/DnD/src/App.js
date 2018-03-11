@@ -8,6 +8,7 @@ import './Styles/ExpandableItem.css';
 import './Styles/LimitedUse.css';
 import './Styles/Panel.css';
 import './Styles/Skill.css';
+import './Styles/Passive.css';
 import './Styles/Spell.css';
 
 class App extends Component {

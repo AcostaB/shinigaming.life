@@ -4,10 +4,10 @@ import "../Styles/Attack.css";
 export const Attack = (props) => {
     return (
         <div className="attack">
-            <div className="attack-icon">
+            <div className={props.attack.melee ? "attack-melee-icon" : "attack-ranged-icon"}>
             </div>
             <div className="attack-weapon">
-                <div className="attack-weapon-name">
+                <div className={"attack-weapon-name " + (props.attack.magicItem ? "magicItem":"")}>
                     <span>{props.attack.name}</span>
                     <span className="attack-weapon-proficiencyIndicator"/>
                 </div>

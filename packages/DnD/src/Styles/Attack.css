@@ -13,8 +13,15 @@
     text-align: left;
 }
 
-.attack-icon {
+.attack-melee-icon {
     background: center center transparent url("../Assets/melee_weapon.svg") no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 28px 28px;
+}
+
+.attack-ranged-icon {
+    background: center center transparent url("../Assets/ranged_weapon.svg") no-repeat;
     width: 32px;
     height: 32px;
     background-size: 28px 28px;
@@ -29,6 +36,10 @@
     font-weight: bold;
     font-family: Roboto,Helvetica,sans-serif;
     line-height: 1.1;
+}
+
+.attack-weapon-name.magicItem {
+    color: #1FC219;
 }
 
 .attack-weapon-type {

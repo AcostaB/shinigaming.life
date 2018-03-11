@@ -7,8 +7,13 @@ export class LimitedUse extends React.Component {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">
-                    <div className="limitedUse-name">
-                        {props.limitedUse.name}
+                    <div className="limitedUse-label">
+                        <span className="limitedUse-name">
+                            {props.limitedUse.name}
+                        </span>
+                        <span className="limitedUse-level">
+                            {"(lv. " +props.limitedUse.level + ')'}
+                        </span>
                     </div>
                     <div className="limitedUse-counter">
                         <button className="limitedUse-decrease-icon" onClick={props.handleDecrease}/>

@@ -1,8 +1,24 @@
+.limitedUse-label {
+    display: flex;
+    min-width: 150px;
+    align-items: center;
+}
+
 .limitedUse-name {
     font-size: 15px;
     font-weight: bold;
     font-family: "Roboto",Helvetica,sans-serif;
     line-height: 1.1;
+    flex: 2;
+    align-items: center;
+}
+
+.limitedUse-level {
+    align-items: center;
+    color: #979aa4;
+    font-size: 10px;
+    font-family: Roboto,Helvetica,sans-serif;
+    flex: 1;
 }
   
 .limitedUse {

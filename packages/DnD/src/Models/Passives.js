@@ -1,20 +1,23 @@
 export const passives = [
     {
         id: 1,
-        name: "Passive1",
-        description: "Desctiption for passive 1",
+        level: 2,
+        name: "Great Weapon Fighting",
+        description: "Once per attack, you may reroll any 1s or 2s.",
         isRacial: true  
     },
     {
         id: 2,
-        name: "Passive2",
-        description: "Desctiption for passive 2",
-        isRacial: true    
+        level: 2, 
+        name: "Dark Vision",
+        description: "Desctiption for passive 1",
+        isRacial: true  
     },
     {
         id: 3,
-        name: "Passive3",
-        description: "Desctiption for passive 3",
-        isRacial: false  
+        level: 1,
+        name: "Hellish Resistance",
+        description: "Resistance to fire.",
+        isRacial: true    
     }
 ]
