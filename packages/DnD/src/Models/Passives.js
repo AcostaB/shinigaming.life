@@ -19,5 +19,12 @@ export const passives = [
         name: "Hellish Resistance",
         description: "Resistance to fire.",
         isRacial: true    
+    },
+    {
+        id: 3,
+        level: 15,
+        name: "Grasp of darkness",
+        description: "Proficiency on wisdom saving throws.",
+        isRacial: true    
     }
 ]
