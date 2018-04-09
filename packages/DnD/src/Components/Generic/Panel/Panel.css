@@ -5,7 +5,7 @@
 }
 
 .panel-header {
-    background-image: url("../Assets/panel-header.png");
+    background-image: url("../../../Assets/panel-header.png");
     background-size: 100% 100%;
     text-align: center;
 }
@@ -33,7 +33,7 @@
 .panel::after {
     content: "";
     display: block;
-    background: center 0 transparent url("../Assets/panel-footer.png") no-repeat;
+    background: center 0 transparent url("../../../Assets/panel-footer.png") no-repeat;
     background-size: 105% 12px;
     position: absolute;
     right: 1px;

@@ -1,5 +1,5 @@
 body {
-  background-image: url("../Assets/body-background.jpg");
+  background-image: url("./Assets/body-background.jpg");
   background-position-x: center, initial;
   background-position-y: 120px;
   background-size: initial, initial;

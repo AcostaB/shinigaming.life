@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExpandableItem} from './Generic/ExpandableItem.js';
+import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem.js';
 
 export class Item extends React.Component {
     renderLimitedUseHeader = (props) => {

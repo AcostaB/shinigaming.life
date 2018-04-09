@@ -1,7 +1,7 @@
 .attack {
     display: flex;
     align-items: center;
-    background-image: url("../Assets/expandable-header.png");
+    background-image: url("../../../Assets/expandable-header.png");
     z-index: 2;
     height: 65px;
     background-size: 100% 65px;
@@ -14,14 +14,14 @@
 }
 
 .attack-melee-icon {
-    background: center center transparent url("../Assets/melee_weapon.svg") no-repeat;
+    background: center center transparent url("../../../Assets/melee_weapon.svg") no-repeat;
     width: 32px;
     height: 32px;
     background-size: 28px 28px;
 }
 
 .attack-ranged-icon {
-    background: center center transparent url("../Assets/ranged_weapon.svg") no-repeat;
+    background: center center transparent url("../../../Assets/ranged_weapon.svg") no-repeat;
     width: 32px;
     height: 32px;
     background-size: 28px 28px;

@@ -69,25 +69,25 @@
   }
   
 .ability-icon.strength {
-    background: center center transparent url("../Assets/strength.svg") no-repeat;
+    background: center center transparent url("../../../Assets/strength.svg") no-repeat;
 }
   
 .ability-icon.dexterity {
-    background: center center transparent url("../Assets/dexterity.svg") no-repeat;
+    background: center center transparent url("../../../Assets/dexterity.svg") no-repeat;
 }
   
 .ability-icon.constitution {
-  background: center center transparent url("../Assets/constitution.svg") no-repeat;
+  background: center center transparent url("../../../Assets/constitution.svg") no-repeat;
 }
 
 .ability-icon.intelligence {
-  background: center center transparent url("../Assets/intelligence.svg") no-repeat;
+  background: center center transparent url("../../../Assets/intelligence.svg") no-repeat;
 }
 
 .ability-icon.wisdom {
-  background: center center transparent url("../Assets/wisdom.svg") no-repeat;
+  background: center center transparent url("../../../Assets/wisdom.svg") no-repeat;
 }
 
 .ability-icon.charisma {
-  background: center center transparent url("../Assets/charisma.svg") no-repeat;
+  background: center center transparent url("../../../Assets/charisma.svg") no-repeat;
 }

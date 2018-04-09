@@ -1,6 +1,7 @@
 import React from 'react';
-import {ExpandableItem} from './Generic/ExpandableItem.js';
+import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem.js';
 import {SpellDetails} from './SpellDetails.js';
+import "./LimitedUse.css";
 
 export class LimitedUse extends React.Component {
     renderLimitedUseHeader = (props) => {

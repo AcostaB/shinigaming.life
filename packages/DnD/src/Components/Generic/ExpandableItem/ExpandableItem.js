@@ -1,4 +1,5 @@
 import React from 'react';
+import "./ExpandableItem.css";
 
 export class ExpandableItem extends React.Component {
     constructor(props) {

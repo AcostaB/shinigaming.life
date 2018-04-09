@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Styles/Attack.css";
+import "./Attack.css";
 
 export const Attack = (props) => {
     return (

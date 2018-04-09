@@ -1,4 +1,4 @@
-export const Items = [
+export const items = [
     {
         _id: 1,
         name: "Herb root",

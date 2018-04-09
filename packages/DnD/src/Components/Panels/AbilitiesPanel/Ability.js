@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Ability.css";
 
 export class Ability extends React.Component {
     constructor(props) {

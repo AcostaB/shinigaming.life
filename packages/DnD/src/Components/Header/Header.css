@@ -1,7 +1,7 @@
 .header {
     display: flex;
     -webkit-align-items: center;
-    background: url("../Assets/header-background.png");
+    background: url("../../Assets/header-background.png");
     background-position-y: -238px;
     height: 130px;
     padding: 10px 30px 10px 30px;
@@ -118,7 +118,7 @@
     display: block;
     height: 14px;
     width: 14px;
-    background-image: url("../Assets/plus_minus-white.svg");
+    background-image: url("../../Assets/plus_minus-white.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -147,7 +147,7 @@
     display: block;
     height: 14px;
     width: 14px;
-    background-image: url("../Assets/plus_minus-white.svg");
+    background-image: url("../../Assets/plus_minus-white.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
