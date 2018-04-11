@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Spell.css";
 
 export class SpellDetails extends React.Component {
 

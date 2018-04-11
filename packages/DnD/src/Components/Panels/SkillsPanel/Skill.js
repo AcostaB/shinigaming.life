@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Skill.css";
 
 export class Skill extends React.Component {
     constructor(props) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Panel} from "../../Generic/Panel/Panel.js";
 import {Item} from "./Item.js";
+import "./InventoryPanel.css";
 
 export default class InventoryPanel extends React.Component {
     constructor(props) {
@@ -123,7 +124,7 @@ export default class InventoryPanel extends React.Component {
                     <div className="inventory-panel">
                         <div className="inventory-tabs">
                         <div 
-                            className={"inventory-tabs-items " + (this.state.currencyTabActive ? "":"active") }
+                            className={"inventory-tabs-items " + (this.state.isCurrencyTabActive ? "":"active") }
                             onClick={() => {this.setState({isCurrencyTabActive: false})}}>
                             Items
                         </div>

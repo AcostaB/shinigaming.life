@@ -139,8 +139,6 @@ export class Dashboard extends React.Component {
     // });
   };
 
-
-
   render() {
     const adversityMod = Math.floor((1-(this.state.remainingHealth/character.maximumHealth)) * 4);
 
