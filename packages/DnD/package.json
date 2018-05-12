@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "bootstrap": "^3.3.7",
     "express": "^4.16.2",
     "mongodb": "^3.0.3",
     "mongoose": "^5.0.8",

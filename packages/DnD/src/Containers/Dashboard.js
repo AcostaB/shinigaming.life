@@ -145,28 +145,27 @@ export class Dashboard extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Header 
-            character={character} 
-            remainingHealth={this.state.remainingHealth} 
-            decreaseHealthHandler={this.decreaseHealthHandler} 
-            increaseHealthHandler={this.increaseHealthHandler} 
-            decreaseHealthBy10Handler={this.decreaseHealthBy10Handler} 
-            increaseHealthBy10Handler={this.increaseHealthBy10Handler}/>
+          <div className="App-header-content">
+            <Header 
+              character={character} 
+              remainingHealth={this.state.remainingHealth} 
+              decreaseHealthHandler={this.decreaseHealthHandler} 
+              increaseHealthHandler={this.increaseHealthHandler} 
+              decreaseHealthBy10Handler={this.decreaseHealthBy10Handler} 
+              increaseHealthBy10Handler={this.increaseHealthBy10Handler}/>
+          </div>
         </div>
         <div className="App-body">
-        <div className="dashboard">
-          <div className="row">
-            <div className="col-xs-6 col-md-4">
+          <div className="App-body-content">
+            <div className="dashboard">
               <div className="dashboard-panel">
                 <AbilitiesPanel 
                   abilities={abilities}
-                />
+                  />
               </div>
               <div className="dashboard-panel">
                 <SkillsPanel leftColumnSkills={leftColumnSkills} rightColumnSkills={rightColumnSkills}/>
               </div>
-            </div>
-            <div className="col-xs-6 col-md-4">
               <div className="dashboard-panel">
                 <LimitedUsesPanel 
                   limitedUses={limitedUses}
@@ -175,29 +174,24 @@ export class Dashboard extends React.Component {
                   onLongRest={this.handleLongRest}
                   onLimitedUseDecrease={this.handleLimitedUseDecrease}
                   onLimitedUseIncrease={this.handleLimitedUseIncrease}
-                />          
+                  />          
               </div>
-              <div>
+              <div className="dashboard-panel">
                 <PassivesPanel passives={passives}/>
               </div>
-            </div>
-            <div className="col-xs-6 col-md-4">
               <div className="dashboard-panel">
                 <AttacksPanel attacks={attacks} adversityMod={adversityMod}/>
               </div>
-            </div>
-            <div className="col-xs-6 col-md-4">
               <div className="dashboard-panel">
                 <InventoryPanel 
                   items={items}
                   currency={currency}
-                /> 
+                  /> 
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }

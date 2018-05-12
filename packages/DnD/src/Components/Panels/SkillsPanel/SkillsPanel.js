@@ -7,11 +7,13 @@ export function SkillsPanel(props) {
         <Panel>
             <Panel.Header title="SKILLS"/>
             <Panel.Body>
-                <div className="skill-column">
-                    {props.leftColumnSkills.map(skill => <Skill key={skill.skillName} skill={skill}/>) } 
-                </div>
-                <div className="skill-column skill-column-leftBorder">
-                    {props.rightColumnSkills.map(skill => <Skill key={skill.skillName} skill={skill}/>) } 
+                <div className="panel-content-columns">
+                    <div className="panel-content-column skill-column">
+                        {props.leftColumnSkills.map(skill => <Skill key={skill.skillName} skill={skill}/>) } 
+                    </div>
+                    <div className="panel-content-column skill-column">
+                        {props.rightColumnSkills.map(skill => <Skill key={skill.skillName} skill={skill}/>) } 
+                    </div>
                 </div>
             </Panel.Body>
         </Panel>

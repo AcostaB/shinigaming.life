@@ -11,10 +11,28 @@ body {
   height: 100%;
   background-size: 100% 140%;
   background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 .App {
   text-align: center;
+}
+
+.App-header {
+  background: url("./Assets/header-background.png");
+  background-position-y: -238px;
+}
+
+.App-header-content,
+.App-body-content {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.App-header-content {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .App-logo {
@@ -23,20 +41,13 @@ body {
 }
 
 .App-body {
-  padding: 20px 100px 0 100px;
-
+  margin: 20px auto;
 }
 
 @media (max-width: 800px) {
   .App-body {
     padding: 20px 10px 0 20px !important;
   }
-}
-
-.col-xs-6,
-.col-md-4 {
-  padding-left: 3px !important;
-  padding-right: 3px !important;
 }
 
 .App-title {
