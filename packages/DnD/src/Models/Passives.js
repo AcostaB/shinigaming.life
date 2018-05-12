@@ -21,7 +21,7 @@ export const passives = [
         isRacial: true    
     },
     {
-        id: 3,
+        id: 4,
         level: 15,
         name: "Grasp of darkness",
         description: "Proficiency on wisdom saving throws.",

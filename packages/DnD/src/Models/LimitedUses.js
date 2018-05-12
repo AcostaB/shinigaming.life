@@ -141,7 +141,7 @@ export const limitedUses = [
         damageAndEffect: "Necrotic"
     },
     {   
-        id: 9,
+        id: 12,
         level: 20,
         name: "Living Dead",
         maxUses: 5,
