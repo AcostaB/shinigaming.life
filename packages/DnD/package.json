@@ -10,16 +10,25 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-scripts-ts": "^2.15.1"
   },
   "devDependencies": {
-    "nodemon": "^1.17.1"
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "nodemon": "^1.17.1",
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^4.3.0",
+    "typescript": "^2.8.3",
+    "typings": "^2.1.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-server": "nodemon src/Node/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   }
 }

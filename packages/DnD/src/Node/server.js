@@ -3,9 +3,9 @@ var express = require('express'),
     path = require('path'),
     port = process.env.PORT || 9000,
     mongoose = require('mongoose'),
-    Item = require('../api/models/itemModel'), //created model loading here
+    mItem = require('../API/models/itemModel'), //created model loading here
     bodyParser = require('body-parser');
-var routes = require('../api/routes/itemRoutes'); //importing route
+var routes = require('../API/routes/itemRoutes'); //importing route
 
 let __dirname2 = '/Users/Developer/Documents/Projects/shinigaming.life/packages/DnD/'
 
@@ -26,5 +26,5 @@ routes(app); //register the route
 
 app.listen(port);
 
-console.log('Item RESTful API server started on: ' + port);
+console.log('mItem RESTful API server started on: ' + port);
 

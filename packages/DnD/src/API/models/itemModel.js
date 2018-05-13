@@ -1,19 +1,19 @@
 'use strict';
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var schema = mongoose.Schema;
 
-var ItemSchema = new Schema({
+var itemSchema = new schema({
   name: {
-    type: String,
-    required: 'Kindly enter the name of the item'
+    required: 'Kindly enter the name of the item',
+    type: String
   },
   description: {
     type: String
   },
   quantity: {
-    type: Number,
-    default: 1
+    default: 1,
+    type: Number
   }
 });
 
-module.exports = mongoose.model('Items', ItemSchema);
+module.exports = mongoose.model('Items', itemSchema);
