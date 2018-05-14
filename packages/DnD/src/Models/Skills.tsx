@@ -1,3 +1,11 @@
+export interface Skill {
+  id: number,
+  abilityName: string,
+  skillName: string,
+  isProficient: boolean,
+  mod: number
+}
+
 export const leftColumnSkills = [
   { id: 1, abilityName: "DEX", skillName: "Acrobatics", isProficient: false, mod: 1},
   { id: 2, abilityName: "WIS", skillName: "Animal Handling", isProficient: false, mod: 0},

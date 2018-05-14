@@ -1,4 +1,12 @@
-export const abilities = [
+export interface Ability {
+    exp: string,
+    name: string,
+    mod: number,
+    save: number,
+    isProficient: boolean
+}
+
+export const abilities: Ability[] = [
     {  exp: "15", name: "Strength", mod: 2, save: 2, isProficient: false},
     {  exp: "12", name: "Dexterity", mod: 1, save: 1, isProficient: false},
     {  exp: "13", name: "Constitution", mod: 1, save: 1, isProficient: false},

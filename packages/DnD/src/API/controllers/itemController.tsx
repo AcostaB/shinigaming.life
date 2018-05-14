@@ -1,5 +1,8 @@
+import { Mongoose } from "mongoose";
+import { Item } from "../../Components/Panels/InventoryPanel/Item";
+
 'use strict';
-var mongoose = require('mongoose');
+var mongoose: Mongoose = require('mongoose');
 var mItem = mongoose.model('Items');
 
 exports.get_all_items = function(req, res) {

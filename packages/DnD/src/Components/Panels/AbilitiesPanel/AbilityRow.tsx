@@ -1,8 +1,17 @@
 import React from 'react';
 import "./Ability.css";
+import { Ability } from '../../../Models/Abilities';
 
-export class Ability extends React.Component {
-    constructor(props) {
+interface Props {
+    ability: Ability
+}
+
+export class AbilityRow extends React.Component<Props, {}> {
+    iconClass: string;
+    modSign: string;
+    saveSign: string;
+    
+    constructor(props: Props) {
         super(props);
         this.props = props;
         this.iconClass = "ability-icon " + this.props.ability.name.toLowerCase();
@@ -10,7 +19,7 @@ export class Ability extends React.Component {
         this.saveSign = this.props.ability.save >= 0 ? "+" : "-";
     }
 
-    render(){
+    render() {
         return (
             <tr className="ability">
                 <td className="ability-cell">

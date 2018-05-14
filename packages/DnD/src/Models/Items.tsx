@@ -1,4 +1,11 @@
-export const items = [
+export interface Item {
+    _id: number,
+    name: string,
+    description: string,
+    quantity: number
+}
+
+export const items: Item[] = [
     {
         _id: 1,
         name: "Herb root",
