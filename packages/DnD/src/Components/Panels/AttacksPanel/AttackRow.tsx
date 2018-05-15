@@ -1,7 +1,13 @@
 import React from 'react';
 import "./Attack.css";
+import {Attack} from "../../../Models/Attacks";
 
-export const Attack = (props) => {
+interface Props {
+    attack: Attack,
+    adversityMod: number
+}
+
+export const AttackRow  = (props: Props) => {
     return (
         <div className="attack">
             <div className={props.attack.melee ? "attack-melee-icon" : "attack-ranged-icon"}>

@@ -1,23 +1,40 @@
 import React from 'react';
 import {Panel} from "../../Generic/Panel/Panel.js";
-import {Item} from "./Item.js";
+import {ItemRow} from "./ItemRow.js";
+import {Item} from "../../../Models/Items";
+import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
 
-export default class InventoryPanel extends React.Component {
-    constructor(props) {
+interface Props {
+    items: Item[],
+    handleItemIncrease: (id: number) => void,
+    handleItemDecrease: (id: number) => void,
+    currency: Currency
+}
+
+interface State {
+    addNewItemExpanded: boolean,
+    isCurrencyTabActive: boolean
+}
+
+export default class InventoryPanel extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
-        this.state = {isCurrencyTabActive: false};
+        this.state = {
+            isCurrencyTabActive: false,
+            addNewItemExpanded: false
+        };
     } 
 
-    renderInventory = (items) => {
+    renderInventory = (items: Item[]) => {
         return (
             <div>
                 {items.map((item) => 
-                    <Item 
+                    <ItemRow 
                         key={item._id} 
                         item={item}
-                        handleDecrease={() => this.handleItemDecrease(item._id)}
-                        handleIncrease={() => this.handleItemIncrease(item._id)}
+                        handleDecrease={() => this.props.handleItemDecrease(item._id)}
+                        handleIncrease={() => this.props.handleItemIncrease(item._id)}
                     />
                 )}
                 <div> 
@@ -66,10 +83,10 @@ export default class InventoryPanel extends React.Component {
         );
     }
     
-    renderCurrency = (currency) => {
+    renderCurrency = (currency: Currency) => {
         let value = "";
     
-        const switchCase = key => {
+        const switchCase = (key: string) => {
             switch(key) {
                 case "Platinum":
                     value = "= 10 GP";
@@ -116,7 +133,7 @@ export default class InventoryPanel extends React.Component {
         );
     }
 
-    render = () => {
+    render() {
         return (
             <Panel>
                 <Panel.Header title="INVENTORY"/>

@@ -16,13 +16,13 @@ interface bProps {
 
 export class Panel extends React.Component<pProps, {}> {
 
-    static Header = (hProps: hProps) => {
+    static Header = (hProps: hProps): JSX.Element => {
         return (
             <PanelHeader title={hProps.title}/>
         );
     }
 
-    static Body = (bProps: bProps) => {
+    static Body = (bProps: bProps): JSX.Element => {
         return (
             <div className="panel-content">
                 {bProps.children}
@@ -30,7 +30,7 @@ export class Panel extends React.Component<pProps, {}> {
         );
     }
 
-    render() {
+    render(): JSX.Element {
         return (
             <div className="panel">
                 {this.props.children}

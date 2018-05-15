@@ -17,10 +17,24 @@ import {LimitedUsesPanel} from "../Components/Panels/LimitedUsesPanel/LimitedUse
 import {PassivesPanel} from "../Components/Panels/PassivesPanel/PassivesPanel.js";
 import {SkillsPanel} from "../Components/Panels/SkillsPanel/SkillsPanel.js";
 // import { api } from "../API/requests";
+import {Item} from "../Models/Items";
+import {Currency} from "../Models/Currency";
 
-export class Dashboard extends React.Component {
-  constructor() {
-    super();
+interface Props {
+
+}
+
+interface State {
+  remainingHealth: number, 
+  remainingUses: {[limitedUsesName: string]: string},
+  currencyTabActive: boolean,
+  currency: Currency,
+  addNewItemExpanded: boolean
+}
+
+export class Dashboard extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
       accumulator[currentValue.id] = currentValue.maxUses; 
       return accumulator;
@@ -28,7 +42,6 @@ export class Dashboard extends React.Component {
     this.state = {
       remainingHealth: character.maximumHealth, 
       remainingUses: newRemainingUses,
-      inventory: [],
       currencyTabActive: false,
       currency: currency,
       addNewItemExpanded: true
@@ -42,13 +55,15 @@ export class Dashboard extends React.Component {
     //   this.setState(() => ({inventory: res.data}));
     // });
 
-    this.setState(() => ({items: items}));
+    // this.setState(() => ({items: items}));
   }
 
   decreaseHealthHandler = () => {
     this.setState((prevState, props) => {
         if (prevState.remainingHealth !== 0) {
             return {remainingHealth: prevState.remainingHealth - 1};
+        } else {
+          return 
         }
     })
   }

@@ -1,13 +1,27 @@
 import React from 'react';
 import './Header.css';
+import {Character, Stat} from "../../Models/Character";
 
-export class Header extends React.Component {
-    constructor(props) {
+interface Props {
+    character: Character,
+    remainingHealth: number,
+    decreaseHealthHandler: () => void,
+    increaseHealthHandler: () => void,
+    decreaseHealthBy10Handler: () => void,
+    increaseHealthBy10Handler: () => void    
+}
+
+interface State {
+    remainingHealth: number
+}
+
+export class Header extends React.Component<Props, {}> {
+    constructor(props: Props) {
         super(props);
         this.state = {remainingHealth: props.character.maximumHealth}
     } 
 
-    renderHeaderMain = (props) => {
+    renderHeaderMain = (props: Props) => {
         return (
             <div>
                 <div className="header-characterName">
@@ -20,31 +34,31 @@ export class Header extends React.Component {
         );
     }
 
-    renderHeaderStats = (props) => {
+    renderHeaderStats = (props: Props) => {
         return (
             props.character.stats.map(stat => this.renderSingleStat(stat))
         );
     }
 
-    renderSingleStat = (props) => {
+    renderSingleStat = (stat: Stat) => {
         return (
-            <div key={props.description} className="header-stat">
+            <div key={stat.description} className="header-stat">
                 <div className="header-stat-category">
-                    { props.category }
+                    { stat.category }
                 </div>
                 <div className="header-stat-value">
-                    <span className="header-stat-value-mod">{ props.mod } </span>
-                    <span className="header-stat-value-value">{ props.value } </span>
-                    <span className="header-stat-value-postText">{ props.valuePostText } </span>
+                    <span className="header-stat-value-mod">{ stat.mod } </span>
+                    <span className="header-stat-value-value">{ stat.value } </span>
+                    <span className="header-stat-value-postText">{ stat.valuePostText } </span>
                 </div>
                 <div className="header-stat-description">
-                    { props.description }
+                    { stat.description }
                 </div>
             </div>
         );
     }
 
-    renderTracker = (props) => {
+    renderTracker = (props: Props) => {
         return (
             <div>
                 <div className="header-healthTracker">

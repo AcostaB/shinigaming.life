@@ -1,8 +1,15 @@
 import React from 'react';
 import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem.js';
+import {Item} from "../../../Models/Items";
 
-export class Item extends React.Component {
-    renderLimitedUseHeader = (props) => {
+interface Props {
+    item: Item,
+    handleDecrease: () => void,
+    handleIncrease: () => void
+}
+
+export class ItemRow extends React.Component<Props, {}> {
+    renderLimitedUseHeader = (props: Props) => {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">

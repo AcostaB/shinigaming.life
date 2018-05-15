@@ -1,17 +1,26 @@
 import React from 'react';
 import "./ExpandableItem.css";
 
-export class ExpandableItem extends React.Component {
-    constructor(props) {
+interface Props {
+    expandableItemBody: JSX.Element,
+    expandableItemHeader: JSX.Element
+}
+
+interface State extends Props {
+    expanded: boolean
+}
+
+export class ExpandableItem extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
-        this.state = {...props, ...{expanded: false}};
+        this.state = {...props, expanded: false};
     }
 
-    handleExpandedClick = () => {
+    handleExpandedClick = (): void => {
         this.setState((prevState, props) => ({expanded: !prevState.expanded}));
     };
 
-    renderBody() {
+    renderBody(): JSX.Element | string {
         if (this.state.expanded) {
             return (<div className="expandableItem-body">
                         {this.props.expandableItemBody}
@@ -21,7 +30,7 @@ export class ExpandableItem extends React.Component {
         }
     };
 
-    render() {
+    render(): JSX.Element {
         return (
             <div>
                 <div className="expandableItem-header">

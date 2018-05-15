@@ -5,7 +5,7 @@ interface Props {
 }
 
 export class PanelHeader extends React.Component<Props, {}> {
-    render() {
+    render(): JSX.Element {
         return (
             <div className="panel-header">
                 <div className="panel-header-text">
