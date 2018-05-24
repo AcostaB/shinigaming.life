@@ -1,18 +1,18 @@
-export interface Stat {
-    category: string,
-    mod: string,
-    value: number,
-    valuePostText: string,
-    description: string
+export class Stat {
+    category: string;
+    mod: string;
+    value: number;
+    valuePostText: string;
+    description: string;
 }
 
-export interface Character {
-    name: string,
-    race: string,
-    class: string,
-    level: string,
-    stats: Stat[],
-    maximumHealth: number
+export class Character {
+    name: string;
+    race: string;
+    class: string;
+    level: string;
+    stats: Stat[];
+    maximumHealth: number;
 }
 
 export const character: Character = {

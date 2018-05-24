@@ -1,12 +1,12 @@
-export interface Attack {
-    name: string,
-    type: string,
-    isProficient: boolean,
-    toHitMod: number,
-    damage: string,
-    damageMod: number,
-    melee: boolean,
-    magicItem: boolean
+export class Attack {
+    name: string;
+    type: string;
+    isProficient: boolean;
+    toHitMod: number;
+    damage: string;
+    damageMod: number;
+    melee: boolean;
+    magicItem: boolean;
 }
 
 export const attacks: Attack[] = [

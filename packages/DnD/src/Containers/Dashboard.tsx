@@ -17,23 +17,19 @@ import {LimitedUsesPanel} from "../Components/Panels/LimitedUsesPanel/LimitedUse
 import {PassivesPanel} from "../Components/Panels/PassivesPanel/PassivesPanel.js";
 import {SkillsPanel} from "../Components/Panels/SkillsPanel/SkillsPanel.js";
 // import { api } from "../API/requests";
-import {Item} from "../Models/Items";
+
 import {Currency} from "../Models/Currency";
-
-interface Props {
-
-}
 
 interface State {
   remainingHealth: number, 
-  remainingUses: {[limitedUsesName: string]: string},
+  remainingUses: {[limitedUsesName: string]: number},
   currencyTabActive: boolean,
   currency: Currency,
   addNewItemExpanded: boolean
 }
 
-export class Dashboard extends React.Component<Props, State> {
-  constructor(props: Props) {
+export class Dashboard extends React.Component<{}, State> {
+  constructor(props: {}) {
     super(props);
     const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
       accumulator[currentValue.id] = currentValue.maxUses; 
@@ -61,9 +57,9 @@ export class Dashboard extends React.Component<Props, State> {
   decreaseHealthHandler = () => {
     this.setState((prevState, props) => {
         if (prevState.remainingHealth !== 0) {
-            return {remainingHealth: prevState.remainingHealth - 1};
+            return {...prevState, remainingHealth: prevState.remainingHealth - 1};
         } else {
-          return 
+          return; 
         }
     })
   }
@@ -71,7 +67,9 @@ export class Dashboard extends React.Component<Props, State> {
   increaseHealthHandler = () => {
       this.setState((prevState, props) => {
           if (prevState.remainingHealth < character.maximumHealth) {
-              return {remainingHealth: prevState.remainingHealth + 1};
+              return {...prevState, remainingHealth: prevState.remainingHealth + 1};
+          } else {
+            return; 
           }
       })
   }
@@ -79,7 +77,7 @@ export class Dashboard extends React.Component<Props, State> {
   decreaseHealthBy10Handler = () => {
     this.setState((prevState, props) => {
       if (prevState.remainingHealth - 10 >= 0) {
-          return {remainingHealth: prevState.remainingHealth - 10};
+          return {...prevState, remainingHealth: prevState.remainingHealth - 10};
       } else {
         return {remainingHealth: 0};
       }
@@ -89,14 +87,14 @@ export class Dashboard extends React.Component<Props, State> {
   increaseHealthBy10Handler = () => {
     this.setState((prevState, props) => {
       if (prevState.remainingHealth + 10 <= character.maximumHealth) {
-          return {remainingHealth: prevState.remainingHealth + 10};
-      } else if (prevState.remainingHealth + 10 > character.maximumHealth) {
-        return {remainingHealth: character.maximumHealth};
+          return {...prevState, remainingHealth: prevState.remainingHealth + 10};
+      } else {
+        return {...prevState, remainingHealth: character.maximumHealth};
       }
     });
   }
 
-  handleLimitedUseDecrease = (id) => {
+  handleLimitedUseDecrease = (id: number) => {
     this.setState((prevState, props) => { 
       // TODO this is bad. Rewrite. 
       const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
@@ -104,7 +102,7 @@ export class Dashboard extends React.Component<Props, State> {
     });
   };
 
-  handleLimitedUseIncrease = (id) => {
+  handleLimitedUseIncrease = (id: number) => {
     this.setState((prevState, props) => { 
       // TODO this is bad. Rewrite. 
       const maxUses = limitedUses[id - 1].maxUses;
@@ -137,7 +135,7 @@ export class Dashboard extends React.Component<Props, State> {
     });
   }
 
-  handleItemDecrease = (id) => {
+  handleItemDecrease = (id: number) => {
     // this.setState((prevState, props) => { 
     //   // TODO this is bad. Rewrite. 
     //   const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
@@ -145,7 +143,7 @@ export class Dashboard extends React.Component<Props, State> {
     // });
   };
 
-  handleItemIncrease = (id) => {
+  handleItemIncrease = (id: number) => {
     // this.setState((prevState, props) => { 
     //   // TODO this is bad. Rewrite. 
     //   const maxUses = limitedUses[id - 1].maxUses;
@@ -201,6 +199,8 @@ export class Dashboard extends React.Component<Props, State> {
                 <InventoryPanel 
                   items={items}
                   currency={currency}
+                  handleItemIncrease={this.handleItemIncrease}
+                  handleItemDecrease={this.handleItemDecrease}
                   /> 
               </div>
             </div>

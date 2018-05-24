@@ -1,9 +1,9 @@
-export interface Passive {
-    id: number,
-    level: number,
-    name: string,
-    description: string,
-    isRacial: boolean
+export class Passive {
+    id: number;
+    level: number;
+    name: string;
+    description: string;
+    isRacial: boolean;
 }
 
 export const passives: Passive[] = [

@@ -1,8 +1,8 @@
-export interface Item {
-    _id: number,
-    name: string,
-    description: string,
-    quantity: number
+export class Item {
+    _id: number;
+    name: string;
+    description: string;
+    quantity: number;
 }
 
 export const items: Item[] = [

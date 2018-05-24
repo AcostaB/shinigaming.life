@@ -1,9 +1,9 @@
-export interface Ability {
-    exp: string,
-    name: string,
-    mod: number,
-    save: number,
-    isProficient: boolean
+export class Ability {
+    exp: string;
+    name: string;
+    mod: number;
+    save: number;
+    isProficient: boolean;
 }
 
 export const abilities: Ability[] = [

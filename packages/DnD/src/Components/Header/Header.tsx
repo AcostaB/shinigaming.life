@@ -11,14 +11,9 @@ interface Props {
     increaseHealthBy10Handler: () => void    
 }
 
-interface State {
-    remainingHealth: number
-}
-
 export class Header extends React.Component<Props, {}> {
     constructor(props: Props) {
         super(props);
-        this.state = {remainingHealth: props.character.maximumHealth}
     } 
 
     renderHeaderMain = (props: Props) => {

@@ -1,12 +1,12 @@
-export interface Skill {
-  id: number,
-  abilityName: string,
-  skillName: string,
-  isProficient: boolean,
-  mod: number
+export class Skill {
+  id: number;
+  abilityName: string;
+  skillName: string;
+  isProficient: boolean;
+  mod: number;
 }
 
-export const leftColumnSkills = [
+export const leftColumnSkills: Skill[]  = [
   { id: 1, abilityName: "DEX", skillName: "Acrobatics", isProficient: false, mod: 1},
   { id: 2, abilityName: "WIS", skillName: "Animal Handling", isProficient: false, mod: 0},
   { id: 3, abilityName: "INT", skillName: "Arcana", isProficient: false, mod: -1},
@@ -18,7 +18,7 @@ export const leftColumnSkills = [
   { id: 9, abilityName: "INT", skillName: "Investigation", isProficient: false, mod: -1},
 ];
 
-export const rightColumnSkills = [
+export const rightColumnSkills: Skill[] = [
   { id: 10, abilityName: "WIS", skillName: "Medicine", isProficient: false, mod: 0},
   { id: 11, abilityName: "INT", skillName: "Nature", isProficient: false, mod: -1},
   { id: 12, abilityName: "WIS", skillName: "Perception", isProficient: false, mod: 0},
