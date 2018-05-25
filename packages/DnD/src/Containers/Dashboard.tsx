@@ -1,21 +1,21 @@
 import React from 'react';
 import {abilities} from "../Models/Abilities";
-import {attacks} from "../Models/Attacks.js";
-import {character} from '../Models/Character.js';
-import {currency} from '../Models/Currency.js';
-import {items} from '../Models/Items.js';
-import {leftColumnSkills, rightColumnSkills} from "../Models/Skills.js";
-import {limitedUses} from "../Models/LimitedUses.js";
-import {passives} from "../Models/Passives.js";
-import {Header} from '../Components/Header/Header.js';
+import {attacks} from "../Models/Attacks";
+import {character} from '../Models/Character';
+import {currency} from '../Models/Currency';
+import {items} from '../Models/Items';
+import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
+import {limitedUses} from "../Models/LimitedUses";
+import {passives} from "../Models/Passives";
+import {Header} from '../Components/Header/Header';
 import "./Dashboard.css";
 
-import {AbilitiesPanel} from "../Components/Panels/AbilitiesPanel/AbilitiesPanel.js";
-import {AttacksPanel} from "../Components/Panels/AttacksPanel/AttacksPanel.js";
-import InventoryPanel from "../Components/Panels/InventoryPanel/InventoryPanel.js";
-import {LimitedUsesPanel} from "../Components/Panels/LimitedUsesPanel/LimitedUsesPanel.js";
-import {PassivesPanel} from "../Components/Panels/PassivesPanel/PassivesPanel.js";
-import {SkillsPanel} from "../Components/Panels/SkillsPanel/SkillsPanel.js";
+import {AbilitiesPanel} from "../Components/Panels/AbilitiesPanel/AbilitiesPanel";
+import {AttacksPanel} from "../Components/Panels/AttacksPanel/AttacksPanel";
+import InventoryPanel from "../Components/Panels/InventoryPanel/InventoryPanel";
+import {LimitedUsesPanel} from "../Components/Panels/LimitedUsesPanel/LimitedUsesPanel";
+import {PassivesPanel} from "../Components/Panels/PassivesPanel/PassivesPanel";
+import {SkillsPanel} from "../Components/Panels/SkillsPanel/SkillsPanel";
 // import { api } from "../API/requests";
 
 import {Currency} from "../Models/Currency";

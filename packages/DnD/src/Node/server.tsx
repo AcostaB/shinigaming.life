@@ -11,7 +11,7 @@ let __dirname2 = '/Users/Developer/Documents/Projects/shinigaming.life/packages/
 
 app.use(express.static(path.join(__dirname2, 'build')));
 
-app.get('/', function (req, res) {
+app.get('/', function (req: any, res: any) {
   res.sendFile(path.join(__dirname2, 'build', 'index.html'));
 });
   

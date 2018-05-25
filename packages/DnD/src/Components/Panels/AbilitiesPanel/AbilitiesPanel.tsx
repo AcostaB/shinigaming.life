@@ -1,6 +1,6 @@
 import React from 'react';
-import { Panel } from "../../Generic/Panel/Panel.js";
-import { AbilityRow } from "./AbilityRow.js";
+import { Panel } from "../../Generic/Panel/Panel";
+import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 
 interface Props {

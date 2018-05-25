@@ -7,6 +7,8 @@
       ]
     },
     "rules": {
+        "no-var-requires": false,
+        "prefer-const": false,
         "object-literal-sort-keys": false,
         "one-variable-per-declaration": false,
         "variable-name": [
@@ -21,6 +23,7 @@
         "ordered-imports": false
     },
     "jsRules": {
+        "prefer-const": false,
         "object-literal-sort-keys": false,
         "one-variable-per-declaration": false,
         "variable-name": [

@@ -1,8 +1,15 @@
 import React from 'react';
 import "./Skill.css";
+import {Skill} from "../../../Models/Skills";
 
-export class Skill extends React.Component {
-    constructor(props) {
+interface Props {
+    skill: Skill
+}
+
+export class SkillRow extends React.Component<Props, {}> {
+    modSign: string;
+
+    constructor(props: Props) {
         super(props);
         this.props = props;
         this.modSign = props.skill.mod >= 0 ? "+" : "-";

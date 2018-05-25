@@ -1,5 +1,5 @@
 import React from 'react';
-import {PanelHeader} from './PanelHeader.js';
+import {PanelHeader} from './PanelHeader';
 import "./Panel.css";
 
 interface pProps {

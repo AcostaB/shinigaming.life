@@ -1,8 +1,18 @@
 import React from 'react';
-import {Panel} from "../../Generic/Panel/Panel.js";
-import {LimitedUse} from "./LimitedUse.js";
+import {Panel} from "../../Generic/Panel/Panel";
+import {LimitedUseRow} from "./LimitedUseRow";
+//import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
 
-export function LimitedUsesPanel(props) {
+interface Props {
+    remainingUses: { [limitedUsesName: string]: number; },
+    onShortRest: () => void,
+    onLongRest: () => void,
+    onLimitedUseDecrease: (limitedUseId: number) => void,
+    onLimitedUseIncrease: (limitedUseId: number) => void,
+    limitedUses: any
+}
+
+export function LimitedUsesPanel(props: Props) {
     return (
         <Panel>
             <Panel.Header title="LIMITED USES"/>
@@ -11,13 +21,15 @@ export function LimitedUsesPanel(props) {
                         <button className="shortRest" onClick={props.onShortRest}>SHORT REST</button>
                         <button className="longRest" onClick={props.onLongRest}>LONG REST</button>
                 </div>
-                {props.limitedUses.map(item => 
-                    <LimitedUse 
-                        key={item.id} 
-                        limitedUse={item} 
-                        remainingUses={props.remainingUses[item.id]}
-                        handleDecrease={() => props.onLimitedUseDecrease(item.id)}
-                        handleIncrease={() => props.onLimitedUseIncrease(item.id)}/>
+                {props.limitedUses.map((limitedUse: any) => 
+                    <LimitedUseRow
+                        key={limitedUse.id} 
+                        spell={limitedUse.spell}
+                        isSpell={limitedUse.isSpell} 
+                        limitedUse={limitedUse} 
+                        remainingUses={props.remainingUses[limitedUse.id]}
+                        handleDecrease={() => props.onLimitedUseDecrease(limitedUse.id)}
+                        handleIncrease={() => props.onLimitedUseIncrease(limitedUse.id)}/>
                     )
                 }
             </Panel.Body>

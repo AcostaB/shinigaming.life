@@ -1,9 +1,14 @@
 import React from 'react';
 import "./Spell.css";
+import {Spell} from "../../../Models/LimitedUses";
 
-export class SpellDetails extends React.Component {
+interface Props {
+    spell: Spell
+}
 
-    renderSpellDetail(detailName, detailData) {
+export class SpellDetails extends React.Component<Props, {}> {
+
+    renderSpellDetail(detailName: string, detailData: string | number) {
         return (
             <div className="spell-detail">
                 <div className="spell-detail-name">

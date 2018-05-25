@@ -1,10 +1,20 @@
 import React from 'react';
-import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem.js';
-import {SpellDetails} from './SpellDetails.js';
+import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
+import {SpellDetails} from './SpellDetails';
 import "./LimitedUse.css";
+import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
 
-export class LimitedUse extends React.Component {
-    renderLimitedUseHeader = (props) => {
+interface Props {
+    limitedUse: LimitedUseAbility | Spell,
+    isSpell: boolean,
+    spell: Spell,
+    remainingUses: number,
+    handleDecrease: any,
+    handleIncrease: any
+}
+
+export class LimitedUseRow extends React.Component<Props, {}> {
+    renderLimitedUseHeader = (props: Props) => {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">
@@ -30,11 +40,11 @@ export class LimitedUse extends React.Component {
         );
     };
 
-    renderLimitedUseBody = (props) => {
+    renderLimitedUseBody = (props: Props) => {
         if (props.isSpell) {
             return <SpellDetails spell={props.spell}/>
         } else {
-            return <SpellDetails spell={props.limitedUse}/>
+            return <SpellDetails spell={props.limitedUse as Spell}/>
         }
     };
 

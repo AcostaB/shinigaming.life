@@ -1,3 +1,5 @@
+//import {Schema} from "mongoose";
+
 'use strict';
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;

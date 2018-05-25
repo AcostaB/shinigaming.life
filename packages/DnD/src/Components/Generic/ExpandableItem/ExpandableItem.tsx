@@ -2,8 +2,8 @@ import React from 'react';
 import "./ExpandableItem.css";
 
 interface Props {
-    expandableItemBody: JSX.Element,
-    expandableItemHeader: JSX.Element
+    expandableItemBody: JSX.Element | string,
+    expandableItemHeader: JSX.Element | string
 }
 
 interface State extends Props {

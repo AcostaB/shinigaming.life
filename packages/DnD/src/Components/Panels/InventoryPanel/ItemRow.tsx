@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem.js';
+import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
 import {Item} from "../../../Models/Items";
 
 interface Props {

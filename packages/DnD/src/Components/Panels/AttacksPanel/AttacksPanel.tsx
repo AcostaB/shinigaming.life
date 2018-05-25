@@ -1,6 +1,6 @@
 import React from 'react';
-import {Panel} from "../../Generic/Panel/Panel.js";
-import {AttackRow} from "./AttackRow.js";
+import {Panel} from "../../Generic/Panel/Panel";
+import {AttackRow} from "./AttackRow";
 import {Attack} from "../../../Models/Attacks";
 
 interface Props {

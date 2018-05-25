@@ -1,6 +1,6 @@
 import React from 'react';
-import {Panel} from "../../Generic/Panel/Panel.js";
-import {ItemRow} from "./ItemRow.js";
+import {Panel} from "../../Generic/Panel/Panel";
+import {ItemRow} from "./ItemRow";
 import {Item} from "../../../Models/Items";
 import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
