@@ -5,20 +5,20 @@ import {Item} from "../../../Models/Items";
 import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
 
-interface Props {
+interface IProps {
     items: Item[],
     handleItemIncrease: (id: number) => void,
     handleItemDecrease: (id: number) => void,
     currency: Currency
 }
 
-interface State {
+interface IState {
     addNewItemExpanded: boolean,
     isCurrencyTabActive: boolean
 }
 
-export default class InventoryPanel extends React.Component<Props, State> {
-    constructor(props: Props) {
+export default class InventoryPanel extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
         super(props);
         this.state = {
             isCurrencyTabActive: false,
@@ -26,7 +26,7 @@ export default class InventoryPanel extends React.Component<Props, State> {
         };
     } 
 
-    renderInventory = (items: Item[]) => {
+    public renderInventory = (items: Item[]) => {
         return (
             <div>
                 {items.map((item) => 
@@ -58,7 +58,7 @@ export default class InventoryPanel extends React.Component<Props, State> {
         );
     };
     
-    renderAddItemForm = () => {
+    public renderAddItemForm = () => {
         return (
             <div>
                 <div className="addItem-row">
@@ -83,7 +83,7 @@ export default class InventoryPanel extends React.Component<Props, State> {
         );
     }
     
-    renderCurrency = (currency: Currency) => {
+    public renderCurrency = (currency: Currency) => {
         let value = "";
     
         const switchCase = (key: string) => {
@@ -113,9 +113,7 @@ export default class InventoryPanel extends React.Component<Props, State> {
             Object.keys(currency).map(key => 
                 (
                     <div key={key} className="expandableItem-header currency">
-                        <div className="currency-icon">
-            
-                        </div>
+                        <div className="currency-icon"/>
                         <div className="currency-label">
                             <div className="currency-label-primary">
                                 {key}

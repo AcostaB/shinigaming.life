@@ -2,11 +2,11 @@ import React from 'react';
 import "./Spell.css";
 import {Spell} from "../../../Models/LimitedUses";
 
-interface Props {
+interface IProps {
     spell: Spell
 }
 
-export class SpellDetails extends React.Component<Props, {}> {
+export class SpellDetails extends React.Component<IProps, {}> {
 
     renderSpellDetail(detailName: string, detailData: string | number) {
         return (

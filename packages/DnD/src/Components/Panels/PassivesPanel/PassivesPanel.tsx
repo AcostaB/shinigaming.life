@@ -4,11 +4,11 @@ import {ExpandableItem} from "../../Generic/ExpandableItem/ExpandableItem";
 import {Passive} from "../../../Models/Passives";
 import "./Passive.css";
 
-interface Props {
+interface IProps {
     passives: Passive[]
 }
 
-export function PassivesPanel(props: Props) {
+export function PassivesPanel(props: IProps) {
     return (
         <Panel>
             <Panel.Header title="PASSIVES"/>

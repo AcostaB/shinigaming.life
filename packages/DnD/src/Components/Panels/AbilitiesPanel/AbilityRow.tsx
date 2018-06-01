@@ -2,16 +2,16 @@ import React from 'react';
 import "./Ability.css";
 import { Ability } from '../../../Models/Abilities';
 
-interface Props {
+interface IProps {
     ability: Ability
 }
 
-export class AbilityRow extends React.Component<Props, {}> {
-    iconClass: string;
-    modSign: string;
-    saveSign: string;
+export class AbilityRow extends React.Component<IProps, {}> {
+    public iconClass: string;
+    public modSign: string;
+    public saveSign: string;
     
-    constructor(props: Props) {
+    constructor(props: IProps) {
         super(props);
         this.props = props;
         this.iconClass = "ability-icon " + this.props.ability.name.toLowerCase();
@@ -19,7 +19,7 @@ export class AbilityRow extends React.Component<Props, {}> {
         this.saveSign = this.props.ability.save >= 0 ? "+" : "-";
     }
 
-    render() {
+    public render() {
         return (
             <tr className="ability">
                 <td className="ability-cell">
@@ -54,8 +54,7 @@ export class AbilityRow extends React.Component<Props, {}> {
                     </span>
                 </td>                
                 <td className="ability-cell">
-                    <span className={this.props.ability.isProficient ? "ability-proficiency-indicator" : ""}>                    
-                    </span>
+                    <span className={this.props.ability.isProficient ? "ability-proficiency-indicator" : ""}/>                    
                 </td>
             </tr>
         );

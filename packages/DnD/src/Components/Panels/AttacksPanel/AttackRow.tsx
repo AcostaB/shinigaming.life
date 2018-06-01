@@ -2,16 +2,15 @@ import React from 'react';
 import "./Attack.css";
 import {Attack} from "../../../Models/Attacks";
 
-interface Props {
+interface IProps {
     attack: Attack,
     adversityMod: number
 }
 
-export const AttackRow  = (props: Props) => {
+export const AttackRow  = (props: IProps) => {
     return (
         <div className="attack">
-            <div className={props.attack.melee ? "attack-melee-icon" : "attack-ranged-icon"}>
-            </div>
+            <div className={props.attack.melee ? "attack-melee-icon" : "attack-ranged-icon"}/>
             <div className="attack-weapon">
                 <div className={"attack-weapon-name " + (props.attack.magicItem ? "magicItem":"")}>
                     <span>{props.attack.name}</span>

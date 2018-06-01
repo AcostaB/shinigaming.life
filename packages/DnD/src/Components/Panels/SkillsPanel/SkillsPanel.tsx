@@ -3,12 +3,12 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {SkillRow} from "./SkillRow";
 import {Skill} from "../../../Models/Skills";
 
-interface Props {
+interface IProps {
     leftColumnSkills: Skill[],
     rightColumnSkills: Skill[]
 }
 
-export function SkillsPanel(props: Props) {
+export function SkillsPanel(props: IProps) {
     return (
         <Panel>
             <Panel.Header title="SKILLS"/>

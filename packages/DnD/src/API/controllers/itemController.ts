@@ -45,7 +45,7 @@ exports.update_an_item = (req: any, res: any) => {
 exports.delete_an_item = (req: any, res: any) => {
   mItem.remove({
     _id: req.params.itemId
-  }, function(err: any) {
+  }, (err: any) => {
     if (err) {
       res.send(err);
     }

@@ -1,10 +1,10 @@
-//import {Schema} from "mongoose";
-
+// import {Schema} from "mongoose";
 'use strict';
-var mongoose = require('mongoose');
-var schema = mongoose.Schema;
+import  mongoose from "mongoose";
+// const mongoose = require('mongoose');
+const schema = mongoose.Schema;
 
-var itemSchema = new schema({
+const itemSchema = new schema({
   name: {
     required: 'Kindly enter the name of the item',
     type: String

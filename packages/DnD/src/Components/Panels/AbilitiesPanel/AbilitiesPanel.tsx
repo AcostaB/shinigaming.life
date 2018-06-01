@@ -3,11 +3,11 @@ import { Panel } from "../../Generic/Panel/Panel";
 import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 
-interface Props {
+interface IProps {
     abilities: Ability[]
 }
 
-export const AbilitiesPanel = (props: Props) => {
+export const AbilitiesPanel = (props: IProps) => {
     return (
         <Panel>
             <Panel.Header title="ABILITIES"/>

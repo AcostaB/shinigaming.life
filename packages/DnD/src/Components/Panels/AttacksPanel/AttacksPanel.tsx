@@ -3,12 +3,12 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {AttackRow} from "./AttackRow";
 import {Attack} from "../../../Models/Attacks";
 
-interface Props {
+interface IProps {
     attacks: Attack[],
     adversityMod: number
 }
 
-export function AttacksPanel(props: Props) {
+export function AttacksPanel(props: IProps) {
     return (
         <Panel>
             <Panel.Header title="ATTACKS"/>

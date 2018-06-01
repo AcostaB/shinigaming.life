@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import {Character, Stat} from "../../Models/Character";
 
-interface Props {
+interface IProps {
     character: Character,
     remainingHealth: number,
     decreaseHealthHandler: () => void,
@@ -11,12 +11,12 @@ interface Props {
     increaseHealthBy10Handler: () => void    
 }
 
-export class Header extends React.Component<Props, {}> {
-    constructor(props: Props) {
+export class Header extends React.Component<IProps, {}> {
+    constructor(props: IProps) {
         super(props);
     } 
 
-    renderHeaderMain = (props: Props) => {
+    public renderHeaderMain = (props: IProps) => {
         return (
             <div>
                 <div className="header-characterName">
@@ -29,13 +29,13 @@ export class Header extends React.Component<Props, {}> {
         );
     }
 
-    renderHeaderStats = (props: Props) => {
+    public renderHeaderStats = (props: IProps) => {
         return (
             props.character.stats.map(stat => this.renderSingleStat(stat))
         );
     }
 
-    renderSingleStat = (stat: Stat) => {
+    public renderSingleStat = (stat: Stat) => {
         return (
             <div key={stat.description} className="header-stat">
                 <div className="header-stat-category">
@@ -53,7 +53,7 @@ export class Header extends React.Component<Props, {}> {
         );
     }
 
-    renderTracker = (props: Props) => {
+    public renderTracker = (props: IProps) => {
         return (
             <div>
                 <div className="header-healthTracker">
@@ -77,7 +77,7 @@ export class Header extends React.Component<Props, {}> {
         );
     }
 
-    render() {
+    public render() {
         return (
             <div className="header">
                 <div className="header-main">

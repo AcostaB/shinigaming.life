@@ -4,7 +4,7 @@ import {SpellDetails} from './SpellDetails';
 import "./LimitedUse.css";
 import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
 
-interface Props {
+interface IProps {
     limitedUse: LimitedUseAbility | Spell,
     isSpell: boolean,
     spell: Spell,
@@ -13,8 +13,8 @@ interface Props {
     handleIncrease: any
 }
 
-export class LimitedUseRow extends React.Component<Props, {}> {
-    renderLimitedUseHeader = (props: Props) => {
+export class LimitedUseRow extends React.Component<IProps, {}> {
+    renderLimitedUseHeader = (props: IProps) => {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">
@@ -40,7 +40,7 @@ export class LimitedUseRow extends React.Component<Props, {}> {
         );
     };
 
-    renderLimitedUseBody = (props: Props) => {
+    renderLimitedUseBody = (props: IProps) => {
         if (props.isSpell) {
             return <SpellDetails spell={props.spell}/>
         } else {

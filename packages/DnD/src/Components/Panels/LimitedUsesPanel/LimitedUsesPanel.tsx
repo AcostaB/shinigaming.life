@@ -3,7 +3,7 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {LimitedUseRow} from "./LimitedUseRow";
 //import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
 
-interface Props {
+interface IProps {
     remainingUses: { [limitedUsesName: string]: number; },
     onShortRest: () => void,
     onLongRest: () => void,
@@ -12,7 +12,7 @@ interface Props {
     limitedUses: any
 }
 
-export function LimitedUsesPanel(props: Props) {
+export function LimitedUsesPanel(props: IProps) {
     return (
         <Panel>
             <Panel.Header title="LIMITED USES"/>

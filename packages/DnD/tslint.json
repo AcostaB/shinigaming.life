@@ -20,7 +20,23 @@
             "allow-pascal-case"
         ],
         "no-console": [false],
-        "ordered-imports": false
+        "ordered-imports": false,
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "private-static-field",
+                    "private-instance-field",
+                    "public-static-field",
+                    "public-instance-field",
+                    "private-constructor",
+                    "public-constructor",
+                    "private-instance-method",
+                    "public-instance-method",
+                    "protected-instance-method"
+                ]
+            }
+        ]
     },
     "jsRules": {
         "prefer-const": false,
@@ -35,7 +51,23 @@
             "allow-pascal-case"
         ],
         "no-console": [false],
-        "ordered-imports": false
+        "ordered-imports": false,
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "private-static-field",
+                    "private-instance-field",
+                    "public-static-field",
+                    "public-instance-field",
+                    "private-constructor",
+                    "public-constructor",
+                    "private-instance-method",
+                    "public-instance-method",
+                    "protected-instance-method"
+                ]
+            }
+        ]
     }
-  }
+}
   

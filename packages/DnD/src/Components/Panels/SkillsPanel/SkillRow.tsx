@@ -2,14 +2,14 @@ import React from 'react';
 import "./Skill.css";
 import {Skill} from "../../../Models/Skills";
 
-interface Props {
+interface IProps {
     skill: Skill
 }
 
-export class SkillRow extends React.Component<Props, {}> {
+export class SkillRow extends React.Component<IProps, {}> {
     modSign: string;
 
-    constructor(props: Props) {
+    constructor(props: IProps) {
         super(props);
         this.props = props;
         this.modSign = props.skill.mod >= 0 ? "+" : "-";
