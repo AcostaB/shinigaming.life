@@ -26,28 +26,37 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
         };
     } 
 
-    public renderInventory = (items: Item[]) => {
+    // TODO: fix this any.
+    public toggleCurrencyTab = (e: any): void => {
+        if (e.target.key === "currency") {
+            this.setState(() => ({isCurrencyTabActive: true}))
+        } else {
+            this.setState(() => ({isCurrencyTabActive: false}))   
+        }
+    };
+
+    public renderInventory = (items: Item[]): JSX.Element => {
         return (
             <div>
                 {items.map((item) => 
                     <ItemRow 
                         key={item._id} 
                         item={item}
-                        handleDecrease={() => this.props.handleItemDecrease(item._id)}
-                        handleIncrease={() => this.props.handleItemIncrease(item._id)}
+                        handleDecrease={this.props.handleItemDecrease}
+                        handleIncrease={this.props.handleItemIncrease}
                     />
                 )}
                 <div> 
                     <button 
                         className="shortRest" 
-                        onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+                        // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
                     >
                         Add item
                     </button>
                     {this.state.addNewItemExpanded && 
                         <button 
                             className="shortRest blue" 
-                            onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+                            // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
                         >
                             Submit
                         </button>
@@ -131,21 +140,23 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
         );
     }
 
-    render() {
+    public render() {
         return (
             <Panel>
                 <Panel.Header title="INVENTORY"/>
                 <Panel.Body>
                     <div className="inventory-panel">
                         <div className="inventory-tabs">
-                        <div 
+                        <div
+                            key="tab-currency" 
                             className={"inventory-tabs-items " + (this.state.isCurrencyTabActive ? "":"active") }
-                            onClick={() => {this.setState({isCurrencyTabActive: false})}}>
+                            onClick={this.toggleCurrencyTab}>
                             Items
                         </div>
-                        <div 
+                        <div
+                            key="tab-currency" 
                             className={"inventory-tabs-currency " + (this.state.isCurrencyTabActive ? "active":"") }
-                            onClick={() => {this.setState({isCurrencyTabActive: true})}}>
+                            onClick={this.toggleCurrencyTab}>
                             Currency
                         </div>
                         </div>

@@ -6,9 +6,9 @@ interface IProps {
     spell: Spell
 }
 
-export class SpellDetails extends React.Component<IProps, {}> {
+export const SpellDetails = (props: IProps): JSX.Element => {
 
-    renderSpellDetail(detailName: string, detailData: string | number) {
+    const renderSpellDetail = (detailName: string, detailData: string | number) => {
         return (
             <div className="spell-detail">
                 <div className="spell-detail-name">
@@ -22,17 +22,17 @@ export class SpellDetails extends React.Component<IProps, {}> {
     }
 
     render() {
-        const {level, castingTime, rangeAndArea, duration, school, attackAndSave, damageAndEffect, description} = this.props.spell;
+        const {level, castingTime, rangeAndArea, duration, school, attackAndSave, damageAndEffect, description} = props.spell;
 
         return (
             <div className="spell-details">
-                {this.renderSpellDetail("LEVEL", level)}
-                {this.renderSpellDetail("CASTING TIME", castingTime)}
-                {this.renderSpellDetail("RANGE/AREA", rangeAndArea)}
-                {this.renderSpellDetail("DURATION", duration)}
-                {this.renderSpellDetail("SCHOOL", school)}
-                {this.renderSpellDetail("ATTACK/SAVE", attackAndSave)}
-                {this.renderSpellDetail("DAMAGE/EFFECT", damageAndEffect)}
+                {renderSpellDetail("LEVEL", level)}
+                {renderSpellDetail("CASTING TIME", castingTime)}
+                {renderSpellDetail("RANGE/AREA", rangeAndArea)}
+                {renderSpellDetail("DURATION", duration)}
+                {renderSpellDetail("SCHOOL", school)}
+                {renderSpellDetail("ATTACK/SAVE", attackAndSave)}
+                {renderSpellDetail("DAMAGE/EFFECT", damageAndEffect)}
 
                 <div className="spellLine"/>
 

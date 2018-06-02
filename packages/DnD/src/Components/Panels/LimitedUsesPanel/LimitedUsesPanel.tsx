@@ -1,7 +1,7 @@
 import React from 'react';
 import {Panel} from "../../Generic/Panel/Panel";
 import {LimitedUseRow} from "./LimitedUseRow";
-//import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
+// import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
 
 interface IProps {
     remainingUses: { [limitedUsesName: string]: number; },
@@ -12,7 +12,7 @@ interface IProps {
     limitedUses: any
 }
 
-export function LimitedUsesPanel(props: IProps) {
+export default function LimitedUsesPanel(props: IProps) {
     return (
         <Panel>
             <Panel.Header title="LIMITED USES"/>
@@ -28,8 +28,8 @@ export function LimitedUsesPanel(props: IProps) {
                         isSpell={limitedUse.isSpell} 
                         limitedUse={limitedUse} 
                         remainingUses={props.remainingUses[limitedUse.id]}
-                        handleDecrease={() => props.onLimitedUseDecrease(limitedUse.id)}
-                        handleIncrease={() => props.onLimitedUseIncrease(limitedUse.id)}/>
+                        handleDecrease={props.onLimitedUseDecrease}
+                        handleIncrease={props.onLimitedUseIncrease}/>
                     )
                 }
             </Panel.Body>

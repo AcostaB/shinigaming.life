@@ -13,8 +13,8 @@ interface IProps {
     handleIncrease: any
 }
 
-export class LimitedUseRow extends React.Component<IProps, {}> {
-    renderLimitedUseHeader = (props: IProps) => {
+export const LimitedUseRow = (props: IProps): JSX.Element => {
+    const renderLimitedUseHeader = () => {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">
@@ -23,7 +23,7 @@ export class LimitedUseRow extends React.Component<IProps, {}> {
                             {props.limitedUse.name}
                         </span>
                         <span className="limitedUse-level">
-                            {"(lv. " +props.limitedUse.level + ')'}
+                            {`(lv. ${props.limitedUse.level})`}
                         </span>
                     </div>
                     <div className="limitedUse-counter">
@@ -40,7 +40,7 @@ export class LimitedUseRow extends React.Component<IProps, {}> {
         );
     };
 
-    renderLimitedUseBody = (props: IProps) => {
+    const renderLimitedUseBody = () => {
         if (props.isSpell) {
             return <SpellDetails spell={props.spell}/>
         } else {
@@ -48,9 +48,11 @@ export class LimitedUseRow extends React.Component<IProps, {}> {
         }
     };
 
-    render() {
-        return (
-            <ExpandableItem expandableItemHeader={this.renderLimitedUseHeader(this.props)} expandableItemBody={this.renderLimitedUseBody(this.props)}/>
-        );
-    };
+    return (
+        <ExpandableItem 
+            expandableItemHeader={renderLimitedUseHeader()} 
+            expandableItemBody={renderLimitedUseBody()}
+        />
+    );
+
 }  

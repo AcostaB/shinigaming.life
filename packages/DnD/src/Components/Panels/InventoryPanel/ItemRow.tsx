@@ -4,40 +4,48 @@ import {Item} from "../../../Models/Items";
 
 interface IProps {
     item: Item,
-    handleDecrease: () => void,
-    handleIncrease: () => void
+    handleDecrease: (id: number) => void,
+    handleIncrease: (id: number) => void
 }
 
-export class ItemRow extends React.Component<IProps, {}> {
-    renderLimitedUseHeader = (props: IProps) => {
+export const ItemRow = (props: IProps): JSX.Element => {
+    // TODO fix tis any
+    const onLimitedUseDecrease = (e: any) => {
+        props.handleDecrease(e.target.key);
+    };
+
+    // TODO fix tis any
+    const onLimitedUseIncrease = (e: any) => {
+        props.handleIncrease(e.target.key);
+    };
+
+    const renderLimitedUseHeader = () => {
         return (
             <div className="limitedUse">
                 <div className="limitedUse-main">
                     <div className="limitedUse-name">
-                        {this.props.item.name}
+                        {props.item.name}
                     </div>
                     <div className="limitedUse-counter">
-                        <button className="limitedUse-decrease-icon" onClick={this.props.handleDecrease}/>
+                        <button key={props.item._id} className="limitedUse-decrease-icon" onClick={onLimitedUseDecrease}/>
                         <div className="limitedUse-uses">
-                            <span>{this.props.item.quantity}</span>
+                            <span>{props.item.quantity}</span>
                         </div>
-                        <button className="limitedUse-increase-icon" onClick={this.props.handleIncrease}/>
+                        <button className="limitedUse-increase-icon" onClick={onLimitedUseIncrease}/>
                     </div>
                 </div>
             </div>
         );
     };
 
-    render() {
-        return (
-            <ExpandableItem 
-                expandableItemHeader={this.renderLimitedUseHeader(this.props)} 
-                expandableItemBody={
-                    <div> 
-                        {this.props.item.description}
-                    </div>
-                }
-            />
-        );
-    };
+    return (
+        <ExpandableItem 
+            expandableItemHeader={renderLimitedUseHeader()} 
+            expandableItemBody={
+                <div> 
+                    {props.item.description}
+                </div>
+            }
+        />
+    );
 }  
