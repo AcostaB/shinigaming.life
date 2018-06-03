@@ -16,13 +16,13 @@ interface IBodyProps {
 
 export class Panel extends React.Component<IPanelProps, {}> {
 
-    public static Header = (hProps: IHeaderProps): JSX.Element => {
+    static Header = (hProps: IHeaderProps): JSX.Element => {
         return (
             <PanelHeader title={hProps.title}/>
         );
     }
 
-    public static Body = (bProps: IBodyProps): JSX.Element => {
+    static Body = (bProps: IBodyProps): JSX.Element => {
         return (
             <div className="panel-content">
                 {bProps.children}
@@ -30,7 +30,7 @@ export class Panel extends React.Component<IPanelProps, {}> {
         );
     }
 
-    public render(): JSX.Element {
+    render(): JSX.Element {
         return (
             <div className="panel">
                 {this.props.children}

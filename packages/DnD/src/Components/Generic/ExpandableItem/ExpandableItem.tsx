@@ -10,17 +10,18 @@ interface IState extends IProps {
     expanded: boolean
 }
 
+// TODO: this should also follow the pattern of static properties. 
 export class ExpandableItem extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {...props, expanded: false};
     }
 
-    private handleExpandedClick = (): void => {
+    handleExpandedClick = (): void => {
         this.setState((prevState, props) => ({expanded: !prevState.expanded}));
     };
 
-    private renderBody(): JSX.Element | string {
+    renderBody(): JSX.Element | string {
         if (this.state.expanded) {
             return (<div className="expandableItem-body">
                         {this.props.expandableItemBody}
@@ -30,7 +31,7 @@ export class ExpandableItem extends React.Component<IProps, IState> {
         }
     };
 
-    public render(): JSX.Element {
+    render(): JSX.Element {
         return (
             <div>
                 <div className="expandableItem-header">

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {SFC} from 'react';
+import Spell from "../../../Models/Spell";
 import "./Spell.css";
-import {Spell} from "../../../Models/LimitedUses";
 
 interface IProps {
     spell: Spell
 }
 
-export const SpellDetails = (props: IProps): JSX.Element => {
+export const SpellDetails: SFC<IProps> = ({spell}) => {
 
+    const {level, castingTime, rangeAndArea, duration, school, attackAndSave, damageAndEffect, description} = spell;
+    
     const renderSpellDetail = (detailName: string, detailData: string | number) => {
         return (
             <div className="spell-detail">
@@ -21,25 +23,21 @@ export const SpellDetails = (props: IProps): JSX.Element => {
         );
     }
 
-    render() {
-        const {level, castingTime, rangeAndArea, duration, school, attackAndSave, damageAndEffect, description} = props.spell;
+    return (
+        <div className="spell-details">
+            {renderSpellDetail("LEVEL", level)}
+            {renderSpellDetail("CASTING TIME", castingTime)}
+            {renderSpellDetail("RANGE/AREA", rangeAndArea)}
+            {renderSpellDetail("DURATION", duration)}
+            {renderSpellDetail("SCHOOL", school)}
+            {renderSpellDetail("ATTACK/SAVE", attackAndSave)}
+            {renderSpellDetail("DAMAGE/EFFECT", damageAndEffect)}
 
-        return (
-            <div className="spell-details">
-                {renderSpellDetail("LEVEL", level)}
-                {renderSpellDetail("CASTING TIME", castingTime)}
-                {renderSpellDetail("RANGE/AREA", rangeAndArea)}
-                {renderSpellDetail("DURATION", duration)}
-                {renderSpellDetail("SCHOOL", school)}
-                {renderSpellDetail("ATTACK/SAVE", attackAndSave)}
-                {renderSpellDetail("DAMAGE/EFFECT", damageAndEffect)}
+            <div className="spellLine"/>
 
-                <div className="spellLine"/>
-
-                <div>
-                    {description}
-                </div>
+            <div>
+                {description}
             </div>
-        );
-    }
+        </div>
+    );
 }

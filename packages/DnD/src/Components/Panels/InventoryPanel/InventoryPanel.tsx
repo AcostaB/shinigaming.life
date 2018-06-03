@@ -1,3 +1,4 @@
+// import React, {MouseEvent} from 'react';
 import React from 'react';
 import {Panel} from "../../Generic/Panel/Panel";
 import {ItemRow} from "./ItemRow";
@@ -27,15 +28,16 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
     } 
 
     // TODO: fix this any.
-    public toggleCurrencyTab = (e: any): void => {
-        if (e.target.key === "currency") {
+    // TODO: toggleCurrencyTab = (e: MouseEvent<HTMLElement>): void => {
+    toggleCurrencyTab = (e: any): void => {
+            if (e.target.key === "currency") {
             this.setState(() => ({isCurrencyTabActive: true}))
         } else {
             this.setState(() => ({isCurrencyTabActive: false}))   
         }
     };
 
-    public renderInventory = (items: Item[]): JSX.Element => {
+    renderInventory = (items: Item[]): JSX.Element => {
         return (
             <div>
                 {items.map((item) => 
@@ -67,32 +69,29 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
         );
     };
     
-    public renderAddItemForm = () => {
-        return (
-            <div>
-                <div className="addItem-row">
-                    <span className="input-label">
-                        Name
-                    </span>
-                    <input className="input" type="text"/>
-                </div>
-                <div className="addItem-row">
-                    <span className="input-label">
-                        Quantity
-                    </span>
-                    <input className="input" type="text"/>
-                </div>
-                <div className="addItem-row">
-                    <span className="input-label">
-                        Description
-                    </span>
-                    <input className="input" type="text"/>
-                </div>
+    renderAddItemForm = () => 
+        <div>
+            <div className="addItem-row">
+                <span className="input-label">
+                    Name
+                </span>
+                <input className="input" type="text"/>
             </div>
-        );
-    }
+            <div className="addItem-row">
+                <span className="input-label">
+                    Quantity
+                </span>
+                <input className="input" type="text"/>
+            </div>
+            <div className="addItem-row">
+                <span className="input-label">
+                    Description
+                </span>
+                <input className="input" type="text"/>
+            </div>
+        </div>;
     
-    public renderCurrency = (currency: Currency) => {
+    renderCurrency = (currency: Currency) => {
         let value = "";
     
         const switchCase = (key: string) => {
@@ -119,6 +118,7 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
         };
     
         return (
+            // TODO fix this. Use lodash.
             Object.keys(currency).map(key => 
                 (
                     <div key={key} className="expandableItem-header currency">
@@ -140,7 +140,7 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
         );
     }
 
-    public render() {
+    render() {
         return (
             <Panel>
                 <Panel.Header title="INVENTORY"/>

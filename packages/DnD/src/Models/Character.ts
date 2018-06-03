@@ -1,10 +1,4 @@
-export class Stat {
-    category: string;
-    mod: string;
-    value: number;
-    valuePostText: string;
-    description: string;
-}
+import Stat from "./Stat";
 
 export class Character {
     name: string;

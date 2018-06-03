@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SFC} from 'react';
 import {Panel} from "../../Generic/Panel/Panel";
 import {AttackRow} from "./AttackRow";
 import {Attack} from "../../../Models/Attacks";
@@ -8,18 +8,20 @@ interface IProps {
     adversityMod: number
 }
 
-export function AttacksPanel(props: IProps) {
-    return (
-        <Panel>
-            <Panel.Header title="ATTACKS"/>
-            <Panel.Body>
-                <div>
-                    <div className="attacks-perAction">
-                        Attacks Per Action: 2
-                    </div>
-                    {props.attacks.map(attack => <AttackRow key={attack.name} attack={attack} adversityMod={props.adversityMod}/>)}
+export const AttacksPanel: SFC<IProps> = ({attacks, adversityMod}) => 
+    <Panel>
+        <Panel.Header title="ATTACKS"/>
+        <Panel.Body>
+            <div>
+                <div className="attacks-perAction">
+                    Attacks Per Action: 2
                 </div>
-            </Panel.Body>
-        </Panel>
-    );
-};
+                {attacks.map(attack => 
+                    <AttackRow 
+                        key={attack.name} 
+                        attack={attack} 
+                        adversityMod={adversityMod}/>)
+                }
+            </div>
+        </Panel.Body>
+    </Panel>;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SFC} from 'react';
 import "./Skill.css";
 import {Skill} from "../../../Models/Skills";
 
@@ -6,37 +6,28 @@ interface IProps {
     skill: Skill
 }
 
-export class SkillRow extends React.Component<IProps, {}> {
-    modSign: string;
+export const SkillRow: SFC<IProps> = ({skill}) => {
+    const modSign: string = skill.mod >= 0 ? "+" : "-";
 
-    constructor(props: IProps) {
-        super(props);
-        this.props = props;
-        this.modSign = props.skill.mod >= 0 ? "+" : "-";
-    }
-
-    render() {
-        return (
-            <div className="skill-item">
-                <span className="skill-item-ability">
-                    ({this.props.skill.abilityName})
+    return (
+        <div className="skill-item">
+            <span className="skill-item-ability">
+                ({skill.abilityName})
+            </span>
+            <span className="skill-item-name">
+                <span>
+                    {skill.skillName}
                 </span>
-                <span className="skill-item-name">
-                    <span>
-                        {this.props.skill.skillName}
-                    </span>
-                    <span className={this.props.skill.isProficient ? "skill-item-proficiency" : ""}>
-                    </span>
+                <span className={skill.isProficient ? "skill-item-proficiency" : ""}/>
+            </span>
+            <span className="skill-item-mod-cell">
+                <span className="skill-item-mod-sign">
+                    {modSign}
                 </span>
-                <span className="skill-item-mod-cell">
-                    <span className="skill-item-mod-sign">
-                        {this.modSign}
-                    </span>
-                    <span className="skill-item-mod">
-                        {Math.abs(this.props.skill.mod)}
-                    </span>
+                <span className="skill-item-mod">
+                    {Math.abs(skill.mod)}
                 </span>
-            </div>
-        );
-    }
+            </span>
+        </div>
+    );
 }

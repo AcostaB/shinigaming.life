@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SFC} from 'react';
 import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
 import {Item} from "../../../Models/Items";
 
@@ -8,15 +8,15 @@ interface IProps {
     handleIncrease: (id: number) => void
 }
 
-export const ItemRow = (props: IProps): JSX.Element => {
-    // TODO fix tis any
+export const ItemRow: SFC<IProps> = ({item, handleDecrease, handleIncrease}) => {
+    // TODO fix this any
     const onLimitedUseDecrease = (e: any) => {
-        props.handleDecrease(e.target.key);
+        handleDecrease(e.target.key);
     };
 
-    // TODO fix tis any
+    // TODO fix this any
     const onLimitedUseIncrease = (e: any) => {
-        props.handleIncrease(e.target.key);
+        handleIncrease(e.target.key);
     };
 
     const renderLimitedUseHeader = () => {
@@ -24,12 +24,12 @@ export const ItemRow = (props: IProps): JSX.Element => {
             <div className="limitedUse">
                 <div className="limitedUse-main">
                     <div className="limitedUse-name">
-                        {props.item.name}
+                        {item.name}
                     </div>
                     <div className="limitedUse-counter">
-                        <button key={props.item._id} className="limitedUse-decrease-icon" onClick={onLimitedUseDecrease}/>
+                        <button key={item._id} className="limitedUse-decrease-icon" onClick={onLimitedUseDecrease}/>
                         <div className="limitedUse-uses">
-                            <span>{props.item.quantity}</span>
+                            <span>{item.quantity}</span>
                         </div>
                         <button className="limitedUse-increase-icon" onClick={onLimitedUseIncrease}/>
                     </div>
@@ -43,7 +43,7 @@ export const ItemRow = (props: IProps): JSX.Element => {
             expandableItemHeader={renderLimitedUseHeader()} 
             expandableItemBody={
                 <div> 
-                    {props.item.description}
+                    {item.description}
                 </div>
             }
         />

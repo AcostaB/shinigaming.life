@@ -21,6 +21,7 @@
         ],
         "no-console": [false],
         "ordered-imports": false,
+        "member-access": false,
         "member-ordering": [
             true,
             {
@@ -52,6 +53,7 @@
         ],
         "no-console": [false],
         "ordered-imports": false,
+        "member-access": false,
         "member-ordering": [
             true,
             {
