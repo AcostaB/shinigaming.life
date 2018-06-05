@@ -11,13 +11,17 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.0.17",
-    "react-scripts-ts": "^2.15.1"
+    "react-scripts-ts": "^2.15.1",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^6.0.1",
     "nodemon": "^1.17.1",
+    "redux-devtools": "^3.4.1",
     "source-map-loader": "^0.2.3",
     "ts-loader": "^4.3.0",
     "typescript": "^2.8.3",
