@@ -10,12 +10,12 @@ import {passives} from "../Models/Passives";
 import {Header} from '../Components/Header/Header';
 import "./Dashboard.css";
 
-import {AbilitiesPanel} from "../Components/Panels/AbilitiesPanel/AbilitiesPanel";
-import {AttacksPanel} from "../Components/Panels/AttacksPanel/AttacksPanel";
+import AbilitiesPanel from "../Components/Panels/AbilitiesPanel/AbilitiesPanel";
+import AttacksPanel from "../Components/Panels/AttacksPanel/AttacksPanel";
 import InventoryPanel from "../Components/Panels/InventoryPanel/InventoryPanel";
-import {LimitedUsesPanel} from "../Components/Panels/LimitedUsesPanel/LimitedUsesPanel";
-import {PassivesPanel} from "../Components/Panels/PassivesPanel/PassivesPanel";
-import {SkillsPanel} from "../Components/Panels/SkillsPanel/SkillsPanel";
+import LimitedUsesPanel from "../Components/Panels/LimitedUsesPanel/LimitedUsesPanel";
+import PassivesPanel from "../Components/Panels/PassivesPanel/PassivesPanel";
+import SkillsPanel from "../Components/Panels/SkillsPanel/SkillsPanel";
 // import { api } from "../API/requests";
 
 import {Currency} from "../Models/Currency";
@@ -92,47 +92,6 @@ export class Dashboard extends React.Component<{}, IState> {
       } else {
         return {...prevState, remainingHealth: character.maximumHealth};
       }
-    });
-  }
-
-  handleLimitedUseDecrease = (id: number) => {
-    this.setState((prevState, props) => { 
-      // TODO this is bad. Rewrite. 
-      const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
-      return {remainingUses: {...prevState.remainingUses, [id]: newValue}}
-    });
-  };
-
-  handleLimitedUseIncrease = (id: number) => {
-    this.setState((prevState, props) => { 
-      // TODO this is bad. Rewrite. 
-      const maxUses = limitedUses[id - 1].maxUses;
-      const newValue = prevState.remainingUses[id] < maxUses ? prevState.remainingUses[id] + 1 : maxUses;
-      return {remainingUses: {...prevState.remainingUses, ...{[id]: newValue}}}
-    });
-  };
-
-  handleShortRest = () => {
-    this.setState((prevState, props) => {
-      const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => {
-        if (currentValue.shortRestRecover) {
-          accumulator[currentValue.id] = currentValue.maxUses; 
-        } 
-        return accumulator;
-      }, {});
-
-      return {remainingUses: {...prevState.remainingUses, ...newRemainingUses}};
-    });
-  }
-
-  handleLongRest = () => {
-    this.setState((prevState, props) => {
-      const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
-        accumulator[currentValue.id] = currentValue.maxUses; 
-        return accumulator;
-      }, {});
-
-      return {remainingUses: newRemainingUses, remainingHealth: character.maximumHealth};
     });
   }
 

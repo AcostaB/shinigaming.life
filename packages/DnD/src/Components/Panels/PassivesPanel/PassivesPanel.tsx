@@ -3,16 +3,17 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {ExpandableItem} from "../../Generic/ExpandableItem/ExpandableItem";
 import {Passive} from "../../../Models/Passives";
 import "./Passive.css";
+import {connect} from "react-redux";
 
 interface IProps {
     passives: Passive[]
 }
 
-export const PassivesPanel: SFC<IProps> = (props) => 
+const PassivesPanelBase: SFC<IProps> = ({passives}) => 
     <Panel>
         <Panel.Header title="PASSIVES"/>
         <Panel.Body>
-            {props.passives.map(passive => 
+            {passives.map(passive => 
                 <ExpandableItem 
                     key={passive.id} 
                     expandableItemHeader={
@@ -25,3 +26,14 @@ export const PassivesPanel: SFC<IProps> = (props) =>
             )}
         </Panel.Body>
     </Panel>;
+
+
+const mapStateToProps = (state: any): IProps => ({
+    passives: state.PassivesPanel.passives
+});
+
+const PassivesPanel = connect(
+    mapStateToProps
+)(PassivesPanelBase);
+
+export default PassivesPanel;

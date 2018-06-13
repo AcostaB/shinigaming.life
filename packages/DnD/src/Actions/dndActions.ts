@@ -11,7 +11,8 @@ export enum dndActions {
 }
 
 export const shortRest = () => ({
-    type: dndActions.SHORT_REST
+    type: dndActions.SHORT_REST,
+
 });
 
 export const longRest = () => ({
