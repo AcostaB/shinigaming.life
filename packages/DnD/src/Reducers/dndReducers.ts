@@ -1,6 +1,5 @@
 import {dndActions} from "../Actions/dndActions";
-import {Action} from "redux";
-// import {}
+import {Action, combineReducers} from "redux";
 
 export const restReducer = (state : any, action: Action) => {
     switch (action.type as dndActions) {
@@ -13,7 +12,6 @@ export const restReducer = (state : any, action: Action) => {
 
 export const limitedUsesReducer = (state: any, action: string) => {
     switch (action) {
-
         case dndActions.DECREASE_LIMITED_USE: 
 
         case dndActions.INCREASE_LIMITED_USE: 
@@ -23,15 +21,19 @@ export const limitedUsesReducer = (state: any, action: string) => {
 
 export const inventoryReducer = (state : any, action: string) => {
     switch (action) {
-
-        case dndActions.TOGGLE_INVENTORY_TAB: 
+        case dndActions.TOGGLE_INVENTORY_TAB:  
         case dndActions.DELETE_ITEM: 
         case dndActions.ADD_ITEM: 
         case dndActions.DECREASE_ITEM: 
         case dndActions.INCREASE_ITEM: 
-
     }
 }
+
+export default combineReducers({
+    restReducer,
+    limitedUsesReducer,
+    inventoryReducer
+});
 
 // const handleLimitedUseDecrease = (id: number) => {
 //     this.setState((prevState, props) => { 

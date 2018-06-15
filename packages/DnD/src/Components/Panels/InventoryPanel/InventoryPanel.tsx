@@ -5,6 +5,9 @@ import {ItemRow} from "./ItemRow";
 import {Item} from "../../../Models/Items";
 import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
+import {Dispatch} from "react-redux";
+import {decreaseItem, increaseItem} from "../../../Actions/dndActions";
+import {connect} from "react-redux";
 
 interface IProps {
     items: Item[],
@@ -18,7 +21,7 @@ interface IState {
     isCurrencyTabActive: boolean
 }
 
-export default class InventoryPanel extends React.Component<IProps, IState> {
+class InventoryPanelBase extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -169,3 +172,26 @@ export default class InventoryPanel extends React.Component<IProps, IState> {
     }
 };
 
+// TODO fix this any. 
+const mapStateToProps = (state: any) => ({
+    items: state.InventoryPanel.items,
+    currency: state.InventoryPanel.currency
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+    handleItemIncrease: (id: number) => dispatch(increaseItem(id)),
+    handleItemDecrease: (id: number) => dispatch(decreaseItem(id)),
+})
+interface IProps {
+    items: Item[],
+    handleItemIncrease: (id: number) => void,
+    handleItemDecrease: (id: number) => void,
+    currency: Currency
+}
+
+const InventoryPanel = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(InventoryPanelBase);
+
+export default InventoryPanel;
