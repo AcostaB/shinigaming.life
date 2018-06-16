@@ -2,13 +2,11 @@ import React, {SFC} from 'react';
 import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
 import {SpellDetails} from './SpellDetails';
 import "./LimitedUse.css";
-import {LimitedUseAbility} from "../../../Models/LimitedUses";
-import Spell from "../../../Models/Spell";
+import {LimitedUse} from "../../../Models/LimitedUses";
 
 interface IProps {
-    limitedUse: LimitedUseAbility | Spell,
+    limitedUse: LimitedUse,
     isSpell: boolean,
-    spell: Spell,
     remainingUses: number,
     handleDecrease: any,
     handleIncrease: any
@@ -38,10 +36,15 @@ export const LimitedUseRow: SFC<IProps> = (props) => {
             </div>
         </div>;
 
+    const renderLimitedUseBasic = (description: string) => 
+        <div>
+            {description}
+        </div> 
+
     const renderLimitedUseBody = () => 
         props.isSpell ? 
-            <SpellDetails spell={props.spell}/>
-            : <SpellDetails spell={props.limitedUse as Spell}/>;
+            <SpellDetails spell={props.limitedUse}/>
+            : renderLimitedUseBasic(props.limitedUse.description);
 
     return (
         <ExpandableItem 

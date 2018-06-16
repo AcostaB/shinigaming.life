@@ -1,5 +1,5 @@
 import React, {SFC} from 'react';
-import Spell from "../../../Models/Spell";
+import {Spell} from "../../../Models/LimitedUses";
 import "./Spell.css";
 
 interface IProps {

@@ -1,6 +1,4 @@
-// import Spell from "./Spell";
-
-export class LimitedUseAbility {
+export class LimitedUseBasic {
     id: number;
     level: number;
     name: string;
@@ -10,7 +8,19 @@ export class LimitedUseAbility {
     shortRestRecover: boolean; 
 }
 
-export const limitedUses = [
+export class Spell extends LimitedUseBasic {
+    spellLevel: number;
+    castingTime: string;
+    rangeAndArea: string; 
+    duration: string; 
+    school: string; 
+    attackAndSave: string; 
+    damageAndEffect: string;
+}
+
+export type LimitedUse = Spell | LimitedUseBasic;
+
+export const limitedUses: LimitedUse[] = [
     {   
         id: 1,
         level: 1,

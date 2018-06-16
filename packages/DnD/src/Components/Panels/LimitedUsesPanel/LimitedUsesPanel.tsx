@@ -9,36 +9,37 @@ import {
     decreaseLimitedUse, 
     increaseLimitedUse
 } from "../../../Actions/dndActions";
-// import {LimitedUseAbility, Spell} from "../../../Models/LimitedUses";
+import {LimitedUse} from "../../../Models/LimitedUses";
 
 interface IProps {
     remainingUses: { [limitedUsesName: string]: number; },
+    limitedUses: LimitedUse[],
     onShortRest: () => void,
     onLongRest: () => void,
     onLimitedUseDecrease: (limitedUseId: number) => void,
-    onLimitedUseIncrease: (limitedUseId: number) => void,
-    limitedUses: any
+    onLimitedUseIncrease: (limitedUseId: number) => void
 }
 
 const LimitedUsesPanelBase: SFC<IProps> = (props) => 
     <Panel>
         <Panel.Header title="LIMITED USES"/>
         <Panel.Body>
-            <div className="rest-buttons">
-                    <button className="shortRest" onClick={props.onShortRest}>SHORT REST</button>
-                    <button className="longRest" onClick={props.onLongRest}>LONG REST</button>
+            <div>
+                <div className="rest-buttons">
+                        <button className="shortRest" onClick={props.onShortRest}>SHORT REST</button>
+                        <button className="longRest" onClick={props.onLongRest}>LONG REST</button>
+                </div>
+                {props.limitedUses.map((limitedUse: any) => 
+                    <LimitedUseRow
+                        key={limitedUse.id} 
+                        isSpell={limitedUse.isSpell} 
+                        limitedUse={limitedUse} 
+                        remainingUses={props.remainingUses[limitedUse.id]}
+                        handleDecrease={props.onLimitedUseDecrease}
+                        handleIncrease={props.onLimitedUseIncrease}/>
+                    )
+                }
             </div>
-            {props.limitedUses.map((limitedUse: any) => 
-                <LimitedUseRow
-                    key={limitedUse.id} 
-                    spell={limitedUse.spell}
-                    isSpell={limitedUse.isSpell} 
-                    limitedUse={limitedUse} 
-                    remainingUses={props.remainingUses[limitedUse.id]}
-                    handleDecrease={props.onLimitedUseDecrease}
-                    handleIncrease={props.onLimitedUseIncrease}/>
-                )
-            }
         </Panel.Body>
     </Panel>;
 
