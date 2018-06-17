@@ -8,6 +8,7 @@ import "./InventoryPanel.css";
 import {Dispatch} from "react-redux";
 import {decreaseItem, increaseItem} from "../../../Actions/dndActions";
 import {connect} from "react-redux";
+import {mappedState, mappedDispatch} from "../../../Types/Types";
 
 interface IProps {
     items: Item[],
@@ -173,23 +174,17 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
 };
 
 // TODO fix this any. 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: any): mappedState<IProps> => ({
     items: state.InventoryPanel.items,
     currency: state.InventoryPanel.currency
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch): mappedDispatch<IProps> => ({
     handleItemIncrease: (id: number) => dispatch(increaseItem(id)),
     handleItemDecrease: (id: number) => dispatch(decreaseItem(id)),
 })
-interface IProps {
-    items: Item[],
-    handleItemIncrease: (id: number) => void,
-    handleItemDecrease: (id: number) => void,
-    currency: Currency
-}
 
-const InventoryPanel = connect(
+const InventoryPanel = connect<{}, {}, IProps>(
     mapStateToProps,
     mapDispatchToProps
 )(InventoryPanelBase);

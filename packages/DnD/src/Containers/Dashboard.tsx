@@ -143,10 +143,10 @@ export class Dashboard extends React.Component<{}, IState> {
                 <LimitedUsesPanel 
                   limitedUses={limitedUses}
                   remainingUses={this.state.remainingUses}
-                  onShortRest={this.handleShortRest}
-                  onLongRest={this.handleLongRest}
-                  onLimitedUseDecrease={this.handleLimitedUseDecrease}
-                  onLimitedUseIncrease={this.handleLimitedUseIncrease}
+                  // onShortRest={this.handleShortRest}
+                  // onLongRest={this.handleLongRest}
+                  // onLimitedUseDecrease={this.handleLimitedUseDecrease}
+                  // onLimitedUseIncrease={this.handleLimitedUseIncrease}
                   />          
               </div>
               <div className="dashboard-panel">

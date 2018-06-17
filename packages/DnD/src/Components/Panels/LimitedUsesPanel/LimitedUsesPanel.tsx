@@ -10,6 +10,7 @@ import {
     increaseLimitedUse
 } from "../../../Actions/dndActions";
 import {LimitedUse} from "../../../Models/LimitedUses";
+import {mappedState, mappedDispatch} from "../../../Types/Types";
 
 interface IProps {
     remainingUses: { [limitedUsesName: string]: number; },
@@ -44,19 +45,19 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
     </Panel>;
 
 // TODO need to fix this. both state and return are anys.
-const mapStateToProps = (state: any): any => ({
+const mapStateToProps = (state: any): mappedState<IProps> => ({
     remainingUses: state.LimitedUsesPanel.remainingUses,
     limitedUses: state.LimitedUsesPanel.limitedUses,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
+const mapDispatchToProps = (dispatch: Dispatch): mappedDispatch<IProps> => ({
     onShortRest: () => dispatch(shortRest()),
     onLongRest: () => dispatch(longRest()),
     onLimitedUseDecrease: (id: number) => dispatch(decreaseLimitedUse(id)),
     onLimitedUseIncrease: (id: number) => dispatch(increaseLimitedUse(id))
 });
 
-const LimitedUsesPanel = connect(
+const LimitedUsesPanel = connect<{}, {}, mappedState<IProps>>(
     mapStateToProps, 
     mapDispatchToProps
 )(LimitedUsesPanelBase);

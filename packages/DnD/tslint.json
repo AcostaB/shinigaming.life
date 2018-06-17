@@ -23,6 +23,7 @@
         "ordered-imports": false,
         "max-classes-per-file": false,
         "member-access": false,
+        "ban-types": false,
         "member-ordering": [
             true,
             {
@@ -56,6 +57,7 @@
         "ordered-imports": false,
         "member-access": false,
         "max-classes-per-file": false,
+        "ban-types": false,
         "member-ordering": [
             true,
             {
