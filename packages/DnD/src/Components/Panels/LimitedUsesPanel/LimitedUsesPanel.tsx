@@ -3,14 +3,9 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {LimitedUseRow} from "./LimitedUseRow";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {
-    shortRest, 
-    longRest, 
-    decreaseLimitedUse, 
-    increaseLimitedUse
-} from "../../../Actions/dndActions";
+import {Actions} from "../../../Actions/dndActions";
 import {LimitedUse} from "../../../Models/LimitedUses";
-import {mappedState, mappedDispatch} from "../../../Types/Types";
+import {MappedState, MappedDispatch} from "../../../Types/Types";
 
 interface IProps {
     remainingUses: { [limitedUsesName: string]: number; },
@@ -45,19 +40,19 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
     </Panel>;
 
 // TODO need to fix this. both state and return are anys.
-const mapStateToProps = (state: any): mappedState<IProps> => ({
+const mapStateToProps = (state: any): MappedState<IProps> => ({
     remainingUses: state.LimitedUsesPanel.remainingUses,
     limitedUses: state.LimitedUsesPanel.limitedUses,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): mappedDispatch<IProps> => ({
-    onShortRest: () => dispatch(shortRest()),
-    onLongRest: () => dispatch(longRest()),
-    onLimitedUseDecrease: (id: number) => dispatch(decreaseLimitedUse(id)),
-    onLimitedUseIncrease: (id: number) => dispatch(increaseLimitedUse(id))
+const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
+    onShortRest: () => dispatch(Actions.shortRest()),
+    onLongRest: () => dispatch(Actions.longRest()),
+    onLimitedUseDecrease: (id: number) => dispatch(Actions.decreaseLimitedUse(id)),
+    onLimitedUseIncrease: (id: number) => dispatch(Actions.increaseLimitedUse(id))
 });
 
-const LimitedUsesPanel = connect<{}, {}, mappedState<IProps>>(
+const LimitedUsesPanel = connect<{}, {}, MappedState<IProps>>(
     mapStateToProps, 
     mapDispatchToProps
 )(LimitedUsesPanelBase);

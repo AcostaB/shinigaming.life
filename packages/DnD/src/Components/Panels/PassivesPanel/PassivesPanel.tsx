@@ -4,7 +4,7 @@ import {ExpandableItem} from "../../Generic/ExpandableItem/ExpandableItem";
 import {Passive} from "../../../Models/Passives";
 import "./Passive.css";
 import {connect} from "react-redux";
-import {mappedState} from "../../../Types/Types";
+import {MappedState} from "../../../Types/Types";
 
 interface IProps {
     passives: Passive[]
@@ -29,7 +29,7 @@ const PassivesPanelBase: SFC<IProps> = ({passives}) =>
     </Panel>;
 
 
-const mapStateToProps = (state: any): mappedState<IProps> => ({
+const mapStateToProps = (state: any): MappedState<IProps> => ({
     passives: state.PassivesPanel.passives
 });
 

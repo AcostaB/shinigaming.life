@@ -3,7 +3,7 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {AttackRow} from "./AttackRow";
 import {Attack} from "../../../Models/Attacks";
 import {connect} from "react-redux";
-import {mappedState} from "../../../Types/Types";
+import {MappedState} from "../../../Types/Types";
 
 interface IProps {
     attacks: Attack[],
@@ -28,7 +28,7 @@ const AttacksPanelBase: SFC<IProps> = ({attacks, adversityMod}) =>
         </Panel.Body>
     </Panel>;
 
-const mapStateToProps = (state: any): mappedState<IProps> => ({
+const mapStateToProps = (state: any): MappedState<IProps> => ({
     attacks: state.attacksPanel.attacks,
     adversityMod: state.attackPanel.adversityMod
 })

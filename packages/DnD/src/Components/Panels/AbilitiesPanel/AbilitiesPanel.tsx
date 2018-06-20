@@ -3,7 +3,7 @@ import { Panel } from "../../Generic/Panel/Panel";
 import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 import {connect} from "react-redux";
-import {mappedState} from "../../../Types/Types";
+import {MappedState} from "../../../Types/Types";
 
 interface IProps {
     abilities: Ability[]
@@ -22,7 +22,7 @@ const AbilitiesPanelBase: SFC<IProps> = ({abilities}) =>
     </Panel>;
 
 // TOD fix this any
-const mapStateToProps = (state: any): mappedState<IProps> => ({
+const mapStateToProps = (state: any): MappedState<IProps> => ({
     abilities: state.abilitiesPanel.abilities
 })
 

@@ -1,3 +1,6 @@
+import {createAction} from "../Utils/Utils";
+import {ActionsUnion} from "../Types/Types";
+
 export enum dndActions {
     SHORT_REST = "SHORT_REST",
     LONG_REST = "LONG_REST",
@@ -10,69 +13,17 @@ export enum dndActions {
     INCREASE_ITEM = "INCREASE_ITEM"
 }
 
-export const shortRest = () => ({
-    type: dndActions.SHORT_REST,
+export const Actions = {
+    shortRest: () => createAction(dndActions.SHORT_REST),
+    longRest: () => createAction(dndActions.LONG_REST),
+    decreaseLimitedUse: (id: number) => createAction(dndActions.DECREASE_LIMITED_USE, id),
+    increaseLimitedUse: (id: number) => createAction(dndActions.INCREASE_LIMITED_USE, id),
+    toogleInventoryTab: (inventoryActive: boolean) => createAction(dndActions.TOGGLE_INVENTORY_TAB, inventoryActive),
+    deleteItem: (id: number) => createAction(dndActions.DELETE_ITEM, id),
+    // TODO this needs more data. Description, count.
+    addItem: (id: number) => createAction(dndActions.ADD_ITEM, id),
+    decreaseItem: (id: number) => createAction(dndActions.DECREASE_ITEM, id),
+    increaseItem: (id: number) => createAction(dndActions.INCREASE_ITEM, id)
+}
 
-});
-
-export const longRest = () => ({
-    type: dndActions.LONG_REST
-});
-
-export const decreaseLimitedUse = (id: number) => ({
-    type: dndActions.DECREASE_LIMITED_USE,
-    id
-});
-
-export const increaseLimitedUse = (id: number) => ({
-    type: dndActions.INCREASE_LIMITED_USE,
-    id
-});
-
-export const toogleInventoryTab = (inventoryActive: boolean) => ({
-    type: dndActions.TOGGLE_INVENTORY_TAB,
-    inventoryActive
-});
-
-export const deleteItem = (id: number) => ({
-    type: dndActions.DELETE_ITEM,
-    id
-});
-
-export const addItem = (id: number) => ({
-    type: dndActions.ADD_ITEM,
-    id
-});
-
-export const decreaseItem = (id: number) => ({
-    type: dndActions.DECREASE_ITEM,
-    id
-});
-
-export const increaseItem = (id: number) => ({
-    type: dndActions.INCREASE_ITEM,
-    id
-});
-
-// let nextTodoId = 0
-// export const addTodo = text => ({
-//   type: 'ADD_TODO',
-//   id: nextTodoId++,
-//   text
-// })
-// ​
-// export const setVisibilityFilter = filter => ({
-//   type: 'SET_VISIBILITY_FILTER',
-//   filter
-// })
-// ​
-// export const toggleTodo = id => ({
-//   type: 'TOGGLE_TODO',
-//   id
-// })
-// ​
-// export const VisibilityFilters = {
-//   SHOW_ALL: 'SHOW_ALL',
-//   SHOW_COMPLETED: 'SHOW_COMPLETED',
-//   SHOW_ACTIVE: 'SHOW_ACTIVE'
-// }   
+export type Actions = ActionsUnion<typeof Actions>;

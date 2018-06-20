@@ -3,6 +3,7 @@ import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
 import {SpellDetails} from './SpellDetails';
 import "./LimitedUse.css";
 import {LimitedUse} from "../../../Models/LimitedUses";
+import {Spell} from "../../../Models/LimitedUses";
 
 interface IProps {
     limitedUse: LimitedUse,
@@ -43,7 +44,7 @@ export const LimitedUseRow: SFC<IProps> = (props) => {
 
     const renderLimitedUseBody = () => 
         props.isSpell ? 
-            <SpellDetails spell={props.limitedUse}/>
+            <SpellDetails spell={props.limitedUse as Spell}/>
             : renderLimitedUseBasic(props.limitedUse.description);
 
     return (

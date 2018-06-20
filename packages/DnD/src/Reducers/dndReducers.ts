@@ -1,17 +1,18 @@
-import {dndActions} from "../Actions/dndActions";
-import {Action, combineReducers} from "redux";
+import {Actions, dndActions} from "../Actions/dndActions";
+import { combineReducers} from "redux";
 
-export const restReducer = (state : any, action: Action) => {
-    switch (action.type as dndActions) {
+export const restReducer = (state : any, action: Actions) => {
+    switch (action.type) {
         case dndActions.SHORT_REST:
+            console.log(action.type);
             return 
         case dndActions.LONG_REST: 
-
+            return 
     }
 }
 
-export const limitedUsesReducer = (state: any, action: string) => {
-    switch (action) {
+export const limitedUsesReducer = (state: any, action: Actions) => {
+    switch (action.type) {
         case dndActions.DECREASE_LIMITED_USE: 
 
         case dndActions.INCREASE_LIMITED_USE: 
@@ -19,8 +20,8 @@ export const limitedUsesReducer = (state: any, action: string) => {
     }
 }
 
-export const inventoryReducer = (state : any, action: string) => {
-    switch (action) {
+export const inventoryReducer = (state : any, action: Actions) => {
+    switch (action.type) {
         case dndActions.TOGGLE_INVENTORY_TAB:  
         case dndActions.DELETE_ITEM: 
         case dndActions.ADD_ITEM: 
