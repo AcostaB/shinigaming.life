@@ -3,7 +3,8 @@ import { Panel } from "../../Generic/Panel/Panel";
 import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 import {connect} from "react-redux";
-import {MappedState} from "../../../Types/Types";
+import {MappedState, IAppStore} from "../../../Types/Types";
+import {map} from "lodash";
 
 interface IProps {
     abilities: Ability[]
@@ -22,8 +23,8 @@ const AbilitiesPanelBase: SFC<IProps> = ({abilities}) =>
     </Panel>;
 
 // TOD fix this any
-const mapStateToProps = (state: any): MappedState<IProps> => ({
-    abilities: state.abilitiesPanel.abilities
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    abilities: map(state.abilities, value => value)
 })
 
 // TODO need to better understand why this is necessary. 

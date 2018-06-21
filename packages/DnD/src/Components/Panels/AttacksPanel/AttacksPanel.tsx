@@ -3,14 +3,15 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {AttackRow} from "./AttackRow";
 import {Attack} from "../../../Models/Attacks";
 import {connect} from "react-redux";
-import {MappedState} from "../../../Types/Types";
+import {MappedState, IAppStore} from "../../../Types/Types";
+import {map} from "lodash";
 
 interface IProps {
-    attacks: Attack[],
-    adversityMod: number
+    attacks: Attack[]
+    adversityMod?: number
 }
 
-const AttacksPanelBase: SFC<IProps> = ({attacks, adversityMod}) => 
+const AttacksPanelBase: SFC<IProps> = ({attacks, adversityMod = 5}) => 
     <Panel>
         <Panel.Header title="ATTACKS"/>
         <Panel.Body>
@@ -28,9 +29,10 @@ const AttacksPanelBase: SFC<IProps> = ({attacks, adversityMod}) =>
         </Panel.Body>
     </Panel>;
 
-const mapStateToProps = (state: any): MappedState<IProps> => ({
-    attacks: state.attacksPanel.attacks,
-    adversityMod: state.attackPanel.adversityMod
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    attacks: map(state.attacks, value => value)
+    // TODO need to implement this. 
+    // adversityMod: state.adversityMod
 })
 
 const AttacksPanel = connect<{}, {}, IProps>(

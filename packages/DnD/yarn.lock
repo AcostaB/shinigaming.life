@@ -37,6 +37,10 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
 
+"@types/lodash@^4.14.110":
+  version "4.14.110"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.110.tgz#fb07498f84152947f30ea09d89207ca07123461e"
+
 "@types/mongodb@*":
   version "3.0.18"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.0.18.tgz#e5775ba9c15bf1601e57ada52d9fcbc6d6095d18"

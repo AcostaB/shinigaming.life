@@ -13,6 +13,7 @@ export enum dndActions {
     INCREASE_ITEM = "INCREASE_ITEM"
 }
 
+// TODO: research this. Do I want payload to be an object or a simple type?
 export const Actions = {
     shortRest: () => createAction(dndActions.SHORT_REST),
     longRest: () => createAction(dndActions.LONG_REST),

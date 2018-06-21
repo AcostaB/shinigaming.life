@@ -8,7 +8,8 @@ import "./InventoryPanel.css";
 import {Dispatch} from "react-redux";
 import {Actions} from "../../../Actions/dndActions";
 import {connect} from "react-redux";
-import {MappedState, MappedDispatch} from "../../../Types/Types";
+import {MappedState, MappedDispatch, IAppStore} from "../../../Types/Types";
+import {map} from "lodash";
 
 interface IProps {
     items: Item[],
@@ -174,9 +175,9 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
 };
 
 // TODO fix this any. 
-const mapStateToProps = (state: any): MappedState<IProps> => ({
-    items: state.InventoryPanel.items,
-    currency: state.InventoryPanel.currency
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    items: map(state.inventory, value => value),
+    currency: state.currency
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({

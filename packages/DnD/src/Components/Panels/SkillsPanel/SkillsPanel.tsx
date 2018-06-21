@@ -3,7 +3,8 @@ import {Panel} from "../../Generic/Panel/Panel";
 import {SkillRow} from "./SkillRow";
 import {Skill} from "../../../Models/Skills";
 import {connect} from "react-redux";
-import {MappedState} from "../../../Types/Types";
+import {MappedState, IAppStore} from "../../../Types/Types";
+import {map} from "lodash";
 
 interface IProps {
     leftColumnSkills: Skill[],
@@ -25,9 +26,9 @@ const SkillsPanelBase: SFC<IProps> = ({leftColumnSkills, rightColumnSkills}) =>
         </Panel.Body>
     </Panel>;
 
-const mapStateToProps = (state: any): MappedState<IProps> => ({
-    leftColumnSkills: state.SkillsPanel.leftColumnSkills,
-    rightColumnSkills: state.SkillsPanel.rightColumnSkills
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    leftColumnSkills: map(state.leftColumnSkills, value => value),
+    rightColumnSkills: map(state.rightColumnSkills, value => value)
 });
 
 const SkillsPanel = connect<{}, {}, IProps>(mapStateToProps)(SkillsPanelBase);

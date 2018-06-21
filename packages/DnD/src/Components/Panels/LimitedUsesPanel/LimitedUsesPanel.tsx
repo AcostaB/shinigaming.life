@@ -5,10 +5,11 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {Actions} from "../../../Actions/dndActions";
 import {LimitedUse} from "../../../Models/LimitedUses";
-import {MappedState, MappedDispatch} from "../../../Types/Types";
+import {MappedState, MappedDispatch, IAppStore} from "../../../Types/Types";
+import {map} from "lodash";
 
 interface IProps {
-    remainingUses: { [limitedUsesName: string]: number; },
+    remainingUses: { [limitedUsesName: number]: number; },
     limitedUses: LimitedUse[],
     onShortRest: () => void,
     onLongRest: () => void,
@@ -40,9 +41,9 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
     </Panel>;
 
 // TODO need to fix this. both state and return are anys.
-const mapStateToProps = (state: any): MappedState<IProps> => ({
-    remainingUses: state.LimitedUsesPanel.remainingUses,
-    limitedUses: state.LimitedUsesPanel.limitedUses,
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    remainingUses: state.remainingLimitedUses,
+    limitedUses: map(state.limitedUses, value => value)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
