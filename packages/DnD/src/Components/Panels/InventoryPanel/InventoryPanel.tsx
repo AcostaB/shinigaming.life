@@ -153,7 +153,7 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
                     <div className="inventory-panel">
                         <div className="inventory-tabs">
                         <div
-                            key="tab-currency" 
+                            key="tab-item" 
                             className={"inventory-tabs-items " + (this.state.isCurrencyTabActive ? "":"active") }
                             onClick={this.toggleCurrencyTab}>
                             Items

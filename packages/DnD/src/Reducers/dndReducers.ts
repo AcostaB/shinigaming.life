@@ -1,15 +1,32 @@
 import {Actions, dndActions} from "../Actions/dndActions";
 import {combineReducers} from "redux";
 import {IAppStore} from "../Types/Types";
-import {reduce} from "lodash";
-import {Currency} from "../Models/Currency";
+import {abilities} from "../Models/Abilities";
+import {attacks} from "../Models/Attacks";
+import {currency} from '../Models/Currency';
+import {items} from '../Models/Items';
+import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
+import {limitedUses} from "../Models/LimitedUses";
+import {passives} from "../Models/Passives";
+import {keyBy, reduce} from "lodash";
 
-// TODO need initial state
+// TODO need to improve on this
 const initialState: IAppStore = {
-    limitedUses: {},
-    remainingLimitedUses: {},
+    abilities: keyBy(abilities, "id"),
+    attacks: keyBy(attacks, "id"),
+    inventory: keyBy(items, "_id"),
+    limitedUses: keyBy(limitedUses, "id"),
+    passives: keyBy(passives, "id"),
+    leftColumnSkills: keyBy(leftColumnSkills, "id"),
+    rightColumnSkills: keyBy(rightColumnSkills, "id"),
+    remainingLimitedUses: reduce(limitedUses, (accumulator, currentValue) => { 
+        accumulator[currentValue.id] = currentValue.maxUses; 
+        return accumulator;
+      }, {}),
     remainingItems: {},
-    currency: new Currency()
+    currency,
+    currencyTabActive: true,
+    addNewItemExpanded: false
 }
 
 export const restReducer = (state : IAppStore = initialState, action: Actions) => {

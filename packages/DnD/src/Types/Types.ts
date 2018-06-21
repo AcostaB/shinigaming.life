@@ -36,6 +36,8 @@ export interface IAppStore {
     passives?: {[id: string]: Passive},
     leftColumnSkills?: {[id: string]: Skill},
     rightColumnSkills?: {[id: string]: Skill},
+    addNewItemExpanded: boolean,
+    currencyTabActive: boolean,
     currency: Currency,
     remainingLimitedUses: {
         [key: number]: number
