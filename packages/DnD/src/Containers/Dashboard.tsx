@@ -29,21 +29,21 @@ interface IState {
 }
 
 export class Dashboard extends React.Component<{}, IState> {
-  constructor(props: {}) {
-    super(props);
-    const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
-      accumulator[currentValue.id] = currentValue.maxUses; 
-      return accumulator;
-    }, {});
+  // constructor(props: {}) {
+  //   // super(props);
+  //   // const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
+  //   //   accumulator[currentValue.id] = currentValue.maxUses; 
+  //   //   return accumulator;
+  //   // }, {});
 
-    this.state = {
-      remainingHealth: character.maximumHealth, 
-      remainingUses: newRemainingUses,
-      currencyTabActive: false,
-      currency,
-      addNewItemExpanded: true
-    }
-  }
+  //   // this.state = {
+  //   //   remainingHealth: character.maximumHealth, 
+  //   //   remainingUses: newRemainingUses,
+  //   //   currencyTabActive: false,
+  //   //   currency,
+  //   //   addNewItemExpanded: true
+  //   // }
+  // }
 
   // componentDidMount() {
     // api.getAllItems().then(res => {
