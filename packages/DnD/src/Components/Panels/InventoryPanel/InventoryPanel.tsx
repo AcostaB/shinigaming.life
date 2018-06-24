@@ -5,9 +5,8 @@ import {ItemRow} from "./ItemRow";
 import {Item} from "../../../Models/Items";
 import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
-import {Dispatch} from "react-redux";
+import {connect, Dispatch} from "react-redux";
 import {Actions} from "../../../Actions/dndActions";
-import {connect} from "react-redux";
 import {MappedState, MappedDispatch, IAppStore} from "../../../Types/Types";
 import {map} from "lodash";
 
@@ -176,8 +175,8 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
 
 // TODO fix this any. 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    items: map(state.inventory, value => value),
-    currency: state.currency
+    items: map(state.inventory.inventory, value => value),
+    currency: state.inventory.currency
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
@@ -185,7 +184,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
     handleItemDecrease: (id: number) => dispatch(Actions.decreaseItem(id)),
 })
 
-const InventoryPanel = connect<{}, {}, IProps>(
+const InventoryPanel = connect(
     mapStateToProps,
     mapDispatchToProps
 )(InventoryPanelBase);

@@ -24,11 +24,11 @@ const AbilitiesPanelBase: SFC<IProps> = ({abilities}) =>
 
 // TOD fix this any
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    abilities: map(state.abilities, value => value)
+    abilities: map(state.abilities.abilities, value => value)
 })
 
 // TODO need to better understand why this is necessary. 
-const AbilitiesPanel = connect<{}, {}, IProps>(
+const AbilitiesPanel = connect(
     mapStateToProps
 )(AbilitiesPanelBase)
 

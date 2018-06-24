@@ -2,6 +2,9 @@ import React, {SFC} from 'react';
 import './Header.css';
 import {Character} from "../../Models/Character";
 import Stat from "../../Models/Stat";
+import {connect, Dispatch} from "react-redux"
+import {IAppStore, MappedState, MappedDispatch} from "../../Types/Types";
+import {Actions} from "../../Actions/dndActions";
 
 interface IProps {
     character: Character,
@@ -12,7 +15,7 @@ interface IProps {
     increaseHealthBy10Handler: () => void    
 };
 
-export const Header: SFC<IProps> = (props: IProps) => {
+export const HeaderBase: SFC<IProps> = (props: IProps) => {
     const renderHeaderMain = () => 
         <div>
             <div className="header-characterName">
@@ -75,3 +78,22 @@ export const Header: SFC<IProps> = (props: IProps) => {
         </div>
     );
 }
+
+const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+    character: state.header.character,
+    remainingHealth: state.header.remainingHealth
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
+    decreaseHealthHandler: () => dispatch(Actions.decreaseHealth()),
+    increaseHealthHandler: () => dispatch(Actions.increaseHealth()),
+    decreaseHealthBy10Handler: () => dispatch(Actions.decreaseHealthBy10()),
+    increaseHealthBy10Handler: () => dispatch(Actions.increaseHealthBy10()),    
+});
+
+const Header = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HeaderBase);
+
+export default Header;

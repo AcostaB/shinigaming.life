@@ -1,13 +1,5 @@
 import React from 'react';
-import {abilities} from "../Models/Abilities";
-import {attacks} from "../Models/Attacks";
-import {character} from '../Models/Character';
-import {currency} from '../Models/Currency';
-import {items} from '../Models/Items';
-import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
-import {limitedUses} from "../Models/LimitedUses";
-import {passives} from "../Models/Passives";
-import {Header} from '../Components/Header/Header';
+import Header from '../Components/Header/Header';
 import "./Dashboard.css";
 
 import AbilitiesPanel from "../Components/Panels/AbilitiesPanel/AbilitiesPanel";
@@ -29,139 +21,35 @@ interface IState {
 }
 
 export class Dashboard extends React.Component<{}, IState> {
-  // constructor(props: {}) {
-  //   // super(props);
-  //   // const newRemainingUses = limitedUses.reduce( (accumulator, currentValue) => { 
-  //   //   accumulator[currentValue.id] = currentValue.maxUses; 
-  //   //   return accumulator;
-  //   // }, {});
-
-  //   // this.state = {
-  //   //   remainingHealth: character.maximumHealth, 
-  //   //   remainingUses: newRemainingUses,
-  //   //   currencyTabActive: false,
-  //   //   currency,
-  //   //   addNewItemExpanded: true
-  //   // }
-  // }
-
-  // componentDidMount() {
-    // api.getAllItems().then(res => {
-    //   console.log("Request to fetch all items finished.");
-    //   console.log(res);
-    //   this.setState(() => ({inventory: res.data}));
-    // });
-
-    // this.setState(() => ({items: items}));
-  // }
-
-  decreaseHealthHandler = () => {
-    this.setState((prevState, props) => {
-        if (prevState.remainingHealth !== 0) {
-            return {...prevState, remainingHealth: prevState.remainingHealth - 1};
-        } else {
-          return; 
-        }
-    })
-  }
-
-  increaseHealthHandler = () => {
-      this.setState((prevState, props) => {
-          if (prevState.remainingHealth < character.maximumHealth) {
-              return {...prevState, remainingHealth: prevState.remainingHealth + 1};
-          } else {
-            return; 
-          }
-      })
-  }
-
-  decreaseHealthBy10Handler = () => {
-    this.setState((prevState, props) => {
-      if (prevState.remainingHealth - 10 >= 0) {
-          return {...prevState, remainingHealth: prevState.remainingHealth - 10};
-      } else {
-        return {remainingHealth: 0};
-      }
-    })
-  }
-
-  increaseHealthBy10Handler = () => {
-    this.setState((prevState, props) => {
-      if (prevState.remainingHealth + 10 <= character.maximumHealth) {
-          return {...prevState, remainingHealth: prevState.remainingHealth + 10};
-      } else {
-        return {...prevState, remainingHealth: character.maximumHealth};
-      }
-    });
-  }
-
-  handleItemDecrease = (id: number) => {
-    // this.setState((prevState, props) => { 
-    //   // TODO this is bad. Rewrite. 
-    //   const newValue = prevState.remainingUses[id] > 0 ? prevState.remainingUses[id] - 1 : 0;
-    //   return {remainingUses: {...prevState.remainingUses, [id]: newValue}}
-    // });
-  };
-
-  handleItemIncrease = (id: number) => {
-    // this.setState((prevState, props) => { 
-    //   // TODO this is bad. Rewrite. 
-    //   const maxUses = limitedUses[id - 1].maxUses;
-    //   const newValue = prevState.remainingUses[id] < maxUses ? prevState.remainingUses[id] + 1 : maxUses;
-    //   return {remainingUses: {...prevState.remainingUses, ...{[id]: newValue}}}
-    // });
-  };
 
   render() {
-    const adversityMod = Math.floor((1-(this.state.remainingHealth/character.maximumHealth)) * 4);
-
     return (
       <div className="App">
         <div className="App-header">
           <div className="App-header-content">
-            <Header 
-              character={character} 
-              remainingHealth={this.state.remainingHealth} 
-              decreaseHealthHandler={this.decreaseHealthHandler} 
-              increaseHealthHandler={this.increaseHealthHandler} 
-              decreaseHealthBy10Handler={this.decreaseHealthBy10Handler} 
-              increaseHealthBy10Handler={this.increaseHealthBy10Handler}/>
+            <Header/>
           </div>
         </div>
         <div className="App-body">
           <div className="App-body-content">
             <div className="dashboard">
               <div className="dashboard-panel">
-                <AbilitiesPanel 
-                  abilities={abilities}
-                  />
+                <AbilitiesPanel/>
               </div>
               <div className="dashboard-panel">
-                <SkillsPanel leftColumnSkills={leftColumnSkills} rightColumnSkills={rightColumnSkills}/>
+                <SkillsPanel/>
               </div>
               <div className="dashboard-panel">
-                <LimitedUsesPanel 
-                  limitedUses={limitedUses}
-                  remainingUses={this.state.remainingUses}
-                  // onShortRest={this.handleShortRest}
-                  // onLongRest={this.handleLongRest}
-                  // onLimitedUseDecrease={this.handleLimitedUseDecrease}
-                  // onLimitedUseIncrease={this.handleLimitedUseIncrease}
-                  />          
+                <LimitedUsesPanel/>          
               </div>
               <div className="dashboard-panel">
-                <PassivesPanel passives={passives}/>
+                <PassivesPanel/>
               </div>
               <div className="dashboard-panel">
-                <AttacksPanel attacks={attacks} adversityMod={adversityMod}/>
+                <AttacksPanel/>
               </div>
               <div className="dashboard-panel">
-                <InventoryPanel 
-                  items={items}
-                  currency={currency}
-                  handleItemIncrease={this.handleItemIncrease}
-                  handleItemDecrease={this.handleItemDecrease}
-                  /> 
+                <InventoryPanel/> 
               </div>
             </div>
           </div>

@@ -1,55 +1,80 @@
 import {Actions, dndActions} from "../Actions/dndActions";
 import {combineReducers} from "redux";
-import {IAppStore} from "../Types/Types";
-import {abilities} from "../Models/Abilities";
-import {attacks} from "../Models/Attacks";
-import {currency} from '../Models/Currency';
-import {items} from '../Models/Items';
-import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
-import {limitedUses} from "../Models/LimitedUses";
-import {passives} from "../Models/Passives";
-import {keyBy, reduce} from "lodash";
+// import {IAppStore} from "../Types/Types";
+// import {abilities} from "../Models/Abilities";
+// import {attacks} from "../Models/Attacks";
+// import {currency} from '../Models/Currency';
+// import {items} from '../Models/Items';
+// import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
+// import {limitedUses as limitedUsesModel} from "../Models/LimitedUses";
+// import {passives} from "../Models/Passives";
+// import {keyBy} from "lodash";
+// import {character as character2} from "../Models/Character";
+import {reduce} from "lodash";
 
-// TODO need to improve on this
-const initialState: IAppStore = {
-    abilities: keyBy(abilities, "id"),
-    attacks: keyBy(attacks, "id"),
-    inventory: keyBy(items, "_id"),
-    limitedUses: keyBy(limitedUses, "id"),
-    passives: keyBy(passives, "id"),
-    leftColumnSkills: keyBy(leftColumnSkills, "id"),
-    rightColumnSkills: keyBy(rightColumnSkills, "id"),
-    remainingLimitedUses: reduce(limitedUses, (accumulator, currentValue) => { 
-        accumulator[currentValue.id] = currentValue.maxUses; 
-        return accumulator;
-      }, {}),
-    remainingItems: {},
-    currency,
-    currencyTabActive: true,
-    addNewItemExpanded: false
-}
+// // TODO need to improve on this.
+// // todo fix character2
+// const initialState: IAppStore = {
+//     abilities: keyBy(abilities, "id"),
+//     attacks: keyBy(attacks, "id"),
+//     header: {
+//         character: character2,
+//         remainingHealth: character2.maximumHealth
+//     },
+//     character: character2,
+//     inventory: keyBy(items, "_id"),
+//     limitedUses: keyBy(limitedUsesModel, "id"),
+//     passives: keyBy(passives, "id"),
+//     leftColumnSkills: keyBy(leftColumnSkills, "id"),
+//     rightColumnSkills: keyBy(rightColumnSkills, "id"),
+//     remainingLimitedUses: reduce(limitedUsesModel, (accumulator, currentValue) => { 
+//         accumulator[currentValue.id] = currentValue.maxUses; 
+//         return accumulator;
+//       }, {}),
+//     remainingItems: {},
+//     remainingHealth: character2.maximumHealth,
+//     currency,
+//     currencyTabActive: true,
+//     addNewItemExpanded: false
+// }
 
-export const restReducer = (state : IAppStore = initialState, action: Actions) => {
+// TODO need better typing for reducer state.
+export const header = (state: any, action: Actions) => {
+    console.log("Header reducer state:", state)
+    const {remainingHealth, character} = state.header;
     switch (action.type) {
+        // TODO: need to fix the variable names. Should not conflict. 
+        case dndActions.DECREASE_HEALTH:
+            const newHealth = remainingHealth > 0 ? remainingHealth - 1 : remainingHealth;
+            return {remaingHealth: newHealth};
+        case dndActions.INCREASE_HEALTH: 
+            const newHealth2 = remainingHealth < character.maximumHealth ? remainingHealth + 1 : remainingHealth;
+            return {remaingHealth: newHealth2};
+        case dndActions.DECREASE_HEALTH_BY_10: 
+            const newHealth3 = remainingHealth - 10 > 0 ? remainingHealth + 10 : 0;
+            return {remaingHealth: newHealth3};
+        case dndActions.INCREASE_HEALTH_BY_10:
+            const newHealth4 = remainingHealth + 10 < character.maximumHealth ? remainingHealth + 10 : character.maximumHealth;
+            return {remaingHealth: newHealth4}; 
         case dndActions.SHORT_REST:
             const remainingLimitedUses = reduce(state.limitedUses, (accumulator, value) => {
                 return accumulator[value.id] = value.shortRestRecover ? value.maxUses : state.remainingLimitedUses[value.id];
             }, {});
-
             return { remainingLimitedUses };
         case dndActions.LONG_REST: 
             // TODO fix this. why cant i redeclare in this? scope is different.
             const remainingLimitedUses2 = reduce(state.limitedUses, (accumulator, value) => {
                 return accumulator[value.id] = value.maxUses;
             }, {});
-
             return { remainingLimitedUses: remainingLimitedUses2 };
         default: 
-            return state;
+            return state
     }
 }
 
-export const limitedUsesReducer = (state: IAppStore = initialState, action: Actions) => {
+// TODO fix this any
+export const limitedUses = (state: any, action: Actions) => {
+    const {limitedUses, character} = state.limitedUses;
     switch (action.type) {
         case dndActions.DECREASE_LIMITED_USE: 
             const newValue = state.remainingLimitedUses[action.payload] > 0 ? state.remainingLimitedUses[action.payload] - 1 : 0;
@@ -66,7 +91,8 @@ export const limitedUsesReducer = (state: IAppStore = initialState, action: Acti
     }
 }
 
-export const inventoryReducer = (state : IAppStore = initialState, action: Actions) => {
+// TODO fix this any
+export const inventory = (state : any, action: Actions) => {
     switch (action.type) {
         case dndActions.TOGGLE_INVENTORY_TAB:  
         case dndActions.DELETE_ITEM: 
@@ -79,7 +105,7 @@ export const inventoryReducer = (state : IAppStore = initialState, action: Actio
 }
 
 export default combineReducers({
-    restReducer,
-    limitedUsesReducer,
-    inventoryReducer
+    header,
+    limitedUses,
+    inventory
 });

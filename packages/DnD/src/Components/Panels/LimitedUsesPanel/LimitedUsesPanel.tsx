@@ -42,8 +42,9 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
 
 // TODO need to fix this. both state and return are anys.
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    remainingUses: state.remainingLimitedUses,
-    limitedUses: map(state.limitedUses, value => value)
+    remainingUses: state.limitedUses.remainingLimitedUses,
+    // TODO this cast shouldnt be necessary
+    limitedUses: (map(state.limitedUses.limitedUses, value => value) as LimitedUse[])
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
@@ -53,7 +54,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
     onLimitedUseIncrease: (id: number) => dispatch(Actions.increaseLimitedUse(id))
 });
 
-const LimitedUsesPanel = connect<{}, {}, MappedState<IProps>>(
+const LimitedUsesPanel = connect(
     mapStateToProps, 
     mapDispatchToProps
 )(LimitedUsesPanelBase);

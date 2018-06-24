@@ -1,11 +1,12 @@
 import {Ability} from "../Models/Abilities";
 import {Attack} from "../Models/Attacks";
-import {Item} from "../Models/Items";
+// import {Item} from "../Models/Items";
 import {LimitedUse} from "../Models/LimitedUses";
 import {Passive} from "../Models/Passives";
+import {Item} from "../Models/Items";
 import {Skill} from "../Models/Skills";
 import {Currency} from "../Models/Currency";
-
+import {Character} from "../Models/Character";
 
 export type FunctionPropertyNames<T> = { [K in keyof T]: T[K] extends Function ? K : never }[keyof T];
 
@@ -29,20 +30,41 @@ export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof
 
 // TODO: figure out how to structure this data. Normalize? Object with IDs as keys?
 export interface IAppStore {
-    abilities?:  {[id: string]: Ability},
-    attacks?: {[id: string]: Attack},
-    inventory?:  {[id: string]: Item},
-    limitedUses: {[id: string]: LimitedUse},
-    passives?: {[id: string]: Passive},
-    leftColumnSkills?: {[id: string]: Skill},
-    rightColumnSkills?: {[id: string]: Skill},
-    addNewItemExpanded: boolean,
-    currencyTabActive: boolean,
-    currency: Currency,
-    remainingLimitedUses: {
-        [key: number]: number
+    // Header component
+    header: {
+        character: Character,
+        remainingHealth: number
     },
-    remainingItems: {
-        [key: number]: number
+    // Abilities Panel
+    abilities: {
+        abilities?:  {[id: string]: Ability},
+    },
+    // Attacks Panel
+    attacks: {
+        attacks?: {[id: string]: Attack},
+    },
+    // Passives panel
+    passives: {
+        passives?: {[id: string]: Passive},
+    },
+    // Limited Uses Panel
+    limitedUses: {
+        limitedUses: {[id: string]: LimitedUse},
+        remainingLimitedUses: {
+            [key: number]: number
+        },
     }
+    // Skills panel
+    skills: {
+        leftColumnSkills?: {[id: string]: Skill},
+        rightColumnSkills?: {[id: string]: Skill}
+    }
+    // Inventory Panel
+    inventory: {
+        inventory: {[id: number]: Item},
+        remainingItems: {[id: number]: number},
+        currency: Currency,
+        currencyTabActive: boolean,
+        addNewItemExpanded: boolean
+      }
 }

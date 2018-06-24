@@ -31,10 +31,10 @@ const PassivesPanelBase: SFC<IProps> = ({passives}) =>
 
 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    passives: map(state.passives, value => value)
+    passives: map(state.passives.passives, value => value)
 });
 
-const PassivesPanel = connect<{}, {}, IProps>(
+const PassivesPanel = connect(
     mapStateToProps
 )(PassivesPanelBase);
 

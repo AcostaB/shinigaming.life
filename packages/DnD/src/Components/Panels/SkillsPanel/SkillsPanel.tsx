@@ -27,10 +27,10 @@ const SkillsPanelBase: SFC<IProps> = ({leftColumnSkills, rightColumnSkills}) =>
     </Panel>;
 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    leftColumnSkills: map(state.leftColumnSkills, value => value),
-    rightColumnSkills: map(state.rightColumnSkills, value => value)
+    leftColumnSkills: map(state.skills.leftColumnSkills, value => value),
+    rightColumnSkills: map(state.skills.rightColumnSkills, value => value)
 });
 
-const SkillsPanel = connect<{}, {}, IProps>(mapStateToProps)(SkillsPanelBase);
+const SkillsPanel = connect(mapStateToProps)(SkillsPanelBase);
 
 export default SkillsPanel;
