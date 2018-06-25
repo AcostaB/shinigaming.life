@@ -38,61 +38,113 @@ import {reduce} from "lodash";
 //     addNewItemExpanded: false
 // }
 
+import {IAppStore} from "../Types/Types";
+import {abilities} from "../Models/Abilities";
+import {attacks} from "../Models/Attacks";
+import {currency} from "../Models/Currency";
+import {items} from '../Models/Items';
+import {leftColumnSkills, rightColumnSkills} from "../Models/Skills";
+import {limitedUses as limitedUsesModel} from "../Models/LimitedUses";
+import {passives} from "../Models/Passives";
+import {keyBy} from "lodash";
+import {character as characterModel} from "../Models/Character";
+const initialState: IAppStore = {
+    // Header component
+    header: {
+        character: characterModel,
+        remainingHealth: characterModel.maximumHealth
+    },
+    // Abilities Panel
+    abilities: {
+        abilities:  keyBy(abilities, "id")
+    },
+    // Attacks Panel
+    attacks: {
+        attacks: keyBy(attacks, "id")
+    },
+    // Passives panel
+    passives: {
+        passives: keyBy(passives, "id")
+    },
+    // Limited Uses Panel
+    limitedUses: {
+        limitedUses: keyBy(limitedUsesModel, "id"),
+        remainingLimitedUses: reduce(limitedUsesModel, (accumulator, currentValue) => { 
+          accumulator[currentValue.id] = currentValue.maxUses; 
+          return accumulator;
+        }, {})
+    },
+    // Skills panel
+    skills: {
+      leftColumnSkills: keyBy(leftColumnSkills, "id"),
+      rightColumnSkills: keyBy(rightColumnSkills, "id")
+    },
+    // Inventory Panel
+    inventory: {
+      inventory: keyBy(items, "_id"),
+      remainingItems: {},
+      currency,
+      currencyTabActive: true,
+      addNewItemExpanded: false
+    }
+}
+  
 // TODO need better typing for reducer state.
-export const header = (state: any, action: Actions) => {
+export const header = (state: any = initialState, action: Actions) => {
     console.log("Header reducer state:", state)
-    const {remainingHealth, character} = state.header;
+    // TODO read more on this: https://daveceddia.com/how-does-redux-work/ @@redux
     switch (action.type) {
         // TODO: need to fix the variable names. Should not conflict. 
         case dndActions.DECREASE_HEALTH:
+            const {remainingHealth, character} = state;
             const newHealth = remainingHealth > 0 ? remainingHealth - 1 : remainingHealth;
-            return {remaingHealth: newHealth};
+            return {...state, remaingHealth: newHealth};
         case dndActions.INCREASE_HEALTH: 
             const newHealth2 = remainingHealth < character.maximumHealth ? remainingHealth + 1 : remainingHealth;
-            return {remaingHealth: newHealth2};
+            return {...state, remaingHealth: newHealth2};
         case dndActions.DECREASE_HEALTH_BY_10: 
             const newHealth3 = remainingHealth - 10 > 0 ? remainingHealth + 10 : 0;
-            return {remaingHealth: newHealth3};
+            return {...state, remaingHealth: newHealth3};
         case dndActions.INCREASE_HEALTH_BY_10:
             const newHealth4 = remainingHealth + 10 < character.maximumHealth ? remainingHealth + 10 : character.maximumHealth;
-            return {remaingHealth: newHealth4}; 
+            return {...state, remaingHealth: newHealth4}; 
         case dndActions.SHORT_REST:
             const remainingLimitedUses = reduce(state.limitedUses, (accumulator, value) => {
                 return accumulator[value.id] = value.shortRestRecover ? value.maxUses : state.remainingLimitedUses[value.id];
             }, {});
-            return { remainingLimitedUses };
+            return { ...state, remainingLimitedUses };
         case dndActions.LONG_REST: 
             // TODO fix this. why cant i redeclare in this? scope is different.
             const remainingLimitedUses2 = reduce(state.limitedUses, (accumulator, value) => {
                 return accumulator[value.id] = value.maxUses;
             }, {});
-            return { remainingLimitedUses: remainingLimitedUses2 };
+            return { ...state, remainingLimitedUses: remainingLimitedUses2 };
         default: 
             return state
     }
 }
 
 // TODO fix this any
-export const limitedUses = (state: any, action: Actions) => {
-    const {limitedUses, character} = state.limitedUses;
+export const limitedUses = (state: any = initialState, action: Actions) => {
+    const { remainingUses } = state.limitedUses;
     switch (action.type) {
         case dndActions.DECREASE_LIMITED_USE: 
-            const newValue = state.remainingLimitedUses[action.payload] > 0 ? state.remainingLimitedUses[action.payload] - 1 : 0;
+            const newValue = remainingUses[action.payload] > 0 ? remainingUses[action.payload] - 1 : 0;
             
-            return {remainingLimitedUses: {...state.remainingLimitedUses, [action.payload]: newValue}}
+            return {...state, remainingLimitedUses: {...remainingUses, [action.payload]: newValue}}
         case dndActions.INCREASE_LIMITED_USE: 
             // TODO fix this. why cant i redeclare in this? scope is different.
             const maxUses = state.limitedUses[action.payload].maxUses;
-            const newValue2 = state.remainingLimitedUses[action.payload] < maxUses ? state.remainingLimitedUses[action.payload] + 1 : maxUses;
+            const newValue2 = remainingUses[action.payload] < maxUses ? remainingUses[action.payload] + 1 : maxUses;
 
-            return {remainingLimitedUses: {...state.remainingLimitedUses, [action.payload]: newValue2}}
+            return { ...state, remainingUses: {...remainingUses, [action.payload]: newValue2}}
         default: 
             return state
     }
 }
 
 // TODO fix this any
-export const inventory = (state : any, action: Actions) => {
+export const inventory = (state : any = initialState, action: Actions) => {
     switch (action.type) {
         case dndActions.TOGGLE_INVENTORY_TAB:  
         case dndActions.DELETE_ITEM: 
