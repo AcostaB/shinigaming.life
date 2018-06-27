@@ -30,8 +30,8 @@ const AttacksPanelBase: SFC<IProps> = ({attacks, adversityMod = 5}) =>
     </Panel>;
 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    attacks: map(state.attacks.attacks, value => value),
-    adversityMod: Math.floor((1-(state.header.remainingHealth/state.header.character.maximumHealth)) * 4)
+    attacks: map(state.attacks, value => value),
+    adversityMod: Math.floor((1-(state.remainingHealth/state.character.maximumHealth)) * 4)
 })
 
 const AttacksPanel = connect(

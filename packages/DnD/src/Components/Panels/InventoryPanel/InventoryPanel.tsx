@@ -175,8 +175,8 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
 
 // TODO fix this any. 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    items: map(state.inventory.inventory, value => value),
-    currency: state.inventory.currency
+    items: map(state.inventory, value => value),
+    currency: state.currency
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({

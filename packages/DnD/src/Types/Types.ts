@@ -31,40 +31,26 @@ export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<A[keyof
 // TODO: figure out how to structure this data. Normalize? Object with IDs as keys?
 export interface IAppStore {
     // Header component
-    header: {
         character: Character,
-        remainingHealth: number
-    },
+        remainingHealth: number,
     // Abilities Panel
-    abilities: {
         abilities?:  {[id: string]: Ability},
-    },
     // Attacks Panel
-    attacks: {
         attacks?: {[id: string]: Attack},
-    },
     // Passives panel
-    passives: {
         passives?: {[id: string]: Passive},
-    },
     // Limited Uses Panel
-    limitedUses: {
         limitedUses: {[id: string]: LimitedUse},
         remainingLimitedUses: {
             [key: number]: number
         },
-    }
     // Skills panel
-    skills: {
         leftColumnSkills?: {[id: string]: Skill},
-        rightColumnSkills?: {[id: string]: Skill}
-    }
+        rightColumnSkills?: {[id: string]: Skill},
     // Inventory Panel
-    inventory: {
         inventory: {[id: number]: Item},
         remainingItems: {[id: number]: number},
         currency: Currency,
         currencyTabActive: boolean,
         addNewItemExpanded: boolean
-      }
 }

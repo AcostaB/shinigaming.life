@@ -80,8 +80,8 @@ export const HeaderBase: SFC<IProps> = (props: IProps) => {
 }
 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    character: state.header.character,
-    remainingHealth: state.header.remainingHealth
+    character: state.character,
+    remainingHealth: state.remainingHealth
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({

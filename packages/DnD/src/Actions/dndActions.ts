@@ -2,10 +2,10 @@ import {createAction} from "../Utils/Utils";
 import {ActionsUnion} from "../Types/Types";
 
 export enum dndActions {
-    SHORT_REST = "SHORT_REST",
-    LONG_REST = "LONG_REST",
     DECREASE_LIMITED_USE = "DECREASE_LIMITED_USE",
     INCREASE_LIMITED_USE = "INCREASE_LIMITED_USE",
+    SHORT_REST = "SHORT_REST",
+    LONG_REST = "LONG_REST",
     TOGGLE_INVENTORY_TAB = "TOGGLE_INVENTORY_TAB",
     ADD_ITEM = "ADD_ITEM",
     DELETE_ITEM = "DELETE_ITEM",
@@ -19,10 +19,10 @@ export enum dndActions {
 
 // TODO: research this. Do I want payload to be an object or a simple type?
 export const Actions = {
-    shortRest: () => createAction(dndActions.SHORT_REST),
-    longRest: () => createAction(dndActions.LONG_REST),
     decreaseLimitedUse: (id: number) => createAction(dndActions.DECREASE_LIMITED_USE, id),
     increaseLimitedUse: (id: number) => createAction(dndActions.INCREASE_LIMITED_USE, id),
+    shortRest: () => createAction(dndActions.SHORT_REST),
+    longRest: () => createAction(dndActions.LONG_REST),
     toogleInventoryTab: (inventoryActive: boolean) => createAction(dndActions.TOGGLE_INVENTORY_TAB, inventoryActive),
     deleteItem: (id: number) => createAction(dndActions.DELETE_ITEM, id),
     // TODO this needs more data. Description, count.
