@@ -5,7 +5,8 @@ import {ItemRow} from "./ItemRow";
 import {Item} from "../../../Models/Items";
 import {Currency} from "../../../Models/Currency";
 import "./InventoryPanel.css";
-import {connect, Dispatch} from "react-redux";
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
 import {Actions} from "../../../Actions/dndActions";
 import {MappedState, MappedDispatch, IAppStore} from "../../../Types/Types";
 import {map} from "lodash";
@@ -23,6 +24,8 @@ interface IState {
 }
 
 class InventoryPanelBase extends React.Component<IProps, IState> {
+    public state: IState;
+
     constructor(props: IProps) {
         super(props);
         this.state = {

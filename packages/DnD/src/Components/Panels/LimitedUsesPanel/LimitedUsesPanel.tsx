@@ -9,7 +9,7 @@ import {MappedState, MappedDispatch, IAppStore} from "../../../Types/Types";
 import {map} from "lodash";
 
 interface IProps {
-    remainingUses: { [limitedUsesName: number]: number; },
+    remainingLimitedUses: { [limitedUsesName: number]: number; },
     limitedUses: LimitedUse[],
     onShortRest: () => void,
     onLongRest: () => void,
@@ -31,7 +31,7 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
                         key={limitedUse.id} 
                         isSpell={limitedUse.isSpell} 
                         limitedUse={limitedUse} 
-                        remainingUses={props.remainingUses[limitedUse.id]}
+                        remainingLimitedUses={props.remainingLimitedUses[limitedUse.id]}
                         handleDecrease={props.onLimitedUseDecrease}
                         handleIncrease={props.onLimitedUseIncrease}/>
                     )
@@ -42,7 +42,7 @@ const LimitedUsesPanelBase: SFC<IProps> = (props) =>
 
 // TODO need to fix this. both state and return are anys.
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
-    remainingUses: state.remainingLimitedUses,
+    remainingLimitedUses: state.remainingLimitedUses,
     // TODO this cast shouldnt be necessary
     limitedUses: (map(state.limitedUses, value => value) as LimitedUse[])
 });

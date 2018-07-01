@@ -2,7 +2,8 @@ import React, {SFC} from 'react';
 import './Header.css';
 import {Character} from "../../Models/Character";
 import Stat from "../../Models/Stat";
-import {connect, Dispatch} from "react-redux"
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
 import {IAppStore, MappedState, MappedDispatch} from "../../Types/Types";
 import {Actions} from "../../Actions/dndActions";
 

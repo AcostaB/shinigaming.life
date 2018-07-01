@@ -1,4 +1,4 @@
-import React, {SFC} from 'react';
+import React, {SFC, SyntheticEvent} from 'react';
 import {ExpandableItem} from '../../Generic/ExpandableItem/ExpandableItem';
 import {SpellDetails} from './SpellDetails';
 import "./LimitedUse.css";
@@ -8,12 +8,19 @@ import {Spell} from "../../../Models/LimitedUses";
 interface IProps {
     limitedUse: LimitedUse,
     isSpell: boolean,
-    remainingUses: number,
-    handleDecrease: any,
-    handleIncrease: any
+    remainingLimitedUses: number,
+    handleDecrease: (limitedUseId: number) => void,
+    handleIncrease: (limitedUseId: number) => void
 }
 
 export const LimitedUseRow: SFC<IProps> = (props) => {
+    const onDecrease = (e: SyntheticEvent) => 
+        props.handleDecrease(parseInt((e.target as HTMLInputElement).value, 10));
+    
+    const onIncrease = (e: SyntheticEvent) => 
+        props.handleIncrease(parseInt((e.target as HTMLInputElement).value, 10));
+
+
     const renderLimitedUseHeader = () => 
         <div className="limitedUse">
             <div className="limitedUse-main">
@@ -26,13 +33,13 @@ export const LimitedUseRow: SFC<IProps> = (props) => {
                     </span>
                 </div>
                 <div className="limitedUse-counter">
-                    <button className="limitedUse-decrease-icon" onClick={props.handleDecrease}/>
+                    <button className="limitedUse-decrease-icon" value={props.limitedUse.id} onClick={onDecrease}/>
                     <div className="limitedUse-uses">
-                        <span>{props.remainingUses}</span>
+                        <span>{props.remainingLimitedUses}</span>
                         <span>/</span>
                         <span>{props.limitedUse.maxUses}</span>
                     </div>
-                    <button className="limitedUse-increase-icon" onClick={props.handleIncrease}/>
+                    <button className="limitedUse-increase-icon" value={props.limitedUse.id} onClick={onIncrease}/>
                 </div>
             </div>
         </div>;

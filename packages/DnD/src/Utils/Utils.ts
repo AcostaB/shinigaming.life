@@ -12,6 +12,4 @@ export function createAction<T extends string, P>(type: T, payload?: P) {
     return payload === undefined ? { type } : {type, payload} 
 };
 
-const test = createAction("jkljl", "kjlk");
-
 // Source: https://medium.com/@martin_hotell/improved-redux-type-safety-with-typescript-2-8-2c11a8062575

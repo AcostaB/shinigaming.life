@@ -1,3 +1,4 @@
+import { IAppStore } from './Types';
 import {Ability} from "../Models/Abilities";
 import {Attack} from "../Models/Attacks";
 // import {Item} from "../Models/Items";
@@ -34,23 +35,28 @@ export interface IAppStore {
         character: Character,
         remainingHealth: number,
     // Abilities Panel
-        abilities?:  {[id: string]: Ability},
+        abilities?:  Keyed<Ability>,
     // Attacks Panel
-        attacks?: {[id: string]: Attack},
+        attacks?: Keyed<Attack>,
     // Passives panel
-        passives?: {[id: string]: Passive},
+        passives?: Keyed<Passive>,
     // Limited Uses Panel
-        limitedUses: {[id: string]: LimitedUse},
-        remainingLimitedUses: {
-            [key: number]: number
-        },
+        limitedUses: Keyed<LimitedUse>,
+        remainingLimitedUses: Keyed<number>,
     // Skills panel
-        leftColumnSkills?: {[id: string]: Skill},
-        rightColumnSkills?: {[id: string]: Skill},
+        leftColumnSkills?: Keyed<Skill>,
+        rightColumnSkills?: Keyed< Skill>,
     // Inventory Panel
-        inventory: {[id: number]: Item},
-        remainingItems: {[id: number]: number},
+        inventory: Keyed<Item>,
+        remainingItems: Keyed<number>,
         currency: Currency,
         currencyTabActive: boolean,
         addNewItemExpanded: boolean
 }
+
+export type Keyed<T> = {[id: number]: T};
+
+// TODO improve on reducer type. Make it more specific to my actions. 
+// export type Reducer<T> = (state: T) => T; 
+// export type Reducer<S = any, A = {} extends Action<any> = AnyAction> = (state: S | undefined, action: A) => S
+// import {Reducer} from "redux";

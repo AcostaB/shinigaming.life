@@ -6,7 +6,7 @@ interface IProps {
     expandableItemHeader: JSX.Element | string
 }
 
-interface IState extends IProps {
+interface IState {
     expanded: boolean
 }
 
@@ -14,7 +14,7 @@ interface IState extends IProps {
 export class ExpandableItem extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
-        this.state = {...props, expanded: false};
+        this.state = { expanded: false };
     }
 
     handleExpandedClick = (): void => {
@@ -22,7 +22,7 @@ export class ExpandableItem extends React.Component<IProps, IState> {
     };
 
     renderBody(): JSX.Element | string {
-        if (this.state.expanded) {
+        if (this.state != null && this.state.expanded) {
             return (<div className="expandableItem-body">
                         {this.props.expandableItemBody}
                     </div>);

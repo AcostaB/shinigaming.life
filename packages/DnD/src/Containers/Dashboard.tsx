@@ -14,7 +14,7 @@ import {Currency} from "../Models/Currency";
 
 interface IState {
   remainingHealth: number, 
-  remainingUses: {[limitedUsesName: string]: number},
+  remainingLimitedUses: {[limitedUsesName: string]: number},
   currencyTabActive: boolean,
   currency: Currency,
   addNewItemExpanded: boolean
