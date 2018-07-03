@@ -26,3 +26,63 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@font-face {
+  font-family: "evilGenius";
+  src: url("./Assets/evilgeniusbb_reg.ttf");
+}
+
+@font-face {
+  font-family: "AntipastoPro-Hairline";
+  src: url("./Assets/AntipastoPro-Hairline.ttf");
+}
+
+body {
+  background-image: url('./Assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+.header {
+  color: white;
+  font-family: "AntipastoPro-Hairline";
+  letter-spacing: 5px;
+  font-size: 4em;
+  margin-top: 30px;
+}
+
+.logo {
+  width: 340px;
+  height: 450px;
+  background-image: url('./Assets/Shinigami.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  flex:1;
+  align-items: center;
+  /* font-family: "evilGenius"; */
+  font-family: "AntipastoPro-Hairline";
+  font-size: 2em;
+  /* background: linear-gradient(-90deg, #4BB9CD 0%, #0777A6 100%); */
+  color: #4BB9CD;
+  background: linear-gradient(-90deg, red, green);
+}
+
+.title-part {
+  display: inline-block;
+  letter-spacing: 5px;
+}
+
+.title-part::first-letter {
+  font-size: 50px;
+} 
