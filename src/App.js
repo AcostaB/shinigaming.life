@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -21,13 +20,41 @@ class App extends Component {
         <div class="name">
          BRYAND ACOSTA
         </div>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
+        <div className="links">
+          <div className="link">
+            <button className="link-button">
+              Button One
+            </button>
+            <div className="link-description">
+              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
+            </div>
+          </div>
+          <div className="link">
+            <button className="link-button">
+              Button One
+            </button>
+            <div className="link-description">
+              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
+            </div>
+          </div>
+          <div className="link">
+            <button className="link-button">
+              Button One
+            </button>
+            <div className="link-description">
+              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
+            </div>
+          </div>
+          <div className="link">
+            <button className="link-button">
+              Button One
+            </button>
+            <div className="link-description">
+              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
+            </div>
+          </div>
+
+        </div>
       </div>
     );
   }
