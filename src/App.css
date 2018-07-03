@@ -38,7 +38,8 @@
 }
 
 body {
-  background-image: url('./Assets/background.jpg');
+  /* background-image: url('./Assets/background.jpg'); */
+  background-color: black;
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -62,7 +63,6 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   display: block;
-  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -86,3 +86,27 @@ body {
 .title-part::first-letter {
   font-size: 50px;
 } 
+
+.subtext {
+  color: white;
+  font-family: "AntipastoPro-Hairline";
+  letter-spacing: 5px;
+  font-size: 18px;
+  margin-top: 5px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.2;
+}
+
+.name {
+  color: white;
+  font-family: "AntipastoPro-Hairline";
+  letter-spacing: 5px;
+  font-size: 22px;
+  margin-top: 5px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.2;
+}

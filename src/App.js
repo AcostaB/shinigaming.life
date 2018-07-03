@@ -15,6 +15,12 @@ class App extends Component {
           <div className="title-part">GAMING.</div>
           <div className="title-part">LIFE</div>
         </div>
+        <div class="subtext">
+          My perpetually changing hobby website for learning and trying new web technologies.
+        </div>
+        <div class="name">
+         BRYAND ACOSTA
+        </div>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
