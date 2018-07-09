@@ -1,60 +1,24 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import './App.css';
+import Main from "./Views/Main";
+import testView from "./Views/testView";
+
+// TODO: research. React-router should not be necessary. Only react-router-dom
+// src: https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header">
-          Welcome to
-        </div>
-        <div className="logo"/>
-        <div className="title">
-          <div className="title-part">SHINI</div>
-          <div className="title-part">GAMING.</div>
-          <div className="title-part">LIFE</div>
-        </div>
-        <div class="subtext">
-          My perpetually changing hobby website for learning and trying new web technologies.
-        </div>
-        <div class="name">
-         BRYAND ACOSTA
-        </div>
-        <div className="links">
-          <div className="link">
-            <button className="link-button">
-              Button One
-            </button>
-            <div className="link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="link">
-            <button className="link-button">
-              Button One
-            </button>
-            <div className="link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="link">
-            <button className="link-button">
-              Button One
-            </button>
-            <div className="link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="link">
-            <button className="link-button">
-              Button One
-            </button>
-            <div className="link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-
-        </div>
+      <BrowserRouter>
+        <Switch>
+          {/* // TODO The order of the links seems to make a difference. Research this.  */}
+          <Route path="/" component={testView}/>
+          <Route path="/Test" component={Main}/>
+          <Route path="/Test2" component={Main}/>
+        </Switch>
+      </BrowserRouter>
       </div>
     );
   }
