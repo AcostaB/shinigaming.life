@@ -33,6 +33,7 @@ export class Dashboard extends React.Component<{}, IState> {
         <div className="App-body">
           <div className="App-body-content">
             <div className="dashboard">
+              {/* TODO clean this css up with styled components or something. */}
               <div className="dashboard-panel">
                 <AbilitiesPanel/>
               </div>
