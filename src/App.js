@@ -14,9 +14,10 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           {/* // TODO The order of the links seems to make a difference. Research this.  */}
-          <Route path="/" component={testView}/>
-          <Route path="/Test" component={Main}/>
-          <Route path="/Test2" component={Main}/>
+          {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
+          <Route exact path="/" component={testView}/>
+          <Route exact path="/Test" component={Main}/>
+          <Route exact path="/Test2" component={Main}/>
         </Switch>
       </BrowserRouter>
       </div>

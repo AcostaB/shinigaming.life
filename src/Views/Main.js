@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const Main = () => 
@@ -46,9 +46,9 @@ const Main = () =>
           </div>
           <div className="link">
             <button className="link-button">
-              <Link to="/Test">
+              <NavLink to="/">
                 Test
-              </Link>
+              </NavLink>
             </button>
             <div className="link-description">
               This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
