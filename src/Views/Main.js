@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./Main.css";
 
 const Main = () => 
   <div>
@@ -45,7 +46,7 @@ const Main = () =>
           </div>
           <div className="link">
             <button className="link-button">
-              <NavLink to="/">
+              <NavLink to="/DnD">
                 Test
               </NavLink>
             </button>

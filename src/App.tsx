@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-// import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import './App.css';
+import { Dashboard } from './Containers/Dashboard';
+import Main from './Views/Main';
 // import testView from "./Views/testView";
 
 // TODO: Added a symbolic link in order to be able to import packages from the children folders. This seems a bit odd tho. Research other options.
@@ -12,21 +14,24 @@ import './App.css';
 // src: https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
 
 class App extends Component {
-  render() {
+  render () {
     return (
+    <div>
       <div className="App">
-      placeholder
-      {/* <BrowserRouter>
-        <Switch> */}
-          {/* // TODO The order of the links seems to make a difference. Research this.  */}
-          {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
-          {/* <Route exact path="/" component={testView}/>
-          <Route exact path="/DnD" component={App}/>
-        </Switch>
-      </BrowserRouter> */}
+        placeholder
+        <BrowserRouter>
+          <Switch>
+            {/* // TODO The order of the links seems to make a difference. Research this.  */}
+            {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
+            <Route exact={true} path="/" component={Main}/>
+            <Route exact={true} path="/DnD" component={Dashboard}/>
+          </Switch>
+        </BrowserRouter>
       </div>
-    );
-  }
+    </div>)
+    }
+    
+  
 }
 
 // import React, { Component } from 'react';
