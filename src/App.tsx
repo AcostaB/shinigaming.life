@@ -7,6 +7,7 @@ import Main from './Views/Main';
 
 // TODO: Added a symbolic link in order to be able to import packages from the children folders. This seems a bit odd tho. Research other options.
 // TODO need to improve on the symbolic link. Should not point to everything, and instead point to only a few necessary things like a build output. 
+// TODO: set up beautify. 
 
 // import App from "DnD/src/App";
 
@@ -21,15 +22,13 @@ class App extends Component {
           <Switch>
             {/* // TODO The order of the links seems to make a difference. Research this.  */}
             {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
-            <Route exact={true} path="/" component={Main}/>
-            <Route exact={true} path="/DnD" component={Dashboard}/>
+            <Route exact={true} path="/" component={Dashboard}/>
+            <Route exact={true} path="/DnD" component={Main}/>
           </Switch>
         </BrowserRouter>
       </div>
-  )
-    }
-    
-  
+    )
+  }
 }
 
 // import React, { Component } from 'react';

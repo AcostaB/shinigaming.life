@@ -9,9 +9,6 @@ import rootReducer from './Reducers/dndReducers';
 import './index.css';
 import initialState from "./Models/InitialState";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
-
 const store: Store = createStore(rootReducer, initialState as any, (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
 console.log("Store state:", store.getState());

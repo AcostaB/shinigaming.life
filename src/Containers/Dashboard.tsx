@@ -25,13 +25,13 @@ export class Dashboard extends React.Component<{}, IState> {
   render() {
     return (
       <div className="App-DnD">
-        <div className="App-header">
-          <div className="App-header-content">
+        <div className="App-DnD-header">
+          <div className="App-DnD-header-content">
             <Header/>
           </div>
         </div>
-        <div className="App-body">
-          <div className="App-body-content">
+        <div className="App-DnD-body">
+          <div className="App-DnD-body-content">
             <div className="dashboard">
               {/* TODO clean this css up with styled components or something. */}
               <div className="dashboard-panel">
