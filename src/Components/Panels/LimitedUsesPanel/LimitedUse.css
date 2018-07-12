@@ -7,7 +7,7 @@
 .limitedUse-name {
     font-size: 15px;
     font-weight: bold;
-    font-family: "Roboto",Helvetica,sans-serif;
+    font-family: 'Roboto Condensed', "Roboto";
     line-height: 1.1;
     flex: 2;
     align-items: center;
@@ -17,13 +17,14 @@
     align-items: center;
     color: #979aa4;
     font-size: 10px;
-    font-family: Roboto,Helvetica,sans-serif;
+    font-family: "Roboto", Helvetica, sans-serif;
     flex: 1;
 }
   
 .limitedUse {
     width: 100%;
     -webkit-align-items: center;
+    align-items: center;
     line-height: 2.5;
 }
   
@@ -31,15 +32,7 @@
     display: flex;
     width: 100%;
     -webkit-align-items: center;
-}
-  
-.limitedUse-name {
-    font-size: 15px;
-    font-weight: bold;
-    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-    width: 40%;
-    text-align: left;
-    margin-left: 10px;
+    align-items: center;
 }
   
 .limitedUse-counter {
