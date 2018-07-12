@@ -16,9 +16,7 @@ import Main from './Views/Main';
 class App extends Component {
   render () {
     return (
-    <div>
       <div className="App">
-        placeholder
         <BrowserRouter>
           <Switch>
             {/* // TODO The order of the links seems to make a difference. Research this.  */}
@@ -28,7 +26,7 @@ class App extends Component {
           </Switch>
         </BrowserRouter>
       </div>
-    </div>)
+  )
     }
     
   

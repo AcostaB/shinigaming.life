@@ -24,7 +24,7 @@ export class Dashboard extends React.Component<{}, IState> {
 
   render() {
     return (
-      <div className="App">
+      <div className="App-DnD">
         <div className="App-header">
           <div className="App-header-content">
             <Header/>

@@ -3,54 +3,54 @@ import { NavLink } from "react-router-dom";
 import "./Main.css";
 
 const Main = () => 
-  <div>
-    <div className="header">
+  <div className="App-main">
+    <div className="App-main-header">
           Welcome to
         </div>
-        <div className="logo"/>
-        <div className="title">
-          <div className="title-part">SHINI</div>
-          <div className="title-part">GAMING.</div>
-          <div className="title-part">LIFE</div>
+        <div className="App-main-logo"/>
+        <div className="App-main-title">
+          <div className="App-main-title-part">SHINI</div>
+          <div className="App-main-title-part">GAMING.</div>
+          <div className="App-main-title-part">LIFE</div>
         </div>
-        <div className="subtext">
+        <div className="App-main-subtext">
           My perpetually changing hobby website for learning and trying new web technologies.
         </div>
-        <div className="name">
+        <div className="App-main-name">
          BRYAND ACOSTA
         </div>
-        <div className="links">
-          <div className="link">
-            <button className="link-button">
+        <div className="App-main-links">
+          <div className="App-main-link">
+            <button className="App-main-link-button">
               Button One
             </button>
-            <div className="link-description">
+            <div className="App-main-link-description">
               This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
             </div>
           </div>
-          <div className="link">
-            <button className="link-button">
+          <div className="App-main-link">
+            <button className="App-main-link-button">
               Button One
             </button>
-            <div className="link-description">
+            <div className="App-main-link-description">
               This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
             </div>
           </div>
-          <div className="link">
-            <button className="link-button">
+          <div className="App-main-link">
+            <button className="App-main-link-button">
               Button One
             </button>
-            <div className="link-description">
+            <div className="App-main-link-description">
               This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
             </div>
           </div>
-          <div className="link">
-            <button className="link-button">
+          <div className="App-main-link">
+            <button className="App-main-link-button">
               <NavLink to="/DnD">
                 Test
               </NavLink>
             </button>
-            <div className="link-description">
+            <div className="App-main-link-description">
               This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
             </div>
           </div>
