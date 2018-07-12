@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Main.css";
 
+// TODO: Don't like having this file in a "view" folder.
+
 const Main = () => 
   <div className="App-main">
     <div className="App-main-header">
