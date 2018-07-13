@@ -21,8 +21,8 @@ class App extends Component {
           <Switch>
             {/* // TODO The order of the links seems to make a difference. Research this.  */}
             {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
-            <Route exact={true} path="/" component={Dashboard}/>
-            <Route exact={true} path="/DnD" component={Main}/>
+            <Route exact={true} path="/" component={Main}/>
+            <Route exact={true} path="/DnD" component={Dashboard}/>
           </Switch>
         </BrowserRouter>
       </div>

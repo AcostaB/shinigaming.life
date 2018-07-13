@@ -135,9 +135,7 @@
 }
 
 /* Fix this up */
-html,
-body, 
-#root,
-.App {
+body {
   height: 100%;
+  background-color: black;
 }
