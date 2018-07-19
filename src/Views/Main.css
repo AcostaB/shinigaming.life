@@ -78,53 +78,20 @@
 .App-main-link {
   display: inline-block;
   width: 200px;
+  vertical-align: top;
 }
 
 .App-main-link-button {
-  display: inline-block;
   -webkit-font-smoothing: antialiased;
   width: 180px;
-  position: relative;
   padding: .4em .2em;
   background: #009ED8;
   border: none;
   color: black;
-  transition: .2s;
   font-family: "AntipastoPro-Hairline";
   font-size: 20px;
   font-weight: bold;
-}
-
-.App-main-link-button::before {
-  position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    padding-top: inherit;
-    padding-bottom: inherit;
-    width: 2.8em;
-    content: "\00a0";
-    font-family: 'FontAwesome', sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-    transition: .2s;
-    transform-origin: 50% 60%;
-}
-
-.App-main-link-button::after {
-  position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    padding-top: inherit;
-    padding-bottom: inherit;
-    width: 1em;
-    content: "\00a0";
-    font-family: 'FontAwesome', sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-    transition: .2s;
-    transform-origin: 50% 60%;
+  cursor: pointer;
 }
 
 .App-main-link-description {

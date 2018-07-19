@@ -4,6 +4,8 @@ import "./Main.css";
 
 // TODO: Don't like having this file in a "view" folder.
 
+// TODO: Create a component for the button link and description
+
 const Main = () => 
   <div className="App-main">
     <div className="App-main-header">
@@ -23,37 +25,37 @@ const Main = () =>
         </div>
         <div className="App-main-links">
           <div className="App-main-link">
-            <button className="App-main-link-button">
-              Button One
-            </button>
-            <div className="App-main-link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="App-main-link">
-            <button className="App-main-link-button">
-              Button One
-            </button>
-            <div className="App-main-link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="App-main-link">
-            <button className="App-main-link-button">
-              Button One
-            </button>
-            <div className="App-main-link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
-            </div>
-          </div>
-          <div className="App-main-link">
-            <button className="App-main-link-button">
               <NavLink to="/DnD">
-                Test
+                <button className="App-main-link-button">
+                    DnD
+                </button>
               </NavLink>
+            <div className="App-main-link-description">
+              Recreated the DnD character sheet found in DnDBeyond.com. Built using React, Typescript, and Redux. 
+            </div>
+          </div>
+          <div className="App-main-link">
+            <button className="App-main-link-button">
+              Coming soon.
             </button>
             <div className="App-main-link-description">
-              This is the description for the first button. Text will likely be very long, but it will still look really awesome!!
+              MMORPG character simulator created using Aurelia and QUnit. 
+            </div>
+          </div>
+          <div className="App-main-link">
+            <button className="App-main-link-button">
+              Coming soon.
+            </button>
+            <div className="App-main-link-description">
+              Here you can read more about my skills as a developers and what previous coworkers have to say about me.
+            </div>
+          </div>
+          <div className="App-main-link">
+            <button className="App-main-link-button">
+              Github
+            </button>
+            <div className="App-main-link-description">
+              Check out the source code behind this site.
             </div>
           </div>
         </div>

@@ -7,22 +7,9 @@ import initialState from "../Models/InitialState";
 
 // TODO need better types for this entire file.
 
-// TODO fix this any and variable names. 
-// function createReducer(initialState2: any, handlers: any) {
-//     return function reducer(state = initialState2, action2: Actions) {
-//         if (handlers.hasOwnProperty(action2.type)) {
-//             return handlers[action2.type](state, action2)
-//         } else {
-//             return state
-//         }
-//     }
-// }
-
 const decreaseHealth = (state: IAppStore["remainingHealth"] = 0): IAppStore["remainingHealth"] => 
     state > 0 ? state - 1 : state;
 
-// TODO deal with needing more that a single slice from state.
-// const increaseHealth: Reducer<IAppStore["remainingHealth"]> = (state = 0) => {
 const increaseHealth = (state: IAppStore["remainingHealth"] = 0, character: IAppStore["character"]): IAppStore["remainingHealth"] =>
     state < character.maximumHealth ? state + 1 : state;
 
@@ -37,20 +24,6 @@ const increaseHealthBy10 = (state: IAppStore["remainingHealth"] = 0, character: 
 const increaseHealthToMax = (state: IAppStore["character"]): IAppStore["remainingHealth"] => 
     state.maximumHealth
 
-// const shortRest = (state: any) => {
-//     const remainingLimitedUses = reduce(state.limitedUses, (accumulator, value) => {
-//         return accumulator[value.id] = value.shortRestRecover ? value.maxUses : state.remainingLimitedUses[value.id];
-//     }, {});
-//     return { ...state, remainingLimitedUses };
-// };
-
-// const longRest = (state: any) => {
-//     const remainingLimitedUses = reduce(state.limitedUses, (accumulator, value) => {
-//         return accumulator[value.id] = value.maxUses;
-//     }, {});
-//     return { ...state, remainingLimitedUses };
-// };
-
 const decreaseLimitedUse = (state: IAppStore["remainingLimitedUses"], action: ReturnType<typeof Actions.decreaseLimitedUse>): IAppStore["remainingLimitedUses"] => {
     const newValue = state[action.payload] > 0 ? state[action.payload] - 1 : 0;
     return {...state, [action.payload]: newValue}
@@ -63,7 +36,6 @@ const increaseLimitedUse = (state: IAppStore["remainingLimitedUses"], action: Re
     return { ...state, [action.payload]: newValue}
 };
 
-// TODO need to fix this. should not be a property called limited use inside limited uses. 
 const shortRestRecoverLimitedUse = (state: IAppStore["remainingLimitedUses"], limitedUses: IAppStore["limitedUses"]): IAppStore["remainingLimitedUses"] =>
     mapValues(state, (value, index) => (limitedUses[index] as LimitedUse).shortRestRecover? (limitedUses[index] as LimitedUse).maxUses : value) as IAppStore["remainingLimitedUses"]
 
@@ -93,7 +65,6 @@ const longRestRecoverLimitedUse = (state: IAppStore["remainingLimitedUses"], lim
 
 // TODO read more on this: https://daveceddia.com/how-does-redux-work/ @@redux
 
-// TODO fix this any
 export const healthReducer = (state: IAppStore["remainingHealth"], action: Actions, character: IAppStore["character"]) => {
     switch (action.type) {
     case dndActions.DECREASE_HEALTH : return decreaseHealth(state)
@@ -105,15 +76,6 @@ export const healthReducer = (state: IAppStore["remainingHealth"], action: Actio
             return state
     }
 }
-
-// export const restReducer = (state : any, action: Actions) => {
-//     switch (action.type) {
-//         case dndActions.SHORT_REST : return shortRest(state)
-//         case dndActions.LONG_REST : return longRest(state)
-//         default:
-//             return state
-//     }
-// }
 
 export const limitedUsesReducer = (state : any, action: Actions, limitedUses: IAppStore["limitedUses"]) => {
     switch (action.type) {
@@ -141,7 +103,6 @@ export const inventoryReducer = (state : any, action: Actions) => {
 export default (state: IAppStore = initialState, action: Actions): IAppStore => ({
     ...state,
     remainingHealth: healthReducer(state.remainingHealth, action, state.character),
-    // b: restReducer(state.remainingHealth, action),
     remainingLimitedUses: limitedUsesReducer(state.remainingLimitedUses, action, state.limitedUses),
     remainingItems: inventoryReducer(state.inventory, action)
 });

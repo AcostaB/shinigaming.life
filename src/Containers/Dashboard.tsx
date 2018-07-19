@@ -8,7 +8,6 @@ import InventoryPanel from "../Components/Panels/InventoryPanel/InventoryPanel";
 import LimitedUsesPanel from "../Components/Panels/LimitedUsesPanel/LimitedUsesPanel";
 import PassivesPanel from "../Components/Panels/PassivesPanel/PassivesPanel";
 import SkillsPanel from "../Components/Panels/SkillsPanel/SkillsPanel";
-// import { api } from "../API/requests";
 
 import {Currency} from "../Models/Currency";
 
@@ -21,7 +20,6 @@ interface IState {
 }
 
 export class Dashboard extends React.Component<{}, IState> {
-
   render() {
     return (
       <div className="App-DnD">
