@@ -94,6 +94,10 @@
   cursor: pointer;
 }
 
+.disabled {
+  cursor: default;
+}
+
 .App-main-link-description {
   display: inline-block;
   margin: 0 10px 0 10px;

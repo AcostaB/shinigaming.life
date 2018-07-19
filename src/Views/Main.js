@@ -34,8 +34,8 @@ const Main = () =>
               Recreated the DnD character sheet found in DnDBeyond.com. Built using React, Typescript, and Redux. 
             </div>
           </div>
-          <div className="App-main-link">
-            <button className="App-main-link-button">
+          <div className="App-main-link disabled">
+            <button className="App-main-link-button disabled">
               Coming soon.
             </button>
             <div className="App-main-link-description">
@@ -43,7 +43,7 @@ const Main = () =>
             </div>
           </div>
           <div className="App-main-link">
-            <button className="App-main-link-button">
+            <button className="App-main-link-button disabled">
               Coming soon.
             </button>
             <div className="App-main-link-description">
@@ -51,9 +51,11 @@ const Main = () =>
             </div>
           </div>
           <div className="App-main-link">
-            <button className="App-main-link-button">
-              Github
-            </button>
+            <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
+              <button className="App-main-link-button">
+                Github
+              </button>
+            </a>
             <div className="App-main-link-description">
               Check out the source code behind this site.
             </div>
