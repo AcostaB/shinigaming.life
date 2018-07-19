@@ -51,7 +51,7 @@ const Main = () =>
             </div>
           </div>
           <div className="App-main-link">
-              <button className="App-main-link-button">
+              <button className="App-main-link-button disabled">
                 <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
                     Github
                 </a>
