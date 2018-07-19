@@ -23,6 +23,7 @@
     background-color: #c3c0ba;
     color: #fff;
     cursor: pointer;
+    text-align: center;
 }
 
 .inventory-tabs-items.active {
@@ -40,6 +41,7 @@
     color: #fff;
     border-left: 1px solid #fff;
     cursor: pointer;
+    text-align: center;
 }
 
 .inventory-tabs-currency.active {

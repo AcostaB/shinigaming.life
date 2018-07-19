@@ -51,11 +51,11 @@ const Main = () =>
             </div>
           </div>
           <div className="App-main-link">
-            <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
               <button className="App-main-link-button">
-                Github
+                <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
+                    Github
+                </a>
               </button>
-            </a>
             <div className="App-main-link-description">
               Check out the source code behind this site.
             </div>
