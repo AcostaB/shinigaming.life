@@ -1,42 +1,44 @@
-import {IAppStore} from "../Types/Types";
-import {abilities} from "./Abilities";
-import {attacks} from "./Attacks";
-import {currency} from "./Currency";
-import {items} from './Items';
-import {leftColumnSkills, rightColumnSkills} from "./Skills";
-import {limitedUses} from "./LimitedUses";
-import {passives} from "./Passives";
-import {keyBy, reduce} from "lodash";
-import {character as characterModel} from "./Character";
+import { IAppStore } from "../Types/Types";
+import { abilities } from "./Abilities";
+import { attacks } from "./Attacks";
+import { currency } from "./Currency";
+import { items } from "./Items";
+import { leftColumnSkills, rightColumnSkills } from "./Skills";
+import { limitedUses } from "./LimitedUses";
+import { passives } from "./Passives";
+import { keyBy, reduce } from "lodash";
+import { character as characterModel } from "./Character";
 
-
-// TODO: figure out how to structure this data. Normalize? Object with IDs as keys?
 // TODO Improve on this.
 const initialState: IAppStore = {
   // Header component
-      character: characterModel,
-      remainingHealth: characterModel.maximumHealth,
+  character: characterModel,
+  remainingHealth: characterModel.maximumHealth,
   // Abilities Panel
-      abilities:  keyBy(abilities, "id"),
+  abilities: keyBy(abilities, "id"),
   // Attacks Panel
-      attacks: keyBy(attacks, "id"),
+  attacks: keyBy(attacks, "id"),
   // Passives panel
-      passives: keyBy(passives, "id"),
+  passives: keyBy(passives, "id"),
   // Limited Uses Panel
-      limitedUses: keyBy(limitedUses, "id"),
-      remainingLimitedUses: reduce(limitedUses, (accumulator, currentValue) => { 
-        accumulator[currentValue.id] = currentValue.maxUses; 
-        return accumulator;
-      }, {}),
+  limitedUses: keyBy(limitedUses, "id"),
+  remainingLimitedUses: reduce(
+    limitedUses,
+    (accumulator, currentValue) => {
+      accumulator[currentValue.id] = currentValue.maxUses;
+      return accumulator;
+    },
+    {}
+  ),
   // Skills panel
-    leftColumnSkills: keyBy(leftColumnSkills, "id"),
-    rightColumnSkills: keyBy(rightColumnSkills, "id"),
+  leftColumnSkills: keyBy(leftColumnSkills, "id"),
+  rightColumnSkills: keyBy(rightColumnSkills, "id"),
   // Inventory Panel
-    inventory: keyBy(items, "_id"),
-    remainingItems: {},
-    currency,
-    currencyTabActive: true,
-    addNewItemExpanded: false
-}
+  inventory: keyBy(items, "_id"),
+  remainingItems: {},
+  currency,
+  currencyTabActive: true,
+  addNewItemExpanded: false
+};
 
 export default initialState;
