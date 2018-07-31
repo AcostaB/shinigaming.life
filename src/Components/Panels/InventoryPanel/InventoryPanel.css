@@ -59,6 +59,7 @@
   -ms-flex-align: center;
   align-items: center;
   height: 65px;
+  background-size: 100% 67px;
 }
 
 .currency-label {

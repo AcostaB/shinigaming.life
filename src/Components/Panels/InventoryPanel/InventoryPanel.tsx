@@ -34,15 +34,11 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
     };
   }
 
-  // TODO: fix this any.
-  // TODO: toggleCurrencyTab = (e: MouseEvent<HTMLElement>): void => {
-  toggleCurrencyTab = (e: any): void => {
-    if (e.target.key === "currency") {
-      this.setState(() => ({ isCurrencyTabActive: true }));
-    } else {
-      this.setState(() => ({ isCurrencyTabActive: false }));
-    }
-  };
+  activateInventoryTab = () =>
+    this.setState(() => ({ isCurrencyTabActive: false }));
+
+  activateCurrencyTab = () =>
+    this.setState(() => ({ isCurrencyTabActive: true }));
 
   renderInventory = (items: Item[]): JSX.Element => {
     return (
@@ -147,7 +143,7 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
                   "inventory-tabs-items " +
                   (this.state.isCurrencyTabActive ? "" : "active")
                 }
-                onClick={this.toggleCurrencyTab}
+                onClick={this.activateInventoryTab}
               >
                 Items
               </div>
@@ -157,7 +153,7 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
                   "inventory-tabs-currency " +
                   (this.state.isCurrencyTabActive ? "active" : "")
                 }
-                onClick={this.toggleCurrencyTab}
+                onClick={this.activateCurrencyTab}
               >
                 Currency
               </div>
