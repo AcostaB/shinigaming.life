@@ -54,7 +54,7 @@ export const LimitedUseRow: SFC<IProps> = props => {
   );
 
   const renderLimitedUseBody = () =>
-    typeof props === typeof Spell ? (
+    props.limitedUse.hasOwnProperty('spellLevel') ? (
       <SpellDetails spell={props.limitedUse as Spell} />
     ) : (
       renderLimitedUseBasic(props.limitedUse.description)
