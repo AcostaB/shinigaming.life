@@ -114,7 +114,7 @@ export const healthReducer = (
 };
 
 export const limitedUsesReducer = (
-  state: any,
+  state: IAppStore["remainingLimitedUses"],
   action: Actions,
   limitedUses: IAppStore["limitedUses"]
 ) => {
