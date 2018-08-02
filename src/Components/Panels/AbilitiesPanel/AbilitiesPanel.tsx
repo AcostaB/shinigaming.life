@@ -1,5 +1,5 @@
 import React, { SFC } from "react";
-import { Panel } from "../../Generic/Panel/Panel";
+import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 import { connect } from "react-redux";

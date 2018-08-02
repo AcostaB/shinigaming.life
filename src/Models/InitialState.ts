@@ -9,18 +9,13 @@ import { passives } from "./Passives";
 import { keyBy, reduce } from "lodash";
 import { character as characterModel } from "./Character";
 
-// TODO Improve on this.
+// TODO Apply proper initial state
 const initialState: IAppStore = {
-  // Header component
   character: characterModel,
   remainingHealth: characterModel.maximumHealth,
-  // Abilities Panel
   abilities: keyBy(abilities, "id"),
-  // Attacks Panel
   attacks: keyBy(attacks, "id"),
-  // Passives panel
   passives: keyBy(passives, "id"),
-  // Limited Uses Panel
   limitedUses: keyBy(limitedUses, "id"),
   remainingLimitedUses: reduce(
     limitedUses,
@@ -30,10 +25,8 @@ const initialState: IAppStore = {
     },
     {}
   ),
-  // Skills panel
   leftColumnSkills: keyBy(leftColumnSkills, "id"),
   rightColumnSkills: keyBy(rightColumnSkills, "id"),
-  // Inventory Panel
   inventory: keyBy(items, "_id"),
   remainingItems: {},
   currency,

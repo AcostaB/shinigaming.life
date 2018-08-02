@@ -1,5 +1,5 @@
 import React, { SFC, SyntheticEvent } from "react";
-import { ExpandableItem } from "../../Generic/ExpandableItem/ExpandableItem";
+import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { SpellDetails } from "./SpellDetails";
 import "./LimitedUse.css";
 import { LimitedUse } from "../../../Models/LimitedUses";
@@ -54,7 +54,7 @@ export const LimitedUseRow: SFC<IProps> = props => {
   );
 
   const renderLimitedUseBody = () =>
-    props.limitedUse.hasOwnProperty('spellLevel') ? (
+    props.limitedUse.hasOwnProperty("spellLevel") ? (
       <SpellDetails spell={props.limitedUse as Spell} />
     ) : (
       renderLimitedUseBasic(props.limitedUse.description)

@@ -1,6 +1,6 @@
 // import React, {MouseEvent} from 'react';
 import React from "react";
-import { Panel } from "../../Generic/Panel/Panel";
+import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { ItemRow } from "./ItemRow";
 import { Item } from "../../../Models/Items";
 import { Currency } from "../../../Models/Currency";

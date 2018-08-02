@@ -1,5 +1,5 @@
 import React, { SFC } from "react";
-import { Panel } from "../../Generic/Panel/Panel";
+import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { LimitedUseRow } from "./LimitedUseRow";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
