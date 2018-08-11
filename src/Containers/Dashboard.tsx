@@ -35,27 +35,25 @@ export class Dashboard extends React.Component<{}, IState> {
         </DnDHeader>
         <DnDBody>
           <BodyContent>
-            <Dashboard>
-              {/* TODO clean this css up with styled components or something. */}
-              <Panel>
-                <AbilitiesPanel />
-              </Panel>
-              <Panel className="dashboard-panel">
-                <SkillsPanel />
-              </Panel>
-              <Panel className="dashboard-panel">
-                <LimitedUsesPanel />
-              </Panel>
-              <Panel className="dashboard-panel">
-                <PassivesPanel />
-              </Panel>
-              <Panel className="dashboard-panel">
-                <AttacksPanel />
-              </Panel>
-              <Panel className="dashboard-panel">
-                <InventoryPanel />
-              </Panel>
-            </Dashboard>
+            {/* TODO clean this css up with styled components or something. */}
+            <Panel>
+              <AbilitiesPanel />
+            </Panel>
+            <Panel>
+              <SkillsPanel />
+            </Panel>
+            <Panel>
+              <LimitedUsesPanel />
+            </Panel>
+            <Panel>
+              <PassivesPanel />
+            </Panel>
+            <Panel>
+              <AttacksPanel />
+            </Panel>
+            <Panel>
+              <InventoryPanel />
+            </Panel>
           </BodyContent>
         </DnDBody>
       </DnD>
