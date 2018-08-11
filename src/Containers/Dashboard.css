@@ -1,119 +1,74 @@
-.App-DnD {
-    background-image: url("../Assets/body-background.jpg");
-    background-position-x: center, initial;
-    background-position-y: 120px;
-    background-size: initial, initial;
-    background-repeat: no-repeat, initial;
-    background-attachment: initial, initial;
-    background-origin: initial, initial;
-    background-clip: initial, initial;
-    background-color: rgb(249, 249, 249);
-    height: 100%;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-  }
-  
-  .App-DnD-header {
-    background: url("../Assets/header-background.png");
-    background-position-y: -238px;
-  }
-  
-  .App-DnD-header-content,
-  .App-DnD-body-content {
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .App-DnD-header-content {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  
-  .App-body {
-    margin: 20px auto;
-  }
-  
-  @media (max-width: 800px) {
-    .App-body {
-      padding: 20px 10px 0 20px !important;
-    }
-  }
-  
-  body {
-    font-family: "Roboto Condensed", sans-serif;
-  }
-  
-  .mod-cell, .save-cell {
-    min-width: 60px;
-  }
-
-.dashboard-panel {
-    width: 33%;
-    display: inline-block;
-    padding: 0 5px 15px 5px;
-    box-sizing: border-box;
-
-}
-
-.attacks-perAction {
-    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-    font-size: 13px;
-    text-align: left;
-    padding-top: 10px;
-    margin-left: 20px;
-}
-
-.rest-buttons {
-    display: flex;
-}
-
-.shortRest, 
-.longRest {
-    border-radius: 3px;
-    background-color: #96bf6b;
-    color: #fff;
-    font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-    font-size: 10px;
-    border: 1px solid transparent;
-    text-transform: uppercase;
-    padding: 9px 15px;
-    transition: all 50ms;
-    flex: 1;
-    margin: 5px;
-}
-
-
-.addItem-row {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-}
-
-.input-label {
-    display: block;
-    text-align: left;
-    font-size: 15px;
-    font-weight: bold;
-    font-family: Roboto,Helvetica,sans-serif;
-    line-height: 1.1;
-    flex: 1;
-    align-items: center;
-}
-
-.input {
-    display: block;
-    text-align: left;
-    flex: 1;
+/* TODO fix this */
+body {
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .shortRest.blue {
-    background-color: #021638;
+  background-color: #021638;
 }
 
 .submit {
-    display: block;
-    text-align: left;
-    flex: 1;
+  display: block;
+  text-align: left;
+  flex: 1;
 }
+/* 
+const Cell = styled.div`
+  min-width: 60px;
+`;
+
+const AttacksPerAction = `
+  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+  font-size: 13px;
+  text-align: left;
+  padding-top: 10px;
+  margin-left: 20px;
+`;
+
+const RestButtons = styled.div`
+  display: flex;
+`;
+
+const RestButton = styled.div`
+  border-radius: 3px;
+  background-color: #96bf6b;
+  color: #fff;
+  font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
+  font-size: 10px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  padding: 9px 15px;
+  transition: all 50ms;
+  flex: 1;
+  margin: 5px;
+`;
+
+const AddItemRow = styled.div`
+  display: flex;
+  padding: 10px;
+  align-items: center;
+`;
+
+const InputLabel = styled.div`
+  display: block;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Roboto, Helvetica, sans-serif;
+  line-height: 1.1;
+  flex: 1;
+  align-items: center;
+`;
+
+const Input = styled.div`
+  display: block;
+  text-align: left;
+  flex: 1;
+`;
+
+const Submit = styled.div`
+  display: block;
+  text-align: left;
+  flex: 1;
+`; */
+
