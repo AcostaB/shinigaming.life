@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import shinigami from "../Assets/Shinigami.png";
 import "./HomePage.css";
 
-// TODO: Don't like having this file in a "view" folder.
-
+// TODO: this isn't really a container file.
 // TODO: Create a component for the button link and description
 
 const HomePage = () => (
@@ -31,21 +31,23 @@ const HomePage = () => (
           React, Typescript, and Redux.
         </Description>
       </Link>
-      <div className="App-main-link disabled">
-        <button className="App-main-link-button disabled">Coming soon.</button>
+      <Link>
+        <button className="App-main-link-button">Coming soon.</button>
         <Description>
           MMORPG character simulator created using Aurelia and QUnit.
         </Description>
-      </div>
+      </Link>
       <Link>
-        <button className="App-main-link-button disabled">Coming soon.</button>
+        <NavLink to="/AboutMe">
+          <Button>About Me</Button>
+        </NavLink>
         <Description>
-          Here you can read more about my skills as a developers and what
-          previous coworkers have to say about me.
+          Learn about my skills as a developers and what previous coworkers have
+          to say about me.
         </Description>
       </Link>
       <Link>
-        <button className="App-main-link-button disabled">
+        <button className="App-main-link-button">
           <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
             Github
           </a>
@@ -75,7 +77,7 @@ const Header = styled.div`
 const Logo = styled.div`
   width: 340px;
   height: 450px;
-  background-image: url("../Assets/Shinigami.png");
+  background-image: url(${shinigami});
   background-repeat: no-repeat;
   background-size: 100%;
   display: block;
@@ -93,14 +95,14 @@ const Title = styled.div`
   background: linear-gradient(-90deg,  red,  green);
 `;
 
+// Example of pseudo selectors in styled components.
 const TitlePart = styled.div`
   display: inline-block;
   letter-spacing: 5px;
+  &::first-letter {
+    font-size: 50px;
+  }
 `;
-
-// .App-main-title-part::first-letter {
-//   font-size: 50px;
-// }
 
 const TitleSubtext = styled.div`
   color: white;
