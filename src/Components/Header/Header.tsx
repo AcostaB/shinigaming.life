@@ -1,5 +1,4 @@
 import React, { SFC } from "react";
-import "./Header.css";
 import { Character } from "../../Models/Character";
 import Stat from "../../Models/Stat";
 import { Dispatch } from "redux";

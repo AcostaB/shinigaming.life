@@ -1,5 +1,6 @@
 import React from "react";
 import "./ExpandableItem.css";
+import styled from "styled-components";
 
 interface IProps {
   expandableItemBody: JSX.Element | string;
@@ -22,11 +23,7 @@ export class ExpandableItem extends React.Component<IProps, IState> {
 
   renderBody(): JSX.Element | string {
     if (this.state != null && this.state.expanded) {
-      return (
-        <div className="expandableItem-body">
-          {this.props.expandableItemBody}
-        </div>
-      );
+      return this.props.expandableItemBody;
     } else {
       return "";
     }
@@ -35,17 +32,42 @@ export class ExpandableItem extends React.Component<IProps, IState> {
   render(): JSX.Element {
     return (
       <div>
-        <div className="expandableItem-header">
-          <div className="expandableItem-header-content">
-            {this.props.expandableItemHeader}
-          </div>
-          <div
-            className="expandableItem-header-icon"
-            onClick={this.handleExpandedClick}
-          />
-        </div>
+        <Header>
+          <HeaderContent>{this.props.expandableItemHeader}</HeaderContent>
+          <Icon onClick={this.handleExpandedClick} />
+        </Header>
         {this.renderBody()}
       </div>
     );
   }
 }
+
+const Header = styled.div`
+  background-image: url("../../../Assets/expandable-header.png");
+  z-index: 2;
+  height: 45px;
+  background-size: 100% 45px;
+  display: flex;
+  margin: 5px 5px 5px 5px;
+  -webkit-align-items: center;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  margin: 8px;
+  -webkit-align-items: center;
+`;
+
+const Icon = styled.div`
+  height: 16px;
+  width: 16px;
+  background: transparent 0 0 url("../../../Assets/plus_minus-green.svg")
+    no-repeat;
+  background-size: cover;
+  margin-left: 5px;
+  cursor: pointer;
+  display: flex;
+  margin-right: 20px;
+`;
