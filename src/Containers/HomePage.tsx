@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import shinigami from "../Assets/Shinigami.png";
-import "./HomePage.css";
 
 // TODO: this isn't really a container file.
 // TODO: Create a component for the button link and description
@@ -47,11 +46,11 @@ const HomePage = () => (
         </Description>
       </Link>
       <Link>
-        <button className="App-main-link-button">
+        <LinkButton>
           <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
             Github
           </a>
-        </button>
+        </LinkButton>
         <Description>Check out the source code behind this site.</Description>
       </Link>
     </Links>
@@ -161,6 +160,19 @@ const Description = styled.div`
   letter-spacing: 1px;
   margin-top: 10px;
   line-height: 1.1;
+`;
+
+const LinkButton = styled.button`
+  -webkit-font-smoothing: antialiased;
+  width: 180px;
+  padding: 0.4em 0.2em;
+  background: #009ed8;
+  border: none;
+  color: black;
+  font-family: "AntipastoPro-Hairline";
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 // .disabled {
