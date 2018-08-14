@@ -1,4 +1,4 @@
-interface WorkExperience {
+export interface IWorkExperience {
   companyName: string;
   startDate: Date;
   endDate: Date | null;
@@ -6,7 +6,7 @@ interface WorkExperience {
   jobResponsibilities: string[];
 }
 
-export const workExperiences: WorkExperience[] = [
+export const workExperiences: IWorkExperience[] = [
   {
     companyName: "Infinity Software",
     startDate: new Date(2015, 10, 1),

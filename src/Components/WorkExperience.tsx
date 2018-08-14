@@ -2,17 +2,10 @@ import React, {SFC} from "react";
 import styled from "styled-components";
 import {map} from "lodash";
 import moment, { Moment } from "moment";
-import {convertMonthToYearMonthDisplay} from "../../Utils/Utils";
+import {convertMonthToYearMonthDisplay} from "../Utils/Utils";
+import {IWorkExperience} from "../Models/WorkExperience";
 
-interface IProps {
-  companyName: string;
-  startDate: Date;
-  endDate: Date | null;
-  jobTitle: string;
-  jobResponsibilities: string[];
-} 
-
-const WorkExperience: SFC<IProps> = (props) => {
+const WorkExperience: SFC<IWorkExperience> = (props) => {
   const start : Moment = moment(props.startDate);
   const end : Moment = props.endDate ? moment(props.endDate) : moment();
   let differenceInMonths: number = end.diff(start, "month");
