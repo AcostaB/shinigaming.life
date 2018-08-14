@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { Dashboard } from "./Containers/Dashboard";
+import  AboutMe  from "./Containers/AboutMe";
 import HomePage from "./Containers/HomePage";
 
 // TODO: research. React-router should not be necessary. Only react-router-dom
@@ -16,6 +17,7 @@ class App extends Component {
             {/* Routes finds anything that matches description. Needs "exact" src: https://blog.pusher.com/getting-started-with-react-router-v4/ */}
             <Route exact={true} path="/" component={HomePage} />
             <Route exact={true} path="/DnD" component={Dashboard} />
+            <Route exact={true} path="/AboutMe" component={AboutMe} />
           </Switch>
         </BrowserRouter>
       </div>

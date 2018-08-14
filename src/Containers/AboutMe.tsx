@@ -1,9 +1,15 @@
 import React from "react";
-import "./About.css";
+import { map } from "lodash";
+
+import WorkExperience from "../Components/WorkExperience/WorkExperience";
+
+import {workExperiences} from "../Models/WorkExperience";
 
 const AboutMe = () => (
   <div>
-    <div>Title</div>
+    {
+      map(workExperiences, value => <WorkExperience {...value}/>)
+    }
   </div>
 );
 
