@@ -1,5 +1,4 @@
 import React from "react";
-import "./ExpandableItem.css";
 import styled from "styled-components";
 
 interface IProps {
@@ -32,17 +31,17 @@ export class ExpandableItem extends React.Component<IProps, IState> {
   render(): JSX.Element {
     return (
       <div>
-        <Header>
-          <HeaderContent>{this.props.expandableItemHeader}</HeaderContent>
-          <Icon onClick={this.handleExpandedClick} />
-        </Header>
+        <ExpandableItemHeader>
+          <ExpandableItemHeaderContent>{this.props.expandableItemHeader}</ExpandableItemHeaderContent>
+          <ExpandableItemIcon onClick={this.handleExpandedClick} />
+        </ExpandableItemHeader>
         {this.renderBody()}
       </div>
     );
   }
 }
 
-const Header = styled.div`
+const ExpandableItemHeader = styled.div`
   background-image: url("../../../Assets/expandable-header.png");
   z-index: 2;
   height: 45px;
@@ -52,7 +51,7 @@ const Header = styled.div`
   -webkit-align-items: center;
 `;
 
-const HeaderContent = styled.div`
+const ExpandableItemHeaderContent = styled.div`
   display: flex;
   flex: 1;
   min-width: 0;
@@ -60,7 +59,7 @@ const HeaderContent = styled.div`
   -webkit-align-items: center;
 `;
 
-const Icon = styled.div`
+const ExpandableItemIcon = styled.div`
   height: 16px;
   width: 16px;
   background: transparent 0 0 url("../../../Assets/plus_minus-green.svg")

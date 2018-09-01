@@ -5,6 +5,7 @@ import { Skill } from "../../../Models/Skills";
 import { connect } from "react-redux";
 import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
+import styled from "styled-components";
 
 interface IProps {
   leftColumnSkills: Skill[];
@@ -19,11 +20,11 @@ const SkillsPanelBase: SFC<IProps> = ({
     <Panel.Header title="SKILLS" />
     <Panel.Body>
       <div className="panel-content-columns">
-        <div className="panel-content-column skill-column">
+        <SkillsPanel_Content_Column className="skill-column">
           {leftColumnSkills.map(skill => (
             <SkillRow key={skill.skillName} skill={skill} />
           ))}
-        </div>
+        </SkillsPanel_Content_Column>
         <div className="panel-content-column skill-column">
           {rightColumnSkills.map(skill => (
             <SkillRow key={skill.skillName} skill={skill} />
@@ -42,3 +43,28 @@ const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
 const SkillsPanel = connect(mapStateToProps)(SkillsPanelBase);
 
 export default SkillsPanel;
+
+// TODO need to make sure that the double element selector is working properly.
+const SkillsPanel_Content_Column = styled.div`
+  box-sizing: border-box;
+
+  display: inline-block;
+
+  &:first-child {
+    padding-right: 10px;
+  }
+
+  &:not(:first-child) {
+    border-left: 1px solid #edeae8;
+  }
+
+  &:not(:first-child),
+  :not(:last-child) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &:last-child {
+    padding-left: 10px;
+  }
+`;

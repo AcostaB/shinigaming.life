@@ -7,57 +7,59 @@ import shinigami from "../Assets/Shinigami.png";
 // TODO: Create a component for the button link and description
 
 const HomePage = () => (
-  <Main>
-    <Header>Welcome to</Header>
-    <Logo />
-    <Title>
-      <TitlePart>SHINI</TitlePart>
-      <TitlePart>GAMING.</TitlePart>
-      <TitlePart>LIFE</TitlePart>
-    </Title>
-    <TitleSubtext>
+  <Home_Main>
+    <Home_Header>Welcome to</Home_Header>
+    <Home_Logo />
+    <Home_Title>
+      <Home_Title_Part>SHINI</Home_Title_Part>
+      <Home_Title_Part>GAMING.</Home_Title_Part>
+      <Home_Title_Part>LIFE</Home_Title_Part>
+    </Home_Title>
+    <Home_Title_Subtext>
       My perpetually changing hobby website for learning and trying new web
       technologies.
-    </TitleSubtext>
-    <Name>BRYAND ACOSTA</Name>
-    <Links>
-      <Link>
+    </Home_Title_Subtext>
+    <Home_Name>BRYAND ACOSTA</Home_Name>
+    <Home_Links>
+      <Home_Link>
         <NavLink to="/DnD">
-          <Button>DnD</Button>
+          <Home_Button>DnD</Home_Button>
         </NavLink>
-        <Description>
+        <Home_Description>
           Recreated the DnD character sheet found in DnDBeyond.com. Built using
           React, Typescript, and Redux.
-        </Description>
-      </Link>
-      <Link>
+        </Home_Description>
+      </Home_Link>
+      <Home_Link>
         <button className="App-main-link-button">Coming soon.</button>
-        <Description>
+        <Home_Description>
           MMORPG character simulator created using Aurelia and QUnit.
-        </Description>
-      </Link>
-      <Link>
+        </Home_Description>
+      </Home_Link>
+      <Home_Link>
         <NavLink to="/AboutMe">
-          <Button>About Me</Button>
+          <Home_Button>About Me</Home_Button>
         </NavLink>
-        <Description>
+        <Home_Description>
           Learn about my skills as a developers and what previous coworkers have
           to say about me.
-        </Description>
-      </Link>
-      <Link>
-        <LinkButton>
+        </Home_Description>
+      </Home_Link>
+      <Home_Link>
+        <Home_Link_Button>
           <a href="https://github.com/shinigaming/shinigaming.life/tree/master">
             Github
           </a>
-        </LinkButton>
-        <Description>Check out the source code behind this site.</Description>
-      </Link>
-    </Links>
-  </Main>
+        </Home_Link_Button>
+        <Home_Description>
+          Check out the source code behind this site.
+        </Home_Description>
+      </Home_Link>
+    </Home_Links>
+  </Home_Main>
 );
 
-const Main = styled.div`
+const Home_Main = styled.div`
   text-align: center;
   background-color: black;
   background-repeat: no-repeat;
@@ -65,7 +67,7 @@ const Main = styled.div`
   height: 100%;
 `;
 
-const Header = styled.div`
+const Home_Header = styled.div`
   color: white;
   font-family: "AntipastoPro-Hairline";
   letter-spacing: 5px;
@@ -73,7 +75,7 @@ const Header = styled.div`
   padding-top: 30px;
 `;
 
-const Logo = styled.div`
+const Home_Logo = styled.div`
   width: 340px;
   height: 450px;
   background-image: url(${shinigami});
@@ -84,7 +86,7 @@ const Logo = styled.div`
   margin-right: auto;
 `;
 
-const Title = styled.div`
+const Home_Title = styled.div`
   align-items: center;
   /* font-family: "evilGenius"; */
   font-family: "AntipastoPro-Hairline";
@@ -95,7 +97,7 @@ const Title = styled.div`
 `;
 
 // Example of pseudo selectors in styled components.
-const TitlePart = styled.div`
+const Home_Title_Part = styled.div`
   display: inline-block;
   letter-spacing: 5px;
   &::first-letter {
@@ -103,7 +105,7 @@ const TitlePart = styled.div`
   }
 `;
 
-const TitleSubtext = styled.div`
+const Home_Title_Subtext = styled.div`
   color: white;
   font-family: "AntipastoPro-Hairline";
   letter-spacing: 5px;
@@ -115,7 +117,7 @@ const TitleSubtext = styled.div`
   line-height: 1.2;
 `;
 
-const Name = styled.div`
+const Home_Name = styled.div`
   color: white;
   font-family: "AntipastoPro-Hairline";
   letter-spacing: 5px;
@@ -127,18 +129,18 @@ const Name = styled.div`
   line-height: 1.2;
 `;
 
-const Links = styled.div`
+const Home_Links = styled.div`
   display: block;
   margin-top: 20px;
 `;
 
-const Link = styled.div`
+const Home_Link = styled.div`
   display: inline-block;
   width: 200px;
   vertical-align: top;
 `;
 
-const Button = styled.div`
+const Home_Button = styled.div`
   -webkit-font-smoothing: antialiased;
   width: 180px;
   padding: 0.4em 0.2em;
@@ -151,7 +153,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Description = styled.div`
+const Home_Description = styled.div`
   display: inline-block;
   margin: 0 10px 0 10px;
   font-family: "AntipastoPro-Hairline";
@@ -162,7 +164,7 @@ const Description = styled.div`
   line-height: 1.1;
 `;
 
-const LinkButton = styled.button`
+const Home_Link_Button = styled.button`
   -webkit-font-smoothing: antialiased;
   width: 180px;
   padding: 0.4em 0.2em;
@@ -174,9 +176,5 @@ const LinkButton = styled.button`
   font-weight: bold;
   cursor: pointer;
 `;
-
-// .disabled {
-//   cursor: default;
-// }
 
 export default HomePage;

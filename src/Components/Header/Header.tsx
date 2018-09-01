@@ -21,60 +21,70 @@ interface IProps {
 
 export const HeaderBase: SFC<IProps> = (props: IProps) => {
   const renderHeaderMain = () => (
-    <HeaderMain>
+    <Header_Main>
       <div>
-        <Name>{props.character.name}</Name>
-        <RaceClassLevel>
+        <Header_Name>{props.character.name}</Header_Name>
+        <Header_RaceClassLevel>
           {props.character.race +
             " " +
             props.character.class +
             " " +
             props.character.level}
-        </RaceClassLevel>
+        </Header_RaceClassLevel>
       </div>
-    </HeaderMain>
+    </Header_Main>
   );
 
   const renderSingleStat = (stat: Stat) => (
-    <StatDiv key={stat.description}>
-      <StatCategory>{stat.category}</StatCategory>
-      <StatValue>
-        <StatValueMod>{stat.mod} </StatValueMod>
-        <StatValueNumber>{stat.value} </StatValueNumber>
-        <StatValuePostText>{stat.valuePostText} </StatValuePostText>
-      </StatValue>
-      <StatDescription>{stat.description}</StatDescription>
-    </StatDiv>
+    <Header_Stat_Div key={stat.description}>
+      <Header_Stat_Category>{stat.category}</Header_Stat_Category>
+      <Header_Stat_Value>
+        <Header_Stat_Value_Mod>{stat.mod} </Header_Stat_Value_Mod>
+        <Header_Stat_Value_Number>{stat.value} </Header_Stat_Value_Number>
+        <Header_Stat_Value_PostText>
+          {stat.valuePostText}{" "}
+        </Header_Stat_Value_PostText>
+      </Header_Stat_Value>
+      <Header_Stat_Description>{stat.description}</Header_Stat_Description>
+    </Header_Stat_Div>
   );
 
   const renderHeaderStats = () => (
-    <Stats>{props.character.stats.map(stat => renderSingleStat(stat))}</Stats>
+    <Header_Stats>
+      {props.character.stats.map(stat => renderSingleStat(stat))}
+    </Header_Stats>
   );
 
   const renderTracker = () => (
-    <Tracker>
-      <HealthTracker>
-        <HealthTrackerLabel>HIT POINTS</HealthTrackerLabel>
-        <HealthTrackerTracker>
-          <DecreaseIcon red={true} onClick={props.decreaseHealthBy10Handler} />
-          <DecreaseIcon onClick={props.decreaseHealthHandler} />
-          <HealthTrackerHealth>
+    <Header_Tracker>
+      <Header_HealthTracker>
+        <Header_HealthTracker_Label>HIT POINTS</Header_HealthTracker_Label>
+        <Header_HealthTracker_Tracker>
+          <Header_DecreaseIcon
+            red={true}
+            onClick={props.decreaseHealthBy10Handler}
+          />
+          <Header_DecreaseIcon onClick={props.decreaseHealthHandler} />
+          <Header_HealthTracker_Health>
             {props.remainingHealth}/{props.character.maximumHealth}
-          </HealthTrackerHealth>
-          <IncreaseIcon onClick={props.increaseHealthHandler} />
-          <IncreaseIcon red={true} onClick={props.increaseHealthBy10Handler} />
-        </HealthTrackerTracker>
-      </HealthTracker>
-      <InspirationTracker>INSPIRATION</InspirationTracker>
-    </Tracker>
+          </Header_HealthTracker_Health>
+          <Header_IncreaseIcon onClick={props.increaseHealthHandler} />
+          <Header_IncreaseIcon
+            red={true}
+            onClick={props.increaseHealthBy10Handler}
+          />
+        </Header_HealthTracker_Tracker>
+      </Header_HealthTracker>
+      <Header_Inspiration_Tracker>INSPIRATION</Header_Inspiration_Tracker>
+    </Header_Tracker>
   );
 
   return (
-    <HeaderContainer>
+    <Header_Container>
       {renderHeaderMain()}
       {renderHeaderStats()}
       {renderTracker()}
-    </HeaderContainer>
+    </Header_Container>
   );
 };
 
@@ -97,28 +107,28 @@ const Header = connect(
 
 export default Header;
 
-const HeaderContainer = styled.div`
+const Header_Container = styled.div`
   display: flex;
   -webkit-align-items: center;
   height: 130px;
   padding: 0 15px;
 `;
 
-const HeaderMain = styled.div`
+const Header_Main = styled.div`
   display: flex;
   flex: 2;
 `;
 
-const Stats = styled.div`
+const Header_Stats = styled.div`
   display: flex;
   flex: 1;
 `;
 
-const Tracker = styled.div`
+const Header_Tracker = styled.div`
   display: flex;
 `;
 
-const Name = styled.div`
+const Header_Name = styled.div`
   font-size: 28px;
   color: #fff;
   font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
@@ -126,17 +136,17 @@ const Name = styled.div`
   text-align: left;
 `;
 
-const RaceClassLevel = styled.div`
+const Header_RaceClassLevel = styled.div`
   font-size: 12px;
   color: #979aa4;
   text-align: left;
 `;
 
-const StatDiv = styled.div`
+const Header_Stat_Div = styled.div`
   margin-right: 20px;
 `;
 
-const StatCategory = styled.div`
+const Header_Stat_Category = styled.div`
   font-size: 7px;
   font-weight: bold;
   text-align: center;
@@ -147,11 +157,11 @@ const StatCategory = styled.div`
   text-align: center;
 `;
 
-const StatValue = styled.div`
+const Header_Stat_Value = styled.div`
   text-align: center;
 `;
 
-const StatValueNumber = styled.span`
+const Header_Stat_Value_Number = styled.span`
   font-size: 26px;
   text-align: center;
   color: #fff;
@@ -159,7 +169,7 @@ const StatValueNumber = styled.span`
 `;
 
 // TODO this one and the next one are identical. figure this out.
-const StatValueMod = styled.span`
+const Header_Stat_Value_Mod = styled.span`
   text-align: center;
   color: #979aa4;
   vertical-align: super;
@@ -167,7 +177,7 @@ const StatValueMod = styled.span`
   font-weight: normal;
 `;
 
-const StatValuePostText = styled.span`
+const Header_Stat_Value_PostText = styled.span`
   text-align: center;
   color: #979aa4;
   vertical-align: super;
@@ -175,7 +185,7 @@ const StatValuePostText = styled.span`
   font-weight: normal;
 `;
 
-const StatDescription = styled.div`
+const Header_Stat_Description = styled.div`
   font-size: 10px;
   max-width: 65px;
   margin: 0 auto;
@@ -183,7 +193,7 @@ const StatDescription = styled.div`
   color: #fff;
 `;
 
-const HealthTracker = styled.div`
+const Header_HealthTracker = styled.div`
   position: relative;
   border: 1px solid #96bf6b;
   border-radius: 3px;
@@ -192,12 +202,12 @@ const HealthTracker = styled.div`
   padding: 5px 20px 5px 20px;
 `;
 
-const HealthTrackerTracker = styled.div`
+const Header_HealthTracker_Tracker = styled.div`
   display: flex;
   -webkit-align-items: center;
 `;
 
-const HealthTrackerLabel = styled.div`
+const Header_HealthTracker_Label = styled.div`
   font-size: 10px;
   text-align: center;
   font-family: Roboto, Helvetica, sans-serif;
@@ -207,7 +217,7 @@ const HealthTrackerLabel = styled.div`
 // TODO improve on the prop usage on the margin-left.
 // TODO the icons have repeated styles.
 // TODO improve the css styling and positioning of the plus and minus signs
-const IncreaseIcon = styled.button<{ red?: boolean }>`
+const Header_IncreaseIcon = styled.button<{ red?: boolean }>`
   display: inline-block;
   border-radius: 3px;
   background-color: ${props => (props.red ? "darkred" : "#96bf6b")};
@@ -230,7 +240,7 @@ const IncreaseIcon = styled.button<{ red?: boolean }>`
   }
 `;
 
-const DecreaseIcon = styled.button<{ red?: boolean }>`
+const Header_DecreaseIcon = styled.button<{ red?: boolean }>`
   display: inline-block;
   border-radius: 3px;
   background-color: ${props => (props.red ? "darkred" : "#96bf6b")};
@@ -255,7 +265,7 @@ const DecreaseIcon = styled.button<{ red?: boolean }>`
   }
 `;
 
-const HealthTrackerHealth = styled.div`
+const Header_HealthTracker_Health = styled.div`
   font-size: 24px;
   letter-spacing: -1px;
   line-height: 1;
@@ -265,7 +275,7 @@ const HealthTrackerHealth = styled.div`
   padding: 0 10px 0 10px;
 `;
 
-const InspirationTracker = styled.div`
+const Header_Inspiration_Tracker = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   border-color: #96bf6b;
   border-radius: 3px;
