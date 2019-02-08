@@ -9,7 +9,6 @@ const decreaseHealth = (
   state: IAppStore["remainingHealth"] = 0
 ): IAppStore["remainingHealth"] => (state > 0 ? state - 1 : state);
 
-
 const increaseHealth = (
   state: IAppStore["remainingHealth"] = 0,
   character: IAppStore["character"]
