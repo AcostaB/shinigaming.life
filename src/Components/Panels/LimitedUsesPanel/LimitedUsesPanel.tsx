@@ -22,11 +22,11 @@ const LimitedUsesPanelBase: SFC<IProps> = props => (
     <Panel.Header title="LIMITED USES" />
     <Panel.Body>
       <div>
-        <div className="rest-buttons">
-          <button className="shortRest" onClick={props.onShortRest}>
+        <div>
+          <button onClick={props.onShortRest}>
             SHORT REST
           </button>
-          <button className="longRest" onClick={props.onLongRest}>
+          <button onClick={props.onLongRest}>
             LONG REST
           </button>
         </div>

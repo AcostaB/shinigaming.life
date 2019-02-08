@@ -31,17 +31,17 @@ export class ExpandableItem extends React.Component<IProps, IState> {
   render(): JSX.Element {
     return (
       <div>
-        <ExpandableItemHeader>
-          <ExpandableItemHeaderContent>{this.props.expandableItemHeader}</ExpandableItemHeaderContent>
-          <ExpandableItemIcon onClick={this.handleExpandedClick} />
-        </ExpandableItemHeader>
+        <Header>
+          <HeaderContent>{this.props.expandableItemHeader}</HeaderContent>
+          <Icon onClick={this.handleExpandedClick} />
+        </Header>
         {this.renderBody()}
       </div>
     );
   }
 }
 
-const ExpandableItemHeader = styled.div`
+const Header = styled.div`
   background-image: url("../../../Assets/expandable-header.png");
   z-index: 2;
   height: 45px;
@@ -51,7 +51,7 @@ const ExpandableItemHeader = styled.div`
   -webkit-align-items: center;
 `;
 
-const ExpandableItemHeaderContent = styled.div`
+const HeaderContent = styled.div`
   display: flex;
   flex: 1;
   min-width: 0;
@@ -59,7 +59,7 @@ const ExpandableItemHeaderContent = styled.div`
   -webkit-align-items: center;
 `;
 
-const ExpandableItemIcon = styled.div`
+const Icon = styled.div`
   height: 16px;
   width: 16px;
   background: transparent 0 0 url("../../../Assets/plus_minus-green.svg")

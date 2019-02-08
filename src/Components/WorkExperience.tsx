@@ -40,7 +40,6 @@ export default WorkExperience;
 
 const WorkExperienceContainer = styled.div`
   text-align: left;
-  //font-family: "AntipastoPro-Hairline";
 `;
 
 // TODO this was copy pasted from the home page. Need to figure out how to share styled with styled components. 

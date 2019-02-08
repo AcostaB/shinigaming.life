@@ -19,18 +19,18 @@ const SkillsPanelBase: SFC<IProps> = ({
     <Panel>
       <Panel.Header title="SKILLS" />
       <Panel.Body>
-        <div className="panel-content-columns">
-          <SkillsPanel_Content_Column className="skill-column">
+        <Columns>
+          <Column>
             {leftColumnSkills.map(skill => (
               <SkillRow key={skill.skillName} skill={skill} />
             ))}
-          </SkillsPanel_Content_Column>
-          <div className="panel-content-column skill-column">
+          </Column>
+          <Column>
             {rightColumnSkills.map(skill => (
               <SkillRow key={skill.skillName} skill={skill} />
             ))}
-          </div>
-        </div>
+          </Column>
+        </Columns>
       </Panel.Body>
     </Panel>
   );
@@ -44,8 +44,13 @@ const SkillsPanel = connect(mapStateToProps)(SkillsPanelBase);
 
 export default SkillsPanel;
 
+const Column = styled.div`
+    width: 50%;
+    display: inline-block;
+`;
+
 // TODO need to make sure that the double element selector is working properly.
-const SkillsPanel_Content_Column = styled.div`
+const Columns = styled.div`
   box-sizing: border-box;
 
   display: inline-block;

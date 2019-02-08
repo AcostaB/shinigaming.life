@@ -20,15 +20,15 @@ export class Panel extends React.Component<IPanelProps, {}> {
   };
 
   static Body = (bProps: IBodyProps): JSX.Element => {
-    return <Panel_Content>{bProps.children}</Panel_Content>;
+    return <Content>{bProps.children}</Content>;
   };
 
   render(): JSX.Element {
-    return <Panel_Container>{this.props.children}</Panel_Container>;
+    return <Container>{this.props.children}</Container>;
   }
 }
 
-const Panel_Container = styled.div`
+const Container = styled.div`
   position: relative;
   width: 385px;
   display: inline-block;
@@ -47,7 +47,7 @@ const Panel_Container = styled.div`
   }
 `;
 
-const Panel_Content = styled.div`
+const Content = styled.div`
   border-left: 1px solid #d4d0ce;
   border-right: 1px solid #d4d0ce;
   background: #fff;

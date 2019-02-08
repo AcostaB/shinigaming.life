@@ -1,10 +1,14 @@
 {
-    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "extends": [
+        "tslint:recommended",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
     "linterOptions": {
-      "exclude": [
-        "config/**/*.js",
-        "node_modules/**/*.ts"
-      ]
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+        ]
     },
     "rules": {
         "no-var-requires": false,
@@ -12,14 +16,16 @@
         "object-literal-sort-keys": false,
         "one-variable-per-declaration": false,
         "variable-name": [
-            true, 
-            "ban-keywords", 
-            "check-format", 
+            true,
+            "ban-keywords",
+            "check-format",
             "allow-leading-underscore",
             "allow-snake-case",
             "allow-pascal-case"
         ],
-        "no-console": [false],
+        "no-console": [
+            false
+        ],
         "ordered-imports": false,
         "max-classes-per-file": false,
         "member-access": false,
@@ -41,6 +47,20 @@
                     "protected-instance-method"
                 ]
             }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "styled-components",
+                        "message": "Please import from styled-components/macro."
+                    }
+                ],
+                "patterns": [
+                    "!styled-components/macro"
+                ]
+            }
         ]
     },
     "jsRules": {
@@ -48,14 +68,16 @@
         "object-literal-sort-keys": false,
         "one-variable-per-declaration": false,
         "variable-name": [
-            true, 
-            "ban-keywords", 
-            "check-format", 
+            true,
+            "ban-keywords",
+            "check-format",
             "allow-leading-underscore",
             "allow-snake-case",
             "allow-pascal-case"
         ],
-        "no-console": [false],
+        "no-console": [
+            false
+        ],
         "ordered-imports": false,
         "member-access": false,
         "max-classes-per-file": false,
@@ -79,4 +101,3 @@
         ]
     }
 }
-  

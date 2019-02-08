@@ -1,9 +1,9 @@
 import React, { SFC, SyntheticEvent } from "react";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { SpellDetails } from "./SpellDetails";
-import "./LimitedUse.css";
 import { LimitedUse } from "../../../Models/LimitedUses";
 import { Spell } from "../../../Models/LimitedUses";
+import styled from "styled-components/macro";
 
 interface IProps {
   limitedUse: LimitedUse;
@@ -20,33 +20,31 @@ export const LimitedUseRow: SFC<IProps> = props => {
     props.handleIncrease(parseInt((e.target as HTMLInputElement).value, 10));
 
   const renderLimitedUseHeader = () => (
-    <div className="limitedUse">
-      <div className="limitedUse-main">
-        <div className="limitedUse-label">
-          <span className="limitedUse-name">{props.limitedUse.name}</span>
-          <span className="limitedUse-level">
+    <Container>
+      <Main>
+        <Label>
+          <Name>{props.limitedUse.name}</Name>
+          <Level>
             {`(lv. ${props.limitedUse.level})`}
-          </span>
-        </div>
-        <div className="limitedUse-counter">
-          <button
-            className="limitedUse-decrease-icon"
+          </Level>
+        </Label>
+        <Counter>
+          <DecreaseIcon
             value={props.limitedUse.id}
             onClick={onDecrease}
           />
-          <div className="limitedUse-uses">
+          <Uses>
             <span>{props.remainingLimitedUses}</span>
             <span>/</span>
             <span>{props.limitedUse.maxUses}</span>
-          </div>
-          <button
-            className="limitedUse-increase-icon"
+          </Uses>
+          <IncreaseIcon
             value={props.limitedUse.id}
             onClick={onIncrease}
           />
-        </div>
-      </div>
-    </div>
+        </Counter>
+      </Main>
+    </Container>
   );
 
   const renderLimitedUseBasic = (description: string) => (
@@ -57,8 +55,8 @@ export const LimitedUseRow: SFC<IProps> = props => {
     props.limitedUse.hasOwnProperty("spellLevel") ? (
       <SpellDetails spell={props.limitedUse as Spell} />
     ) : (
-      renderLimitedUseBasic(props.limitedUse.description)
-    );
+        renderLimitedUseBasic(props.limitedUse.description)
+      );
 
   return (
     <ExpandableItem
@@ -67,3 +65,103 @@ export const LimitedUseRow: SFC<IProps> = props => {
     />
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+  line-height: 2.5;
+`;
+
+const Label = styled.div`
+  display: flex;
+  min-width: 150px;
+  align-items: center;
+`;
+
+const Name = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Roboto Condensed', "Roboto";
+  line-height: 1.1;
+  flex: 2;
+  align-items: center;
+`;
+
+const Level = styled.div`
+  align-items: center;
+  color: #979aa4;
+  font-size: 10px;
+  font-family: "Roboto", Helvetica, sans-serif;
+  flex: 1;
+`;
+
+const Main = styled.div`
+  display: flex;
+  width: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+`;
+
+const Counter = styled.div`
+  display: flex;
+  width: 40%;
+  -webkit-align-items: center;
+`;
+
+const Uses = styled.div`
+  font-size: 15px;
+  margin: 0 5px 0 5px;
+  font-family: Roboto,Helvetica,sans-serif;
+`;
+
+const IncreaseIcon = styled.button`
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #96bf6b;
+  color: #fff;
+  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+  font-size: 10px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  height: 20px;
+  width: 27px;
+
+  // TODO DUPLICATE STYLES
+  ::before {
+    content: "";
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-image: url("../../../Assets/plus_minus-white.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+`;
+
+const DecreaseIcon = styled.button`
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #96bf6b;
+  color: #fff;
+  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
+  font-size: 10px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  height: 20px;
+  width: 27px;
+
+  // TODO DUPLICATE STYLES
+  ::before {
+    content: "";
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-image: url("../../../Assets/plus_minus-white.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -17px 0;
+  }
+`;

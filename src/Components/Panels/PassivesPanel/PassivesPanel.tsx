@@ -2,10 +2,10 @@ import React, { SFC } from "react";
 import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { Passive } from "../../../Models/Passives";
-import "./Passive.css";
 import { connect } from "react-redux";
 import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
+import styled from "styled-components/macro";
 
 interface IProps {
   passives: Passive[];
@@ -19,7 +19,7 @@ const PassivesPanelBase: SFC<IProps> = ({ passives }) => (
         <ExpandableItem
           key={passive.id}
           expandableItemHeader={
-            <span className="passive-name">{passive.name}</span>
+            <PassiveName>{passive.name}</PassiveName>
           }
           expandableItemBody={passive.description}
         />
@@ -35,3 +35,10 @@ const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
 const PassivesPanel = connect(mapStateToProps)(PassivesPanelBase);
 
 export default PassivesPanel;
+
+const PassiveName = styled.span`
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Roboto,Helvetica,sans-serif;
+  line-height: 1.1;
+`;

@@ -1,6 +1,6 @@
 import React, { SFC } from "react";
 import { Spell } from "../../../Models/LimitedUses";
-import "./Spell.css";
+import styled from "styled-components/macro";
 
 interface IProps {
   spell: Spell;
@@ -23,15 +23,15 @@ export const SpellDetails: SFC<IProps> = ({ spell }) => {
     detailData: string | number
   ) => {
     return (
-      <div className="spell-detail">
-        <div className="spell-detail-name">{detailName}</div>
-        <div className="spell-detail-info">{detailData}</div>
-      </div>
+      <Detail>
+        <DetailName>{detailName}</DetailName>
+        <div>{detailData}</div>
+      </Detail>
     );
   };
 
   return (
-    <div className="spell-details">
+    <Details>
       {renderSpellDetail("LEVEL", level)}
       {renderSpellDetail("CASTING TIME", castingTime)}
       {renderSpellDetail("RANGE/AREA", rangeAndArea)}
@@ -40,9 +40,33 @@ export const SpellDetails: SFC<IProps> = ({ spell }) => {
       {renderSpellDetail("ATTACK/SAVE", attackAndSave)}
       {renderSpellDetail("DAMAGE/EFFECT", damageAndEffect)}
 
-      <div className="spellLine" />
+      <Line />
 
       <div>{description}</div>
-    </div>
+    </Details>
   );
 };
+
+const Details = styled.div`
+  margin: 10px;
+`;
+
+const Detail = styled.div`
+  min-width: 50px;
+  width: 33%;
+  display: inline-block;
+`;
+
+const DetailName = styled.div`
+  font-weight: bold;
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: 14px;
+`;
+
+const Line = styled.div`
+  background-color: #704cd9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 3px;
+  width: 100%;
+`;
