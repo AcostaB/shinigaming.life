@@ -15,6 +15,7 @@ const increaseHealth = (
 ): IAppStore["remainingHealth"] =>
   state < character.maximumHealth ? state + 1 : state;
 
+
 const decreaseHealthBy10 = (
   state: IAppStore["remainingHealth"] = 0
 ): IAppStore["remainingHealth"] => (state - 10 > 0 ? state - 10 : 0);
