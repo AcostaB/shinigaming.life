@@ -1,6 +1,7 @@
 import React, { SFC } from "react";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { Item } from "../../../Models/Items";
+import styled from "styled-components/macro";
 
 interface IProps {
   item: Item;

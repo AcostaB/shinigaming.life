@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { Actions } from "../../../Actions/dndActions";
 import { MappedState, MappedDispatch, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
+import styled from "styled-components/macro";
 
 interface IProps {
   items: Item[];
@@ -53,15 +54,13 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
         ))}
         <div>
           <button
-            className="shortRest"
-            // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+          // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
           >
             Add item
           </button>
           {this.state.addNewItemExpanded && (
             <button
-              className="shortRest blue"
-              // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
+            // onClick={() => {this.setState(prevState =>  ({addNewItemExpanded: !prevState.addNewItemExpanded}))}}
             >
               Submit
             </button>
@@ -74,17 +73,17 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
 
   renderAddItemForm = () => (
     <div>
-      <div className="addItem-row">
-        <span className="input-label">Name</span>
-        <input className="input" type="text" />
+      <div>
+        <span>Name</span>
+        <input type="text" />
       </div>
-      <div className="addItem-row">
-        <span className="input-label">Quantity</span>
-        <input className="input" type="text" />
+      <div>
+        <span>Quantity</span>
+        <input type="text" />
       </div>
-      <div className="addItem-row">
-        <span className="input-label">Description</span>
-        <input className="input" type="text" />
+      <div>
+        <span>Description</span>
+        <input type="text" />
       </div>
     </div>
   );
@@ -119,12 +118,13 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
       // TODO fix this. Use lodash.
       Object.keys(currency).map(key => (
         <div key={key} className="expandableItem-header currency">
+          {/* TODO STILL USING CLASS NAME */}
           <div className="currency-icon" />
-          <div className="currency-label">
-            <div className="currency-label-primary">{key}</div>
-            <div className="currency-label-secondary">{switchCase(key)}</div>
-          </div>
-          <div className="currency-input">{currency[key]}</div>
+          <CurrencyLabel>
+            <CurrencyLabelPrimary>{key}</CurrencyLabelPrimary>
+            <CurrencyLabelSecondary>{switchCase(key)}</CurrencyLabelSecondary>
+          </CurrencyLabel>
+          <div>{currency[key]}</div>
         </div>
       ))
     );
@@ -135,18 +135,17 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
       <Panel>
         <Panel.Header title="INVENTORY" />
         <Panel.Body>
-          <div className="inventory-panel">
-            <div className="inventory-tabs">
+          <StyledInventoryPanel>
+            <InventoryTabs>
               <div
                 key="tab-item"
                 className={
                   "inventory-tabs-items " +
                   (this.state.isCurrencyTabActive ? "" : "active")
                 }
-                onClick={this.activateInventoryTab}
-              >
+                onClick={this.activateInventoryTab}>
                 Items
-              </div>
+                </div>
               <div
                 key="tab-currency"
                 className={
@@ -156,12 +155,12 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
                 onClick={this.activateCurrencyTab}
               >
                 Currency
-              </div>
-            </div>
+                </div>
+            </InventoryTabs>
             {!this.state.isCurrencyTabActive
               ? this.renderInventory(this.props.items)
               : this.renderCurrency(this.props.currency)}
-          </div>
+          </StyledInventoryPanel>
         </Panel.Body>
       </Panel>
     );
@@ -184,3 +183,81 @@ const InventoryPanel = connect(
 )(InventoryPanelBase);
 
 export default InventoryPanel;
+
+
+
+const StyledInventoryPanel = styled.div`
+  padding-top: 40px;
+`;
+
+const InventoryTabs = styled.div`
+  left: 0;
+  right: 0;
+  display: flex;
+  position: absolute;
+  z-index: 5;
+  top: 52px;
+`;
+
+const InventoryTabItems = styled.div`
+  border-left: none;
+  flex: 1;
+  padding: 7px 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: ${(props: { isActive: boolean }) => props.isActive ? '#96bf6b' : '#c3c0ba'};
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+`;
+
+const InventoryTabsCurrency = styled.div`
+  flex: 1;
+  padding: 7px 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: ${(props: { isActive: boolean }) => props.isActive ? '#96bf6b' : '#c3c0ba'};
+  color: #fff;
+  border-left: 1px solid #fff;
+  cursor: pointer;
+  text-align: center;
+`;
+
+const Currency = styled.div`  
+  position: relative;
+  z-index: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 8px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 65px;
+  background-size: 100 % 67px;
+`;
+
+const CurrencyLabel = styled.div`
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+`;
+
+const CurrencyLabelPrimary = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Roboto, Helvetica, sans-serif;
+  line-height: 1.1;
+`;
+
+const CurrencyLabelSecondary = styled.div`
+  color: #979aa4;
+  font-size: 10px;
+  font-family: Roboto, Helvetica, sans-serif;
+  text-transform: uppercase;
+`;
