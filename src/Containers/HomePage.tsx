@@ -1,7 +1,7 @@
 import React from "react";
 import shinigami from '../Assets/Shinigami.png';
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 // const shinigami: string = 'asdfa'
 // TODO: this isn't really a container file.

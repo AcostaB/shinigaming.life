@@ -1,19 +1,19 @@
-import React, {SFC} from "react";
-import styled from "styled-components";
-import {map} from "lodash";
+import React, { SFC } from "react";
+import styled from 'styled-components/macro';
+import { map } from "lodash";
 import moment, { Moment } from "moment";
-import {convertMonthToYearMonthDisplay} from "../Utils/Utils";
-import {IWorkExperience} from "../Models/WorkExperience";
+import { convertMonthToYearMonthDisplay } from "../Utils/Utils";
+import { IWorkExperience } from "../Models/WorkExperience";
 
 const WorkExperience: SFC<IWorkExperience> = (props) => {
-  const start : Moment = moment(props.startDate);
-  const end : Moment = props.endDate ? moment(props.endDate) : moment();
+  const start: Moment = moment(props.startDate);
+  const end: Moment = props.endDate ? moment(props.endDate) : moment();
   let differenceInMonths: number = end.diff(start, "month");
 
-  let duration : string = start.format("MMM YYYY");
+  let duration: string = start.format("MMM YYYY");
 
   if (props.endDate != null) {
-    duration += " - "+ end.format("MMM YYYY") + ", " + convertMonthToYearMonthDisplay(differenceInMonths);
+    duration += " - " + end.format("MMM YYYY") + ", " + convertMonthToYearMonthDisplay(differenceInMonths);
   } else {
     duration += " - Current, " + convertMonthToYearMonthDisplay(differenceInMonths);
   }
@@ -27,7 +27,7 @@ const WorkExperience: SFC<IWorkExperience> = (props) => {
         {props.companyName}
       </Company>
       <WorkDuration>
-       {duration}
+        {duration}
       </WorkDuration>
       <JobResponsibilities>
         {map(props.jobResponsibilities, value => <li>{value}</li>)}

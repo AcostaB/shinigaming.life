@@ -1,5 +1,5 @@
 import React, { SFC } from "react";
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 import { ILinkedInFeedback } from "../Models/LinkedInFeedback";
 
 const LinkedInFeedback: SFC<ILinkedInFeedback> = props => {

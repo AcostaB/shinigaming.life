@@ -12,7 +12,7 @@ import SkillsPanel from "../Components/Panels/SkillsPanel/SkillsPanel";
 import BodyBackground from "../Assets/body-background.jpg";
 import HeaderBackground from "../Assets/header-background.png";
 
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 import { Currency } from "../Models/Currency";
 
 interface IState {

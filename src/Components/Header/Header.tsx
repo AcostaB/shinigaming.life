@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { IAppStore, MappedState, MappedDispatch } from "../../Types/Types";
 import { Actions } from "../../Actions/dndActions";
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 import PlusMinusSign from "../../Assets/plus_minus-white.svg";
 
 // TODO: this file can and should be broken down into smaller components.

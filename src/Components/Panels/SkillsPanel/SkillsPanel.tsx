@@ -5,7 +5,7 @@ import { Skill } from "../../../Models/Skills";
 import { connect } from "react-redux";
 import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 
 interface IProps {
   leftColumnSkills: Skill[];
@@ -16,24 +16,24 @@ const SkillsPanelBase: SFC<IProps> = ({
   leftColumnSkills,
   rightColumnSkills
 }) => (
-  <Panel>
-    <Panel.Header title="SKILLS" />
-    <Panel.Body>
-      <div className="panel-content-columns">
-        <SkillsPanel_Content_Column className="skill-column">
-          {leftColumnSkills.map(skill => (
-            <SkillRow key={skill.skillName} skill={skill} />
-          ))}
-        </SkillsPanel_Content_Column>
-        <div className="panel-content-column skill-column">
-          {rightColumnSkills.map(skill => (
-            <SkillRow key={skill.skillName} skill={skill} />
-          ))}
+    <Panel>
+      <Panel.Header title="SKILLS" />
+      <Panel.Body>
+        <div className="panel-content-columns">
+          <SkillsPanel_Content_Column className="skill-column">
+            {leftColumnSkills.map(skill => (
+              <SkillRow key={skill.skillName} skill={skill} />
+            ))}
+          </SkillsPanel_Content_Column>
+          <div className="panel-content-column skill-column">
+            {rightColumnSkills.map(skill => (
+              <SkillRow key={skill.skillName} skill={skill} />
+            ))}
+          </div>
         </div>
-      </div>
-    </Panel.Body>
-  </Panel>
-);
+      </Panel.Body>
+    </Panel>
+  );
 
 const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
   leftColumnSkills: map(state.leftColumnSkills, value => value),

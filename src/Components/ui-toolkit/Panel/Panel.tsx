@@ -1,6 +1,6 @@
 import React from "react";
 import { PanelHeader } from "./PanelHeader";
-import styled from "styled-components";
+import styled from 'styled-components/macro';
 
 interface IPanelProps {
   children: JSX.Element[] | JSX.Element;
