@@ -16,7 +16,7 @@ const AttacksPanelBase: SFC<IProps> = ({ attacks, adversityMod = 5 }) => (
     <Panel.Header title="ATTACKS" />
     <Panel.Body>
       <div>
-        <div className="attacks-perAction">Attacks Per Action: 2</div>
+        <div>Attacks Per Action: 2</div>
         {attacks.map(attack => (
           <AttackRow
             key={attack.name}

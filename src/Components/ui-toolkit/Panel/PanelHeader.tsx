@@ -1,5 +1,6 @@
 import React, { SFC } from "react";
 import styled from 'styled-components/macro';
+import PanelHeaderPNG from '../../../Assets/panel-header.png';
 
 interface IProps {
   title: string;
@@ -12,7 +13,7 @@ export const PanelHeader: SFC<IProps> = ({ title }) => (
 );
 
 const Container = styled.div`
-  background-image: url("../../../Assets/panel-header.png");
+  background-image: url(${PanelHeaderPNG});
   background-size: 100% 100%;
   text-align: center;
 `;

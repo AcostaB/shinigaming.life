@@ -1,6 +1,7 @@
 import React from "react";
 import { PanelHeader } from "./PanelHeader";
 import styled from 'styled-components/macro';
+import PanelFooterPNG from "../../../Assets/panel-footer.png";
 
 interface IPanelProps {
   children: JSX.Element[] | JSX.Element;
@@ -36,7 +37,7 @@ const Container = styled.div`
   &::after {
     content: "";
     display: block;
-    background: center 0 transparent url("../../../Assets/panel-footer.png")
+    background: center 0 transparent url(${PanelFooterPNG})
       no-repeat;
     background-size: 105% 12px;
     position: absolute;

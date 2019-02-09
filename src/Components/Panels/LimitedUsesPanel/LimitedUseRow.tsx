@@ -4,6 +4,7 @@ import { SpellDetails } from "./SpellDetails";
 import { LimitedUse } from "../../../Models/LimitedUses";
 import { Spell } from "../../../Models/LimitedUses";
 import styled from "styled-components/macro";
+import PlusMinusWhite from "../../../Assets/plus_minus-white.svg";
 
 interface IProps {
   limitedUse: LimitedUse;
@@ -133,7 +134,7 @@ const IncreaseIcon = styled.button`
     display: block;
     height: 14px;
     width: 14px;
-    background-image: url("../../../Assets/plus_minus-white.svg");
+    background-image: url(${PlusMinusWhite});
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -158,7 +159,7 @@ const DecreaseIcon = styled.button`
     display: block;
     height: 14px;
     width: 14px;
-    background-image: url("../../../Assets/plus_minus-white.svg");
+    background-image: url(${PlusMinusWhite});
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover;

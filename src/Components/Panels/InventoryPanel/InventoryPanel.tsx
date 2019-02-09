@@ -4,7 +4,6 @@ import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { ItemRow } from "./ItemRow";
 import { Item } from "../../../Models/Items";
 import { Currency } from "../../../Models/Currency";
-import "./InventoryPanel.css";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { Actions } from "../../../Actions/dndActions";
@@ -24,6 +23,7 @@ interface IState {
   isCurrencyTabActive: boolean;
 }
 
+// TODO REFACTOR TO USE HOOKS
 class InventoryPanelBase extends React.Component<IProps, IState> {
   public state: IState;
 
@@ -117,7 +117,7 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
     return (
       // TODO fix this. Use lodash.
       Object.keys(currency).map(key => (
-        <div key={key} className="expandableItem-header currency">
+        <StyledCurrency key={key}>
           {/* TODO STILL USING CLASS NAME */}
           <div className="currency-icon" />
           <CurrencyLabel>
@@ -125,7 +125,7 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
             <CurrencyLabelSecondary>{switchCase(key)}</CurrencyLabelSecondary>
           </CurrencyLabel>
           <div>{currency[key]}</div>
-        </div>
+        </StyledCurrency>
       ))
     );
   };
@@ -137,25 +137,19 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
         <Panel.Body>
           <StyledInventoryPanel>
             <InventoryTabs>
-              <div
+              <InventoryTabsItems
                 key="tab-item"
-                className={
-                  "inventory-tabs-items " +
-                  (this.state.isCurrencyTabActive ? "" : "active")
-                }
+                isActive={this.state.isCurrencyTabActive}
                 onClick={this.activateInventoryTab}>
                 Items
-                </div>
-              <div
+                </InventoryTabsItems>
+              <InventoryTabsCurrency
                 key="tab-currency"
-                className={
-                  "inventory-tabs-currency " +
-                  (this.state.isCurrencyTabActive ? "active" : "")
-                }
+                isActive={this.state.isCurrencyTabActive}
                 onClick={this.activateCurrencyTab}
               >
                 Currency
-                </div>
+                </InventoryTabsCurrency>
             </InventoryTabs>
             {!this.state.isCurrencyTabActive
               ? this.renderInventory(this.props.items)
@@ -199,7 +193,7 @@ const InventoryTabs = styled.div`
   top: 52px;
 `;
 
-const InventoryTabItems = styled.div`
+const InventoryTabsItems = styled.div`
   border-left: none;
   flex: 1;
   padding: 7px 0;
@@ -227,7 +221,7 @@ const InventoryTabsCurrency = styled.div`
   text-align: center;
 `;
 
-const Currency = styled.div`  
+const StyledCurrency = styled.div`  
   position: relative;
   z-index: 2;
   display: -webkit-flex;

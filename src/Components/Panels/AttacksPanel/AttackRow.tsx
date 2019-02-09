@@ -1,7 +1,8 @@
 import React, { SFC } from 'react';
-import "./Attack.css";
 import { Attack } from "../../../Models/Attacks";
 import styled from 'styled-components/macro';
+import {css} from 'styled-components';
+import ExpandableHeaderPNG from "../../../Assets/expandable-header.png";
 
 interface IProps {
     attack: Attack,
@@ -10,32 +11,30 @@ interface IProps {
 
 export const AttackRow: SFC<IProps> = ({ attack, adversityMod }) =>
     <StyledAttack>
-        <div className={attack.melee ? "attack-melee-icon" : "attack-ranged-icon"} />
+        <AttackIcon isMelee={attack.melee} />
         <Weapon>
-            <div className={"attack-weapon-name " + (attack.magicItem ? "magicItem" : "")}>
+            <WeaponName isMagicItem={attack.magicItem}>
                 <span>{attack.name}</span>
-                {/* TODO STYLE?! */}
-                <span className="attack-weapon-proficiencyIndicator" />
-            </div>
+            </WeaponName>
             <WeaponType>
                 {attack.type}
             </WeaponType>
         </Weapon>
         <Stats>
-            <div className="attack-toHit">
-                <div className="attack-toHit-label"> TO HIT </div>
-                <div className={"attack-toHit-mod " + (adversityMod > 0 ? "adversity" : "")}>
+            <div>
+                <Label>TO HIT</Label>
+                <Modifier hasAdversity={adversityMod > 0}>
                     +{attack.toHitMod + adversityMod}
-                </div>
+                </Modifier>
             </div>
             <div>
-                <div className="attack-damage-label"> DMG</div>
-                <div className="attack-damage-dice">
+                <Label>DMG</Label>
+                <DamageDice>
                     {attack.damage}
-                    <span className={"attack-damage-mod " + (adversityMod > 0 ? "adversity" : "")}>
+                    <Modifier hasAdversity={adversityMod > 0}>
                         +{attack.damageMod + adversityMod}
-                    </span>
-                </div>
+                    </Modifier>
+                </DamageDice>
             </div>
         </Stats>
     </StyledAttack>
@@ -44,7 +43,7 @@ export const AttackRow: SFC<IProps> = ({ attack, adversityMod }) =>
 const StyledAttack = styled.div`
     display: flex;
     align-items: center;
-    background-image: url("../../../Assets/expandable-header.png");
+    background-image: url(${ExpandableHeaderPNG});
     z-index: 2;
     height: 65px;
     background-size: 100% 65px;
@@ -56,15 +55,8 @@ const StyledAttack = styled.div`
     text-align: left;
 `;
 
-const MeleeIcon = styled.div`
-    background: center center transparent url("../../../Assets/melee_weapon.svg") no-repeat;
-    width: 32px;
-    height: 32px;
-    background-size: 28px 28px;
-`;
-
-const RangedIcon = styled.div`
-    background: center center transparent url("../../../Assets/ranged_weapon.svg") no-repeat;
+const AttackIcon = styled.div`
+    background: center center transparent url("../../../Assets/${(props: {isMelee: boolean}) => props.isMelee ? 'melee' : 'ranged'}_weapon.svg") no-repeat;
     width: 32px;
     height: 32px;
     background-size: 28px 28px;
@@ -79,11 +71,8 @@ const WeaponName = styled.div`
     font-weight: bold;
     font-family: Roboto, Helvetica, sans-serif;
     line-height: 1.1;
+    ${(props: {isMagicItem:boolean}) => props.isMagicItem ? 'color:#1FC219' : ''} 
 `;
-
-const weapon-name.magicItem {
-    color: #1FC219;
-}
 
 const WeaponType = styled.div`
     color: #979aa4;
@@ -100,21 +89,22 @@ const Stats = styled.div`
     text-align: center;
 `;
 
-const toHit-label,
-const damage-label {
-    font - size: 10px;
-    text - transform: uppercase;
-    margin - bottom: 3px;
-}
+const Label = styled.div`
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+`;
 
-const toHit-mod,
-const damage-mod,
-const damage-dice {
-    font - size: 15px;
-    font - family: Roboto, Helvetica, sans - serif;
-}
+const sharedStyle1 = css`
+    font-size: 15px;
+    font-family: Roboto, Helvetica, sans-serif;
+`;
 
-const toHit-mod.adversity,
-const damage-mod.adversity {
-    color: orange;
-}
+const Modifier = styled.span`
+    ${sharedStyle1};
+    ${(props: {hasAdversity: boolean}) => props.hasAdversity ? 'color:orange' : ''} 
+`;
+
+const DamageDice = styled.span`
+    ${sharedStyle1}
+`;

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from 'styled-components/macro';
+import ExpandableHeader from '../../../Assets/expandable-header.png';
+import PlusMinusGreen from "../../../Assets/plus_minus-green.svg";
 
 interface IProps {
   expandableItemBody: JSX.Element | string;
@@ -42,7 +44,7 @@ export class ExpandableItem extends React.Component<IProps, IState> {
 }
 
 const Header = styled.div`
-  background-image: url("../../../Assets/expandable-header.png");
+  background-image: url(${ExpandableHeader});
   z-index: 2;
   height: 45px;
   background-size: 100% 45px;
@@ -62,7 +64,7 @@ const HeaderContent = styled.div`
 const Icon = styled.div`
   height: 16px;
   width: 16px;
-  background: transparent 0 0 url("../../../Assets/plus_minus-green.svg")
+  background: transparent 0 0 url(${PlusMinusGreen})
     no-repeat;
   background-size: cover;
   margin-left: 5px;
