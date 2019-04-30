@@ -7,6 +7,8 @@ import { Actions } from "../../../Actions/dndActions";
 import { LimitedUse } from "../../../Models/LimitedUses";
 import { MappedState, MappedDispatch, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
+import { Button } from '../../ui-toolkit/Button/Button';
+import styled from "styled-components/macro";
 
 interface Props {
   remainingLimitedUses: { [limitedUsesName: number]: number };
@@ -22,14 +24,10 @@ const LimitedUsesPanelBase: SFC<Props> = props => (
     <Panel.Header title="LIMITED USES" />
     <Panel.Body>
       <div>
-        <div>
-          <button onClick={props.onShortRest}>
-            SHORT REST
-          </button>
-          <button onClick={props.onLongRest}>
-            LONG REST
-          </button>
-        </div>
+        <RestContainer>
+          <Button text={'SHORT REST'} onClick={props.onShortRest} />
+          <Button text={'LONG REST'} onClick={props.onLongRest} />
+        </RestContainer>
         {props.limitedUses.map((limitedUse: LimitedUse) => (
           <LimitedUseRow
             key={limitedUse.id}
@@ -64,3 +62,7 @@ const LimitedUsesPanel = connect(
 )(LimitedUsesPanelBase);
 
 export default LimitedUsesPanel;
+
+const RestContainer = styled.div`
+  display: flex;
+`;
