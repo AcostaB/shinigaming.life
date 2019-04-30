@@ -2,7 +2,7 @@ import React, { SFC } from "react";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { Item } from "../../../Models/Items";
 import styled from "styled-components/macro";
-import PlusMinusWhite from "../../../Assets/plus_minus-white.svg";
+import { PlusMinus } from "../../ui-toolkit/Icons/PlusMinus/PlusMinus";
 
 interface Props {
   item: Item;
@@ -10,18 +10,8 @@ interface Props {
   handleIncrease: (id: number) => void;
 }
 
-export const ItemRow: SFC<Props> = ({
-  item,
-  handleDecrease,
-  handleIncrease
-}) => {
-  const onLimitedUseDecrease = (e: any) => {
-    handleDecrease(e.target.value);
-  };
-
-  const onLimitedUseIncrease = (e: any) => {
-    handleIncrease(e.target.value);
-  };
+export const ItemRow: SFC<Props> = (props) => {
+  const { item, handleDecrease, handleIncrease } = { ...props };
 
   const renderLimitedUseHeader = () => {
     return (
@@ -29,16 +19,16 @@ export const ItemRow: SFC<Props> = ({
         <Main>
           <Name>{item.name}</Name>
           <Counter>
-            <DecreaseIcon
-              value={item._id}
-              onClick={onLimitedUseDecrease}
+            <PlusMinus
+              isPlus={false}
+              onClick={() => handleDecrease(item._id)}
             />
             <Uses>
               <span>{item.quantity}</span>
             </Uses>
-            <IncreaseIcon
-              value={item._id}
-              onClick={onLimitedUseIncrease}
+            <PlusMinus
+              isPlus={true}
+              onClick={() => handleIncrease(item._id)}
             />
           </Counter>
         </Main>
@@ -87,55 +77,4 @@ const Uses = styled.div`
   font-size: 15px;
   margin: 0 5px 0 5px;
   font-family: Roboto,Helvetica,sans-serif;
-`;
-
-const IncreaseIcon = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: #96bf6b;
-  color: #fff;
-  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-
-  // TODO DUPLICATE STYLES
-  ::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusWhite});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-`;
-
-const DecreaseIcon = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: #96bf6b;
-  color: #fff;
-  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-
-  // TODO DUPLICATE STYLES
-  ::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusWhite});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: -17px 0;
-  }
 `;

@@ -1,10 +1,10 @@
-import React, { SFC, SyntheticEvent } from "react";
+import React, { SFC } from "react";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { SpellDetails } from "./SpellDetails";
 import { LimitedUse } from "../../../Models/LimitedUses";
 import { Spell } from "../../../Models/LimitedUses";
 import styled from "styled-components/macro";
-import PlusMinusWhite from "../../../Assets/plus_minus-white.svg";
+import { PlusMinus } from "../../ui-toolkit/Icons/PlusMinus/PlusMinus";
 
 interface Props {
   limitedUse: LimitedUse;
@@ -14,11 +14,11 @@ interface Props {
 }
 
 export const LimitedUseRow: SFC<Props> = props => {
-  const onDecrease = (e: SyntheticEvent) =>
-    props.handleDecrease(parseInt((e.target as HTMLInputElement).value, 10));
+  const onDecrease = (skillID: number) =>
+    props.handleDecrease(skillID);
 
-  const onIncrease = (e: SyntheticEvent) =>
-    props.handleIncrease(parseInt((e.target as HTMLInputElement).value, 10));
+  const onIncrease = (skillID: number) =>
+    props.handleIncrease(skillID);
 
   const renderLimitedUseHeader = () => (
     <Container>
@@ -30,18 +30,18 @@ export const LimitedUseRow: SFC<Props> = props => {
           </Level>
         </Label>
         <Counter>
-          <DecreaseIcon
-            value={props.limitedUse.id}
-            onClick={onDecrease}
+          <PlusMinus
+            onClick={() => onDecrease(props.limitedUse.id)}
+            isPlus={false}
           />
           <Uses>
             <span>{props.remainingLimitedUses}</span>
             <span>/</span>
             <span>{props.limitedUse.maxUses}</span>
           </Uses>
-          <IncreaseIcon
-            value={props.limitedUse.id}
-            onClick={onIncrease}
+          <PlusMinus
+            onClick={() => onIncrease(props.limitedUse.id)}
+            isPlus={true}
           />
         </Counter>
       </Main>
@@ -114,55 +114,4 @@ const Uses = styled.div`
   font-size: 15px;
   margin: 0 5px 0 5px;
   font-family: Roboto,Helvetica,sans-serif;
-`;
-
-const IncreaseIcon = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: #96bf6b;
-  color: #fff;
-  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-
-  // TODO DUPLICATE STYLES
-  ::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusWhite});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-`;
-
-const DecreaseIcon = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: #96bf6b;
-  color: #fff;
-  font-family: "Roboto Condensed",Roboto,Helvetica,sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-
-  // TODO DUPLICATE STYLES
-  ::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusWhite});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: -17px 0;
-  }
 `;
