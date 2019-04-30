@@ -22,26 +22,30 @@ export const AbilityRow: SFC<Props> = ({ ability }) => {
                 {ability.name}
             </NameCell>
             <Cell>
-                <AbilityModLabelText>
-                    Mod
-                </AbilityModLabelText>
-                <span>
-                    {modSign}
-                </span>
-                <AbilityMod>
-                    {Math.abs(ability.mod)}
-                </AbilityMod>
+                <StatContainer>
+                    <AbilityStatLabelText>
+                        Mod
+                </AbilityStatLabelText>
+                    <AbilityStatSign>
+                        {modSign}
+                    </AbilityStatSign>
+                    <AbilityStat>
+                        {Math.abs(ability.mod)}
+                    </AbilityStat>
+                </StatContainer>
             </Cell>
             <Cell>
-                <AbilitySaveLabelText>
-                    Save
-                </AbilitySaveLabelText>
-                <span>
-                    {saveSign}
-                </span>
-                <AbilitySave>
-                    {Math.abs(ability.save)}
-                </AbilitySave>
+                <StatContainer>
+                    <AbilityStatLabelText>
+                        Save
+                </AbilityStatLabelText>
+                    <AbilityStatSign>
+                        {saveSign}
+                    </AbilityStatSign>
+                    <AbilityStat>
+                        {Math.abs(ability.save)}
+                    </AbilityStat>
+                </StatContainer>
             </Cell>
             <Cell>
                 <AbilityProficiencyIndicator isProficient={ability.isProficient} />
@@ -73,38 +77,35 @@ const NameCell = styled(Cell)`
     width: 100%;
 `;
 
-const AbilityModLabelText = styled.span`
-    display: inline-block;
-    vertical-align: middle;
+const StatContainer = styled.div`
+    width: 55px;
+
+    & > span {
+        vertical-align: middle;
+        display: inline-block;
+    } 
+`;
+
+const AbilityStatLabelText = styled.span`
+    width: 20px;
     font-size: 10px;
     text-transform: uppercase;
     padding-right: 6px;
 `;
 
-const AbilityMod = styled.span`
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 20px;
+const AbilityStatSign = styled.span`
+    width: 10px;
 `;
 
-const AbilitySaveLabelText = styled.span`
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 10px;
-    text-transform: uppercase;
-    padding-right: 6px;
-`;
-
-const AbilitySave = styled.span`
-    display: inline-block;
-    vertical-align: middle;
+const AbilityStat = styled.span`
+    width: 10px;
     font-size: 20px;
-  `;
+    text-align: right;
+`;
 
 const AbilityProficiencyIndicator = styled.span`
     ${(props: { isProficient: boolean }) => props.isProficient ?
         `
-    display: inline-block;
     vertical-align: middle;
     width: 5px;
     height: 5px;
@@ -112,6 +113,7 @@ const AbilityProficiencyIndicator = styled.span`
     border-radius: 50%;
     ` : ''}
 `;
+
 
 const AbilityIcon = styled.span`
     width: 18px;
