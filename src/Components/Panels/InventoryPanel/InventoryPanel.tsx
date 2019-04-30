@@ -11,7 +11,7 @@ import { MappedState, MappedDispatch, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from "styled-components/macro";
 
-interface IProps {
+interface Props {
   items: Item[];
   handleItemIncrease: (id: number) => void;
   handleItemDecrease: (id: number) => void;
@@ -24,10 +24,10 @@ interface IState {
 }
 
 // TODO REFACTOR TO USE HOOKS
-class InventoryPanelBase extends React.Component<IProps, IState> {
+class InventoryPanelBase extends React.Component<Props, IState> {
   public state: IState;
 
-  constructor(props: IProps) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       isCurrencyTabActive: false,
@@ -161,12 +161,12 @@ class InventoryPanelBase extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   items: map(state.inventory, value => value),
   currency: state.currency
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
+const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<Props> => ({
   handleItemIncrease: (id: number) => dispatch(Actions.increaseItem(id)),
   handleItemDecrease: (id: number) => dispatch(Actions.decreaseItem(id))
 });

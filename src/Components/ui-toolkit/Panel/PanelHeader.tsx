@@ -2,11 +2,11 @@ import React, { SFC } from "react";
 import styled from 'styled-components/macro';
 import PanelHeaderPNG from '../../../Assets/panel-header.png';
 
-interface IProps {
+interface Props {
   title: string;
 }
 
-export const PanelHeader: SFC<IProps> = ({ title }) => (
+export const PanelHeader: SFC<Props> = ({ title }) => (
   <Container>
     <Text>{title.toUpperCase()}</Text>
   </Container>

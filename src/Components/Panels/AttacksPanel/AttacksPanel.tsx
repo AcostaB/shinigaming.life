@@ -6,12 +6,12 @@ import { connect } from "react-redux";
 import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 
-interface IProps {
+interface Props {
   attacks: Attack[];
   adversityMod?: number;
 }
 
-const AttacksPanelBase: SFC<IProps> = ({ attacks, adversityMod = 5 }) => (
+const AttacksPanelBase: SFC<Props> = ({ attacks, adversityMod = 5 }) => (
   <Panel>
     <Panel.Header title="ATTACKS" />
     <Panel.Body>
@@ -29,7 +29,7 @@ const AttacksPanelBase: SFC<IProps> = ({ attacks, adversityMod = 5 }) => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   attacks: map(state.attacks, value => value),
   adversityMod: Math.floor(
     (1 - state.remainingHealth / state.character.maximumHealth) * 4

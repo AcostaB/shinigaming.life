@@ -6,14 +6,14 @@ import { Spell } from "../../../Models/LimitedUses";
 import styled from "styled-components/macro";
 import PlusMinusWhite from "../../../Assets/plus_minus-white.svg";
 
-interface IProps {
+interface Props {
   limitedUse: LimitedUse;
   remainingLimitedUses: number;
   handleDecrease: (limitedUseId: number) => void;
   handleIncrease: (limitedUseId: number) => void;
 }
 
-export const LimitedUseRow: SFC<IProps> = props => {
+export const LimitedUseRow: SFC<Props> = props => {
   const onDecrease = (e: SyntheticEvent) =>
     props.handleDecrease(parseInt((e.target as HTMLInputElement).value, 10));
 

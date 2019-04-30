@@ -1,19 +1,19 @@
-import React, {SFC} from 'react';
+import React, { SFC } from 'react';
 import { Ability } from '../../../Models/Abilities';
 import styled from 'styled-components/macro';
 
-interface IProps {
+interface Props {
     ability: Ability
 }
 
-export const AbilityRow: SFC<IProps> = ({ability}) => {
+export const AbilityRow: SFC<Props> = ({ ability }) => {
     let modSign: string = ability.mod >= 0 ? "+" : "-";
     let saveSign: string = ability.save >= 0 ? "+" : "-";
-    
+
     return (
         <StyledAbility>
             <Cell>
-                <AbilityIcon abilityName={ability.name.toLowerCase()}/>
+                <AbilityIcon abilityName={ability.name.toLowerCase()} />
             </Cell>
             <ExpCell>
                 {ability.exp}
@@ -31,7 +31,7 @@ export const AbilityRow: SFC<IProps> = ({ability}) => {
                 <AbilityMod>
                     {Math.abs(ability.mod)}
                 </AbilityMod>
-            </Cell>               
+            </Cell>
             <Cell>
                 <AbilitySaveLabelText>
                     Save
@@ -42,12 +42,12 @@ export const AbilityRow: SFC<IProps> = ({ability}) => {
                 <AbilitySave>
                     {Math.abs(ability.save)}
                 </AbilitySave>
-            </Cell>                
+            </Cell>
             <Cell>
-                <AbilityProficiencyIndicator isProficient={ability.isProficient}/>                    
+                <AbilityProficiencyIndicator isProficient={ability.isProficient} />
             </Cell>
         </StyledAbility>
-    );   
+    );
 };
 
 const StyledAbility = styled.tr`
@@ -72,7 +72,7 @@ const NameCell = styled(Cell)`
     font-weight: normal;
     width: 100%;
 `;
-  
+
 const AbilityModLabelText = styled.span`
     display: inline-block;
     vertical-align: middle;
@@ -80,13 +80,13 @@ const AbilityModLabelText = styled.span`
     text-transform: uppercase;
     padding-right: 6px;
 `;
-  
+
 const AbilityMod = styled.span`
     display: inline-block;
     vertical-align: middle;
     font-size: 20px;
 `;
-  
+
 const AbilitySaveLabelText = styled.span`
     display: inline-block;
     vertical-align: middle;
@@ -94,16 +94,16 @@ const AbilitySaveLabelText = styled.span`
     text-transform: uppercase;
     padding-right: 6px;
 `;
-  
+
 const AbilitySave = styled.span`
     display: inline-block;
     vertical-align: middle;
     font-size: 20px;
   `;
-  
+
 const AbilityProficiencyIndicator = styled.span`
-    ${(props: {isProficient: boolean}) => props.isProficient ?
-    `
+    ${(props: { isProficient: boolean }) => props.isProficient ?
+        `
     display: inline-block;
     vertical-align: middle;
     width: 5px;
@@ -112,12 +112,12 @@ const AbilityProficiencyIndicator = styled.span`
     border-radius: 50%;
     ` : ''}
 `;
-  
+
 const AbilityIcon = styled.span`
     width: 18px;
     height: 18px;
     display: inline-block;
     vertical-align: middle;
     background-size: 20px;
-    background: center center transparent url("../../../Assets/${(props: {abilityName: string}) => props.abilityName}.svg") no-repeat;
+    background: center center transparent url("../../../Assets/${(props: { abilityName: string }) => props.abilityName}.svg") no-repeat;
 `;

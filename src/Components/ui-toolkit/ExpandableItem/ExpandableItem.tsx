@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import ExpandableHeader from '../../../Assets/expandable-header.png';
 import PlusMinusGreen from "../../../Assets/plus_minus-green.svg";
 
-interface IProps {
+interface Props {
   expandableItemBody: JSX.Element | string;
   expandableItemHeader: JSX.Element | string;
 }
@@ -12,8 +12,8 @@ interface IState {
   expanded: boolean;
 }
 
-export class ExpandableItem extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+export class ExpandableItem extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = { expanded: false };
   }

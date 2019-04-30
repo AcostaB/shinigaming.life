@@ -4,13 +4,13 @@ import { Item } from "../../../Models/Items";
 import styled from "styled-components/macro";
 import PlusMinusWhite from "../../../Assets/plus_minus-white.svg";
 
-interface IProps {
+interface Props {
   item: Item;
   handleDecrease: (id: number) => void;
   handleIncrease: (id: number) => void;
 }
 
-export const ItemRow: SFC<IProps> = ({
+export const ItemRow: SFC<Props> = ({
   item,
   handleDecrease,
   handleIncrease

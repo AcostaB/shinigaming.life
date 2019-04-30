@@ -1,15 +1,15 @@
 import React, { SFC } from 'react';
 import { Attack } from "../../../Models/Attacks";
 import styled from 'styled-components/macro';
-import {css} from 'styled-components';
+import { css } from 'styled-components';
 import ExpandableHeaderPNG from "../../../Assets/expandable-header.png";
 
-interface IProps {
+interface Props {
     attack: Attack,
     adversityMod: number
 }
 
-export const AttackRow: SFC<IProps> = ({ attack, adversityMod }) =>
+export const AttackRow: SFC<Props> = ({ attack, adversityMod }) =>
     <StyledAttack>
         <AttackIcon isMelee={attack.melee} />
         <Weapon>
@@ -56,7 +56,7 @@ const StyledAttack = styled.div`
 `;
 
 const AttackIcon = styled.div`
-    background: center center transparent url("../../../Assets/${(props: {isMelee: boolean}) => props.isMelee ? 'melee' : 'ranged'}_weapon.svg") no-repeat;
+    background: center center transparent url("../../../Assets/${(props: { isMelee: boolean }) => props.isMelee ? 'melee' : 'ranged'}_weapon.svg") no-repeat;
     width: 32px;
     height: 32px;
     background-size: 28px 28px;
@@ -71,7 +71,7 @@ const WeaponName = styled.div`
     font-weight: bold;
     font-family: Roboto, Helvetica, sans-serif;
     line-height: 1.1;
-    ${(props: {isMagicItem:boolean}) => props.isMagicItem ? 'color:#1FC219' : ''} 
+    ${(props: { isMagicItem: boolean }) => props.isMagicItem ? 'color:#1FC219' : ''} 
 `;
 
 const WeaponType = styled.div`
@@ -102,7 +102,7 @@ const sharedStyle1 = css`
 
 const Modifier = styled.span`
     ${sharedStyle1};
-    ${(props: {hasAdversity: boolean}) => props.hasAdversity ? 'color:orange' : ''} 
+    ${(props: { hasAdversity: boolean }) => props.hasAdversity ? 'color:orange' : ''} 
 `;
 
 const DamageDice = styled.span`
