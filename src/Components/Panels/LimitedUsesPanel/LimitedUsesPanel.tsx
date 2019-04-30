@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { Actions } from "../../../Actions/dndActions";
 import { LimitedUse } from "../../../Models/LimitedUses";
-import { MappedState, MappedDispatch, IAppStore } from "../../../Types/Types";
+import { MappedState, MappedDispatch, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
 
 interface Props {
@@ -44,7 +44,7 @@ const LimitedUsesPanelBase: SFC<Props> = props => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   remainingLimitedUses: state.remainingLimitedUses,
   // TODO this cast shouldnt be necessary
   limitedUses: map(state.limitedUses, value => value) as LimitedUse[]

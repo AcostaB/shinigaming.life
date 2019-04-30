@@ -3,7 +3,7 @@ import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { ExpandableItem } from "../../ui-toolkit/ExpandableItem/ExpandableItem";
 import { Passive } from "../../../Models/Passives";
 import { connect } from "react-redux";
-import { MappedState, IAppStore } from "../../../Types/Types";
+import { MappedState, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from "styled-components/macro";
 
@@ -28,7 +28,7 @@ const PassivesPanelBase: SFC<Props> = ({ passives }) => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   passives: map(state.passives, value => value)
 });
 

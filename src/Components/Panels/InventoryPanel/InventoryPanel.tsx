@@ -7,7 +7,7 @@ import { Currency } from "../../../Models/Currency";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { Actions } from "../../../Actions/dndActions";
-import { MappedState, MappedDispatch, IAppStore } from "../../../Types/Types";
+import { MappedState, MappedDispatch, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from "styled-components/macro";
 
@@ -161,7 +161,7 @@ class InventoryPanelBase extends React.Component<Props, IState> {
   }
 }
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   items: map(state.inventory, value => value),
   currency: state.currency
 });

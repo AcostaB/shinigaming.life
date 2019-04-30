@@ -3,7 +3,7 @@ import { Character } from "../../Models/Character";
 import Stat from "../../Models/Stat";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { IAppStore, MappedState, MappedDispatch } from "../../Types/Types";
+import { AppStore, MappedState, MappedDispatch } from "../../Types/Types";
 import { Actions } from "../../Actions/dndActions";
 import styled from 'styled-components/macro';
 import { PlusMinus } from "../ui-toolkit/Icons/PlusMinus/PlusMinus";
@@ -56,7 +56,7 @@ export const HeaderBase: SFC<Props> = (props: Props) => {
   );
 
   const renderTracker = () => (
-    <HeaderTracker>
+    <div>
       <HeaderHealthTracker>
         <HeaderHealthTrackerLabel>HIT POINTS</HeaderHealthTrackerLabel>
         <HeaderHealthTrackerTracker>
@@ -77,7 +77,7 @@ export const HeaderBase: SFC<Props> = (props: Props) => {
         </HeaderHealthTrackerTracker>
       </HeaderHealthTracker>
       <HeaderInspirationTracker>INSPIRATION</HeaderInspirationTracker>
-    </HeaderTracker>
+    </div>
   );
 
   return (
@@ -89,7 +89,7 @@ export const HeaderBase: SFC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   character: state.character,
   remainingHealth: state.remainingHealth
 });
@@ -123,10 +123,6 @@ const HeaderMain = styled.div`
 const HeaderStats = styled.div`
   display: flex;
   flex: 1;
-`;
-
-const HeaderTracker = styled.div`
-  display: flex;
 `;
 
 const HeaderName = styled.div`
@@ -225,7 +221,7 @@ const HeaderHealthTrackerHealth = styled.div`
   padding: 0 10px 0 10px;
 `;
 
-const HeaderInspirationTracker = styled.div`
+const HeaderInspirationTracker = styled.button`
   background-color: rgba(0, 0, 0, 0.6);
   border-color: #96bf6b;
   border-radius: 3px;
@@ -234,10 +230,12 @@ const HeaderInspirationTracker = styled.div`
   border: 1px solid #96bf6b;
   text-transform: uppercase;
   width: 100%;
+  font-size: 10px;
+  padding: 5px 0;
   display: block;
-  font-size: 8px;
-  padding: 5px;
+  text-align: center;
   margin-top: 5px;
+  cursor: pointer;
 `;
 
 const StyledPlusMinus = styled(PlusMinus)`

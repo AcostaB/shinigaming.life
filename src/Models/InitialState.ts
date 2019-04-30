@@ -1,4 +1,4 @@
-import { IAppStore } from "../Types/Types";
+import { AppStore } from "../Types/Types";
 import { abilities } from "./Abilities";
 import { attacks } from "./Attacks";
 import { currency } from "./Currency";
@@ -10,7 +10,7 @@ import { keyBy, reduce } from "lodash";
 import { character as characterModel } from "./Character";
 
 // TODO Apply proper initial state
-const initialState: IAppStore = {
+const initialState: AppStore = {
   character: characterModel,
   remainingHealth: characterModel.maximumHealth,
   abilities: keyBy(abilities, "id"),

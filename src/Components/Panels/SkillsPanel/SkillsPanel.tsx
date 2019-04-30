@@ -3,7 +3,7 @@ import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { SkillRow } from "./SkillRow";
 import { Skill } from "../../../Models/Skills";
 import { connect } from "react-redux";
-import { MappedState, IAppStore } from "../../../Types/Types";
+import { MappedState, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from 'styled-components/macro';
 
@@ -35,7 +35,7 @@ const SkillsPanelBase: SFC<Props> = ({
     </Panel>
   );
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   leftColumnSkills: map(state.leftColumnSkills, value => value),
   rightColumnSkills: map(state.rightColumnSkills, value => value)
 });

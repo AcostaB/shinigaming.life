@@ -1,48 +1,48 @@
 import { LimitedUse } from "./../Models/LimitedUses";
-import { IAppStore } from "./../Types/Types";
+import { AppStore } from "./../Types/Types";
 import { Actions, dndActions } from "../Actions/dndActions";
 import { mapValues } from "lodash";
 
 import initialState from "../Models/InitialState";
 
 const decreaseHealth = (
-  state: IAppStore["remainingHealth"] = 0
-): IAppStore["remainingHealth"] => (state > 0 ? state - 1 : state);
+  state: AppStore["remainingHealth"] = 0
+): AppStore["remainingHealth"] => (state > 0 ? state - 1 : state);
 
 const increaseHealth = (
-  state: IAppStore["remainingHealth"] = 0,
-  character: IAppStore["character"]
-): IAppStore["remainingHealth"] =>
+  state: AppStore["remainingHealth"] = 0,
+  character: AppStore["character"]
+): AppStore["remainingHealth"] =>
   state < character.maximumHealth ? state + 1 : state;
 
 
 const decreaseHealthBy10 = (
-  state: IAppStore["remainingHealth"] = 0
-): IAppStore["remainingHealth"] => (state - 10 > 0 ? state - 10 : 0);
+  state: AppStore["remainingHealth"] = 0
+): AppStore["remainingHealth"] => (state - 10 > 0 ? state - 10 : 0);
 
 const increaseHealthBy10 = (
-  state: IAppStore["remainingHealth"] = 0,
-  character: IAppStore["character"]
-): IAppStore["remainingHealth"] =>
+  state: AppStore["remainingHealth"] = 0,
+  character: AppStore["character"]
+): AppStore["remainingHealth"] =>
   state + 10 < character.maximumHealth ? state + 10 : character.maximumHealth;
 
 const increaseHealthToMax = (
-  state: IAppStore["character"]
-): IAppStore["remainingHealth"] => state.maximumHealth;
+  state: AppStore["character"]
+): AppStore["remainingHealth"] => state.maximumHealth;
 
 const decreaseLimitedUse = (
-  state: IAppStore["remainingLimitedUses"],
+  state: AppStore["remainingLimitedUses"],
   action: ReturnType<typeof Actions.decreaseLimitedUse>
-): IAppStore["remainingLimitedUses"] => {
+): AppStore["remainingLimitedUses"] => {
   const newValue = state[action.payload] > 0 ? state[action.payload] - 1 : 0;
   return { ...state, [action.payload]: newValue };
 };
 
 const increaseLimitedUse = (
-  state: IAppStore["remainingLimitedUses"],
+  state: AppStore["remainingLimitedUses"],
   action: ReturnType<typeof Actions.increaseLimitedUse>,
-  limitedUses: IAppStore["limitedUses"]
-): IAppStore["remainingLimitedUses"] => {
+  limitedUses: AppStore["limitedUses"]
+): AppStore["remainingLimitedUses"] => {
   const maxUses = limitedUses[action.payload].maxUses;
   const newValue =
     state[action.payload] < maxUses ? state[action.payload] + 1 : maxUses;
@@ -51,25 +51,25 @@ const increaseLimitedUse = (
 };
 
 const shortRestRecoverLimitedUse = (
-  state: IAppStore["remainingLimitedUses"],
-  limitedUses: IAppStore["limitedUses"]
-): IAppStore["remainingLimitedUses"] =>
+  state: AppStore["remainingLimitedUses"],
+  limitedUses: AppStore["limitedUses"]
+): AppStore["remainingLimitedUses"] =>
   mapValues(
     state,
     (value, index) =>
       (limitedUses[index] as LimitedUse).shortRestRecover
         ? (limitedUses[index] as LimitedUse).maxUses
         : value
-  ) as IAppStore["remainingLimitedUses"];
+  ) as AppStore["remainingLimitedUses"];
 
 const longRestRecoverLimitedUse = (
-  state: IAppStore["remainingLimitedUses"],
-  limitedUses: IAppStore["limitedUses"]
-): IAppStore["remainingLimitedUses"] =>
+  state: AppStore["remainingLimitedUses"],
+  limitedUses: AppStore["limitedUses"]
+): AppStore["remainingLimitedUses"] =>
   mapValues(
     state,
     (value, index) => (limitedUses[index] as LimitedUse).maxUses
-  ) as IAppStore["remainingLimitedUses"];
+  ) as AppStore["remainingLimitedUses"];
 
 // Slice reducer
 // const healthReducer = createReducer([], {
@@ -94,9 +94,9 @@ const longRestRecoverLimitedUse = (
 // TODO read more on this: https://daveceddia.com/how-does-redux-work/ @@redux
 
 export const healthReducer = (
-  state: IAppStore["remainingHealth"],
+  state: AppStore["remainingHealth"],
   action: Actions,
-  character: IAppStore["character"]
+  character: AppStore["character"]
 ) => {
   switch (action.type) {
     case dndActions.DECREASE_HEALTH:
@@ -115,9 +115,9 @@ export const healthReducer = (
 };
 
 export const limitedUsesReducer = (
-  state: IAppStore["remainingLimitedUses"],
+  state: AppStore["remainingLimitedUses"],
   action: Actions,
-  limitedUses: IAppStore["limitedUses"]
+  limitedUses: AppStore["limitedUses"]
 ) => {
   switch (action.type) {
     case dndActions.DECREASE_LIMITED_USE:
@@ -146,9 +146,9 @@ export const inventoryReducer = (state: any, action: Actions) => {
 };
 
 export default (
-  state: IAppStore = initialState,
+  state: AppStore = initialState,
   action: Actions
-): IAppStore => ({
+): AppStore => ({
   ...state,
   remainingHealth: healthReducer(
     state.remainingHealth,

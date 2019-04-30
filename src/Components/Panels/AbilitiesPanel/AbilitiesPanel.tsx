@@ -3,7 +3,7 @@ import { Panel } from "../../ui-toolkit/Panel/Panel";
 import { AbilityRow } from "./AbilityRow";
 import { Ability } from "../../../Models/Abilities";
 import { connect } from "react-redux";
-import { MappedState, IAppStore } from "../../../Types/Types";
+import { MappedState, AppStore } from "../../../Types/Types";
 import { map } from "lodash";
 
 interface Props {
@@ -23,7 +23,7 @@ const AbilitiesPanelBase: SFC<Props> = ({ abilities }) => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
+const mapStateToProps = (state: AppStore): MappedState<Props> => ({
   abilities: map(state.abilities, value => value)
 });
 

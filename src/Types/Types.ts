@@ -1,4 +1,4 @@
-import { IAppStore } from "./Types";
+import { AppStore } from "./Types";
 import { Ability } from "../Models/Abilities";
 import { Attack } from "../Models/Attacks";
 import { LimitedUse } from "../Models/LimitedUses";
@@ -36,7 +36,7 @@ export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<
 
 export type Keyed<T> = { [id: number]: T };
 
-export interface IAppStore {
+export interface AppStore {
   // Header component
   character: Character;
   remainingHealth: number;
