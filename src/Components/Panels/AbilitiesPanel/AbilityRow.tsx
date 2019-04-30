@@ -1,6 +1,12 @@
 import React, { SFC } from 'react';
 import { Ability } from '../../../Models/Abilities';
 import styled from 'styled-components/macro';
+import strength from '../../../Assets/strength.svg';
+import dexterity from '../../../Assets/dexterity.svg';
+import charisma from '../../../Assets/charisma.svg';
+import constitution from '../../../Assets/constitution.svg';
+import intelligence from '../../../Assets/intelligence.svg';
+import wisdom from '../../../Assets/wisdom.svg';
 
 interface Props {
     ability: Ability
@@ -66,6 +72,7 @@ const Cell = styled.td`
 `;
 
 const ExpCell = styled(Cell)`
+    text-align: right;
     font-size: 16px;
     font-weight: normal;
 `;
@@ -121,5 +128,24 @@ const AbilityIcon = styled.span`
     display: inline-block;
     vertical-align: middle;
     background-size: 20px;
-    background: center center transparent url("../../../Assets/${(props: { abilityName: string }) => props.abilityName}.svg") no-repeat;
+    
+    background: center center transparent url(${(props: { abilityName: string }) => getIconURL(props.abilityName)}) no-repeat;
 `;
+
+const getIconURL = (abilityName: string) => {
+    switch (abilityName) {
+        case "strength":
+            return strength;
+        case "dexterity":
+            return dexterity;
+        case "constitution":
+            return constitution;
+        case "wisdom":
+            return wisdom;
+        case "intelligence":
+            return intelligence;
+        case "charisma":
+            return charisma;
+        default: return strength;
+    }
+}
