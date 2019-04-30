@@ -8,7 +8,7 @@ import { LimitedUse } from "../../../Models/LimitedUses";
 import { MappedState, MappedDispatch, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 
-interface IProps {
+interface Props {
   remainingLimitedUses: { [limitedUsesName: number]: number };
   limitedUses: LimitedUse[];
   onShortRest: () => void;
@@ -17,7 +17,7 @@ interface IProps {
   onLimitedUseIncrease: (limitedUseId: number) => void;
 }
 
-const LimitedUsesPanelBase: SFC<IProps> = props => (
+const LimitedUsesPanelBase: SFC<Props> = props => (
   <Panel>
     <Panel.Header title="LIMITED USES" />
     <Panel.Body>
@@ -44,13 +44,13 @@ const LimitedUsesPanelBase: SFC<IProps> = props => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   remainingLimitedUses: state.remainingLimitedUses,
   // TODO this cast shouldnt be necessary
   limitedUses: map(state.limitedUses, value => value) as LimitedUse[]
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
+const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<Props> => ({
   onShortRest: () => dispatch(Actions.shortRest()),
   onLongRest: () => dispatch(Actions.longRest()),
   onLimitedUseDecrease: (id: number) =>

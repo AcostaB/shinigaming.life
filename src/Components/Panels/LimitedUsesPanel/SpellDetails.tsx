@@ -2,11 +2,11 @@ import React, { SFC } from "react";
 import { Spell } from "../../../Models/LimitedUses";
 import styled from "styled-components/macro";
 
-interface IProps {
+interface Props {
   spell: Spell;
 }
 
-export const SpellDetails: SFC<IProps> = ({ spell }) => {
+export const SpellDetails: SFC<Props> = ({ spell }) => {
   const {
     level,
     castingTime,

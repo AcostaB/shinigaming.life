@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import { IAppStore, MappedState, MappedDispatch } from "../../Types/Types";
 import { Actions } from "../../Actions/dndActions";
 import styled from 'styled-components/macro';
-import PlusMinusSign from "../../Assets/plus_minus-white.svg";
+import { PlusMinus } from "../ui-toolkit/Icons/PlusMinus/PlusMinus";
 
 // TODO: this file can and should be broken down into smaller components.
 
-interface IProps {
+interface Props {
   character: Character;
   remainingHealth: number;
   decreaseHealthHandler: () => void;
@@ -19,7 +19,7 @@ interface IProps {
   increaseHealthBy10Handler: () => void;
 }
 
-export const HeaderBase: SFC<IProps> = (props: IProps) => {
+export const HeaderBase: SFC<Props> = (props: Props) => {
   const renderHeaderMain = () => (
     <Header_Main>
       <div>
@@ -60,17 +60,18 @@ export const HeaderBase: SFC<IProps> = (props: IProps) => {
       <Header_HealthTracker>
         <Header_HealthTracker_Label>HIT POINTS</Header_HealthTracker_Label>
         <Header_HealthTracker_Tracker>
-          <Header_DecreaseIcon
-            red={true}
+          <StyledPlusMinus
+            isPlus={false}
+            backgroundColor={"darkred"}
             onClick={props.decreaseHealthBy10Handler}
           />
-          <Header_DecreaseIcon onClick={props.decreaseHealthHandler} />
+          <StyledPlusMinus isPlus={false} onClick={props.decreaseHealthHandler} />
           <Header_HealthTracker_Health>
             {props.remainingHealth}/{props.character.maximumHealth}
           </Header_HealthTracker_Health>
-          <Header_IncreaseIcon onClick={props.increaseHealthHandler} />
-          <Header_IncreaseIcon
-            red={true}
+          <StyledPlusMinus isPlus={true} onClick={props.increaseHealthHandler} />
+          <StyledPlusMinus isPlus={true}
+            backgroundColor={"darkred"}
             onClick={props.increaseHealthBy10Handler}
           />
         </Header_HealthTracker_Tracker>
@@ -88,12 +89,12 @@ export const HeaderBase: SFC<IProps> = (props: IProps) => {
   );
 };
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   character: state.character,
   remainingHealth: state.remainingHealth
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<IProps> => ({
+const mapDispatchToProps = (dispatch: Dispatch): MappedDispatch<Props> => ({
   decreaseHealthHandler: () => dispatch(Actions.decreaseHealth()),
   increaseHealthHandler: () => dispatch(Actions.increaseHealth()),
   decreaseHealthBy10Handler: () => dispatch(Actions.decreaseHealthBy10()),
@@ -214,57 +215,6 @@ const Header_HealthTracker_Label = styled.div`
   color: #fff;
 `;
 
-// TODO improve on the prop usage on the margin-left.
-// TODO the icons have repeated styles.
-// TODO improve the css styling and positioning of the plus and minus signs
-const Header_IncreaseIcon = styled.button<{ red?: boolean }>`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: ${props => (props.red ? "darkred" : "#96bf6b")};
-  color: #fff;
-  font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-  ${props => (props.red ? "margin-left: 10px;" : "")} &::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusSign});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-`;
-
-const Header_DecreaseIcon = styled.button<{ red?: boolean }>`
-  display: inline-block;
-  border-radius: 3px;
-  background-color: ${props => (props.red ? "darkred" : "#96bf6b")};
-  color: #fff;
-  font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
-  font-size: 10px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  height: 20px;
-  width: 27px;
-
-  ${props => (props.red ? "margin-right: 10px;" : "")} &::before {
-    content: "";
-    display: block;
-    height: 14px;
-    width: 14px;
-    background-image: url(${PlusMinusSign});
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: -17px 0;
-  }
-`;
-
 const Header_HealthTracker_Health = styled.div`
   font-size: 24px;
   letter-spacing: -1px;
@@ -288,4 +238,8 @@ const Header_Inspiration_Tracker = styled.div`
   font-size: 8px;
   padding: 5px;
   margin-top: 5px;
+`;
+
+const StyledPlusMinus = styled(PlusMinus)`
+  margin: 0 3px;
 `;

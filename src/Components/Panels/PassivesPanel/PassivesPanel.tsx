@@ -7,11 +7,11 @@ import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from "styled-components/macro";
 
-interface IProps {
+interface Props {
   passives: Passive[];
 }
 
-const PassivesPanelBase: SFC<IProps> = ({ passives }) => (
+const PassivesPanelBase: SFC<Props> = ({ passives }) => (
   <Panel>
     <Panel.Header title="PASSIVES" />
     <Panel.Body>
@@ -28,7 +28,7 @@ const PassivesPanelBase: SFC<IProps> = ({ passives }) => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   passives: map(state.passives, value => value)
 });
 

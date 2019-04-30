@@ -2,11 +2,11 @@ import React, { SFC } from 'react';
 import { Skill } from "../../../Models/Skills";
 import styled from 'styled-components/macro';
 
-interface IProps {
+interface Props {
     skill: Skill
 }
 
-export const SkillRow: SFC<IProps> = ({ skill }) => {
+export const SkillRow: SFC<Props> = ({ skill }) => {
     const modSign: string = skill.mod >= 0 ? "+" : "-";
 
     return (

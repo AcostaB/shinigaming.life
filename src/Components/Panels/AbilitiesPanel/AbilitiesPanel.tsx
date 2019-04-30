@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 
-interface IProps {
+interface Props {
   abilities: Ability[];
 }
 
-const AbilitiesPanelBase: SFC<IProps> = ({ abilities }) => (
+const AbilitiesPanelBase: SFC<Props> = ({ abilities }) => (
   <Panel>
     <Panel.Header title="ABILITIES" />
     <Panel.Body>
@@ -23,7 +23,7 @@ const AbilitiesPanelBase: SFC<IProps> = ({ abilities }) => (
   </Panel>
 );
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   abilities: map(state.abilities, value => value)
 });
 

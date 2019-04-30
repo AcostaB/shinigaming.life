@@ -7,12 +7,12 @@ import { MappedState, IAppStore } from "../../../Types/Types";
 import { map } from "lodash";
 import styled from 'styled-components/macro';
 
-interface IProps {
+interface Props {
   leftColumnSkills: Skill[];
   rightColumnSkills: Skill[];
 }
 
-const SkillsPanelBase: SFC<IProps> = ({
+const SkillsPanelBase: SFC<Props> = ({
   leftColumnSkills,
   rightColumnSkills
 }) => (
@@ -35,7 +35,7 @@ const SkillsPanelBase: SFC<IProps> = ({
     </Panel>
   );
 
-const mapStateToProps = (state: IAppStore): MappedState<IProps> => ({
+const mapStateToProps = (state: IAppStore): MappedState<Props> => ({
   leftColumnSkills: map(state.leftColumnSkills, value => value),
   rightColumnSkills: map(state.rightColumnSkills, value => value)
 });
