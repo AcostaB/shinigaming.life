@@ -1,0 +1,21 @@
+.boardUI > div.boardCell {
+  background-color: rgb(26, 22, 22);
+}
+
+.boardUI > div.boardCell.red {
+  background-color: rgb(230, 49, 49);
+}
+
+.boardUI {
+  display: grid;
+  grid-template-columns: 90px 90px 90px 90px 90px 90px 90px 90px;
+  grid-template-rows: 90px 90px 90px 90px 90px 90px 90px 90px;
+}
+
+.boardUI > div.boardCell.activeCell {
+  border: 3px solid white;
+}
+
+.boardUI > div.boardCell.validMove {
+  border: 3px solid yellow;
+}

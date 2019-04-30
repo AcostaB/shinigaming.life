@@ -1,0 +1,17 @@
+.gamePiece.red,
+.gamePiece.black {
+  width: 70%;
+  height: 70%;
+  border-radius: 35px;
+  border: 3px solid white;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.gamePiece.black {
+  background-color: black;
+}
+
+.gamePiece.red {
+  background-color: red;
+}
