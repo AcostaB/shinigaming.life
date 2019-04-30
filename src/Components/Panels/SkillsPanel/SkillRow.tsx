@@ -73,7 +73,7 @@ const SkillItemProficiency = styled.div`
         width: 5px;
         height: 5px;
         background-color: #96bf6b;
-        border-radius: 50 %;
+        border-radius: 50%;
         `
         : ''}
 `;

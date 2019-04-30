@@ -233,7 +233,7 @@ const StyledCurrency = styled.div`
   -ms-flex-align: center;
   align-items: center;
   height: 65px;
-  background-size: 100 % 67px;
+  background-size: 100% 67px;
 `;
 
 const CurrencyLabel = styled.div`
