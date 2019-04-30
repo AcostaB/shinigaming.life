@@ -46,8 +46,8 @@ const WorkExperienceContainer = styled.div`
 const JobTitle = styled.div`
   align-items: center;
   font-size: 30px;
-  color: #4bb9cd;
-  background: linear-gradient(-90deg,  red,  green);
+  color: white;
+  background: #2196f3;
 `;
 
 // TODO this was copy pasted from the home page. Need to figure out how to share styled with styled components. 

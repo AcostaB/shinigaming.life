@@ -21,7 +21,6 @@ export default LinkedInFeedback;
 
 const LinkedInFeedbackContainer = styled.div`
   text-align: left;
-  font-family: "AntipastoPro-Hairline";
   color: white;
   font-size: 14px;
 `;
@@ -31,10 +30,11 @@ const LeftSection = styled.div`
   width: 20%;
 `;
 
+// TODO - colors need to be variables, pref part of theme
 const Name = styled.div`
   align-items: center;
-  color: #4bb9cd;
-  background: linear-gradient(-90deg,  red,  green);
+  color: white;
+  background: #2196f3;
 `;
 
 const Position = styled.div`
