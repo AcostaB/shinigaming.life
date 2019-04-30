@@ -45,31 +45,30 @@ const SkillsPanel = connect(mapStateToProps)(SkillsPanelBase);
 export default SkillsPanel;
 
 const Column = styled.div`
-    width: 50%;
-    display: inline-block;
+    flex: 1;
+    box-sizing: content-box;
+
+    &:not(:first-child) {
+      border-left: 1px solid #edeae8;
+    };
+
+    &:first-child {
+      padding-right: 10px;
+    };
+    
+    &:not(:first-child),
+    :not(:last-child) {
+      padding-left: 10px;
+      padding-right: 10px;
+    };
+  
+    &:last-child {
+      padding-left: 10px;
+    };
 `;
 
 // TODO need to make sure that the double element selector is working properly.
 const Columns = styled.div`
   box-sizing: border-box;
-
-  display: inline-block;
-
-  &:first-child {
-    padding-right: 10px;
-  }
-
-  &:not(:first-child) {
-    border-left: 1px solid #edeae8;
-  }
-
-  &:not(:first-child),
-  :not(:last-child) {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  &:last-child {
-    padding-left: 10px;
-  }
+  display: flex;
 `;

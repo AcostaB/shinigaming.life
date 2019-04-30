@@ -21,71 +21,71 @@ interface Props {
 
 export const HeaderBase: SFC<Props> = (props: Props) => {
   const renderHeaderMain = () => (
-    <Header_Main>
+    <HeaderMain>
       <div>
-        <Header_Name>{props.character.name}</Header_Name>
-        <Header_RaceClassLevel>
+        <HeaderName>{props.character.name}</HeaderName>
+        <HeaderRaceClassLevel>
           {props.character.race +
             " " +
             props.character.class +
             " " +
             props.character.level}
-        </Header_RaceClassLevel>
+        </HeaderRaceClassLevel>
       </div>
-    </Header_Main>
+    </HeaderMain>
   );
 
   const renderSingleStat = (stat: Stat) => (
-    <Header_Stat_Div key={stat.description}>
-      <Header_Stat_Category>{stat.category}</Header_Stat_Category>
-      <Header_Stat_Value>
-        <Header_Stat_Value_Mod>{stat.mod} </Header_Stat_Value_Mod>
-        <Header_Stat_Value_Number>{stat.value} </Header_Stat_Value_Number>
-        <Header_Stat_Value_PostText>
+    <HeaderStatDiv key={stat.description}>
+      <HeaderStatCategory>{stat.category}</HeaderStatCategory>
+      <HeaderStatValue>
+        <HeaderStatValueMod>{stat.mod} </HeaderStatValueMod>
+        <HeaderStatValueNumber>{stat.value} </HeaderStatValueNumber>
+        <HeaderStatValuePostText>
           {stat.valuePostText}{" "}
-        </Header_Stat_Value_PostText>
-      </Header_Stat_Value>
-      <Header_Stat_Description>{stat.description}</Header_Stat_Description>
-    </Header_Stat_Div>
+        </HeaderStatValuePostText>
+      </HeaderStatValue>
+      <HeaderStatDescription>{stat.description}</HeaderStatDescription>
+    </HeaderStatDiv>
   );
 
   const renderHeaderStats = () => (
-    <Header_Stats>
+    <HeaderStats>
       {props.character.stats.map(stat => renderSingleStat(stat))}
-    </Header_Stats>
+    </HeaderStats>
   );
 
   const renderTracker = () => (
-    <Header_Tracker>
-      <Header_HealthTracker>
-        <Header_HealthTracker_Label>HIT POINTS</Header_HealthTracker_Label>
-        <Header_HealthTracker_Tracker>
+    <HeaderTracker>
+      <HeaderHealthTracker>
+        <HeaderHealthTrackerLabel>HIT POINTS</HeaderHealthTrackerLabel>
+        <HeaderHealthTrackerTracker>
           <StyledPlusMinus
             isPlus={false}
             backgroundColor={"darkred"}
             onClick={props.decreaseHealthBy10Handler}
           />
           <StyledPlusMinus isPlus={false} onClick={props.decreaseHealthHandler} />
-          <Header_HealthTracker_Health>
+          <HeaderHealthTrackerHealth>
             {props.remainingHealth}/{props.character.maximumHealth}
-          </Header_HealthTracker_Health>
+          </HeaderHealthTrackerHealth>
           <StyledPlusMinus isPlus={true} onClick={props.increaseHealthHandler} />
           <StyledPlusMinus isPlus={true}
             backgroundColor={"darkred"}
             onClick={props.increaseHealthBy10Handler}
           />
-        </Header_HealthTracker_Tracker>
-      </Header_HealthTracker>
-      <Header_Inspiration_Tracker>INSPIRATION</Header_Inspiration_Tracker>
-    </Header_Tracker>
+        </HeaderHealthTrackerTracker>
+      </HeaderHealthTracker>
+      <HeaderInspirationTracker>INSPIRATION</HeaderInspirationTracker>
+    </HeaderTracker>
   );
 
   return (
-    <Header_Container>
+    <HeaderContainer>
       {renderHeaderMain()}
       {renderHeaderStats()}
       {renderTracker()}
-    </Header_Container>
+    </HeaderContainer>
   );
 };
 
@@ -108,28 +108,28 @@ const Header = connect(
 
 export default Header;
 
-const Header_Container = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
   -webkit-align-items: center;
   height: 130px;
   padding: 0 15px;
 `;
 
-const Header_Main = styled.div`
+const HeaderMain = styled.div`
   display: flex;
   flex: 2;
 `;
 
-const Header_Stats = styled.div`
+const HeaderStats = styled.div`
   display: flex;
   flex: 1;
 `;
 
-const Header_Tracker = styled.div`
+const HeaderTracker = styled.div`
   display: flex;
 `;
 
-const Header_Name = styled.div`
+const HeaderName = styled.div`
   font-size: 28px;
   color: #fff;
   font-family: "Roboto Condensed", Roboto, Helvetica, sans-serif;
@@ -137,17 +137,17 @@ const Header_Name = styled.div`
   text-align: left;
 `;
 
-const Header_RaceClassLevel = styled.div`
+const HeaderRaceClassLevel = styled.div`
   font-size: 12px;
   color: #979aa4;
   text-align: left;
 `;
 
-const Header_Stat_Div = styled.div`
+const HeaderStatDiv = styled.div`
   margin-right: 20px;
 `;
 
-const Header_Stat_Category = styled.div`
+const HeaderStatCategory = styled.div`
   font-size: 7px;
   font-weight: bold;
   text-align: center;
@@ -158,11 +158,11 @@ const Header_Stat_Category = styled.div`
   text-align: center;
 `;
 
-const Header_Stat_Value = styled.div`
+const HeaderStatValue = styled.div`
   text-align: center;
 `;
 
-const Header_Stat_Value_Number = styled.span`
+const HeaderStatValueNumber = styled.span`
   font-size: 26px;
   text-align: center;
   color: #fff;
@@ -170,7 +170,7 @@ const Header_Stat_Value_Number = styled.span`
 `;
 
 // TODO this one and the next one are identical. figure this out.
-const Header_Stat_Value_Mod = styled.span`
+const HeaderStatValueMod = styled.span`
   text-align: center;
   color: #979aa4;
   vertical-align: super;
@@ -178,7 +178,7 @@ const Header_Stat_Value_Mod = styled.span`
   font-weight: normal;
 `;
 
-const Header_Stat_Value_PostText = styled.span`
+const HeaderStatValuePostText = styled.span`
   text-align: center;
   color: #979aa4;
   vertical-align: super;
@@ -186,7 +186,7 @@ const Header_Stat_Value_PostText = styled.span`
   font-weight: normal;
 `;
 
-const Header_Stat_Description = styled.div`
+const HeaderStatDescription = styled.div`
   font-size: 10px;
   max-width: 65px;
   margin: 0 auto;
@@ -194,7 +194,7 @@ const Header_Stat_Description = styled.div`
   color: #fff;
 `;
 
-const Header_HealthTracker = styled.div`
+const HeaderHealthTracker = styled.div`
   position: relative;
   border: 1px solid #96bf6b;
   border-radius: 3px;
@@ -203,19 +203,19 @@ const Header_HealthTracker = styled.div`
   padding: 5px 20px 5px 20px;
 `;
 
-const Header_HealthTracker_Tracker = styled.div`
+const HeaderHealthTrackerTracker = styled.div`
   display: flex;
   -webkit-align-items: center;
 `;
 
-const Header_HealthTracker_Label = styled.div`
+const HeaderHealthTrackerLabel = styled.div`
   font-size: 10px;
   text-align: center;
   font-family: Roboto, Helvetica, sans-serif;
   color: #fff;
 `;
 
-const Header_HealthTracker_Health = styled.div`
+const HeaderHealthTrackerHealth = styled.div`
   font-size: 24px;
   letter-spacing: -1px;
   line-height: 1;
@@ -225,7 +225,7 @@ const Header_HealthTracker_Health = styled.div`
   padding: 0 10px 0 10px;
 `;
 
-const Header_Inspiration_Tracker = styled.div`
+const HeaderInspirationTracker = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   border-color: #96bf6b;
   border-radius: 3px;
