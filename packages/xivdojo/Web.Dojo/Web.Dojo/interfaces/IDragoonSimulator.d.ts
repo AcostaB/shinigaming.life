@@ -1,0 +1,1 @@
+﻿interface IDragoonSimulator extends IBaseSimulator { }

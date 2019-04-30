@@ -1,0 +1,201 @@
+﻿<template>
+    <link rel="stylesheet" href="../styles/Simulator.css" />
+    <!--<link rel="stylesheet" href="../content/chartist.min.css"/>
+    <script type="text/javascript" src="../scripts/chartist.js"></script>-->
+    <div class="title">
+        Dragoon
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        Skill:
+                    </div>
+                    <div class="col-sm-3">
+                        Damage:
+                    </div>
+                    <div class="col-sm-3">
+                        Time:
+                    </div>
+                    <div class="col-sm-4">
+                        Buffed:
+                    </div>
+                </div>
+                <div class="row damagePanel">
+                    <div repeat.for="damage of dragoonSimulator.damageLog" class="row damageRow">
+                        <div class="col-sm-2">
+                            <div class="icon small ${damage.skill.id}">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            ${damage.totalDamage}
+                        </div>
+                        <div class="col-sm-4">
+                            ${dragoonSimulator.formatTime(damage.time)}
+                        </div>
+                        <!--<div style="width: 30%">
+                            ${damage.buffs.length > 0}
+                        </div>-->
+                        <div class="col-sm-4">
+                            <div class="icon small ${buff}" repeat.for="buff of damage.buffs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <!--<chartist data.bind="ppsChart.data"
+                          type="Line"/>-->                          
+                <div class="ct-chart ct-perfect-fifth"></div>
+            </div>
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-sm-7">
+                        Total Potency:
+                    </div>
+                    <div class="col-sm-5">
+                        ${dragoonSimulator.totalPotency}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        Current Time: 
+                    </div>
+                    <div class="col-sm-5">
+                        ${dragoonSimulator.formatTime(dragoonSimulator.time)}
+                    </div>
+                </div>
+                <div class="row ppsRow">
+                    <div class="col-sm-7">
+                        PPS:
+                    </div>
+                    <div class="col-sm-5">
+                        ${dragoonSimulator.pps}
+                    </div>
+                </div>
+                </br>
+                </br>
+                </br>
+                <div class="row ">
+                    <div class="col-sm-12">
+                        Active Buffs:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="buffTimer" repeat.for="activeBuff of dragoonSimulator.activeBuffs">
+                        <div class="icon small ${activeBuff.skill.id}"></div>
+                        <div class="iconTimer">${dragoonSimulator.formatTimer(activeBuff.endTime - dragoonSimulator.time)}</div>
+                    </div>
+                </div>
+                </br>
+                </br>
+                </br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        Active DoTs:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="dotTimer" repeat.for="activeDot of dragoonSimulator.activeDots">
+                        <div class="icon small ${activeDot.skill.id}"></div>
+                        <div class="iconTimer">${dragoonSimulator.formatTimer(activeDot.endTime - dragoonSimulator.time)}</div>
+                    </div>
+                </div>
+                </br>
+                </br>
+                </br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        Skills on cooldown:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cooldownTimer" repeat.for="skillOnCooldown of dragoonSimulator.skillsOnCooldown">
+                        <div class="icon small ${skillOnCooldown.name}"></div>
+                        <div class="iconTimer">${dragoonSimulator.formatTimer(skillOnCooldown.endTime - dragoonSimulator.time)}</div>
+                    </div>
+                    <div repeat.for="skillOnCooldown of skillsOnCooldown" class="icon small ${dragoonSimulator.skillOnCooldown}"></div>
+                </div>
+                <div class="row">
+                    <button click.trigger="startNewRotation()" class="btn btn-primary">New Rotation</button>
+                </div>
+                <div class="row">
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exportUserActions">Export Rotation</button>
+                </div>
+                <div class="row">
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importUserActions">Import Rotation</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="skillsPanel col-sm-offset-2 col-sm-8">
+                <div repeat.for="skill of dragoonSimulator.dragoonArray" class="skill">
+                    <div click.trigger="dragoonSimulator.activateSkill(skill)" class="icon ${skill.id}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--START - MODAL - Export-->
+    <div id="exportUserActions" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Export Rotation</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        Copy the text below and paste into the import popup: 
+                    </div>
+                    <br />
+                    <div>${dragoonSimulator.userActionsJSON}</div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--END - MODAL-->
+
+    <!--START - MODAL - Import-->
+    <div id="importUserActions" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Import Rotation</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        Paste below the text you copied from the export popup. 
+                    </div>
+                    <br />
+                    <div>
+                        **Please note this will reset any progress you have on your current rotation. If you do not want to lose your current rotation, click on "New Rotation".
+                    </div>
+                    <br />
+                    <input value.bind="dragoonSimulator.userActionsImport"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" click.trigger="dragoonSimulator.importUserActions()">Import</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END - MODAL-->
+
+</template>

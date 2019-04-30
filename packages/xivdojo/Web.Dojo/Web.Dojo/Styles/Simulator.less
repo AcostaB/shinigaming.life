@@ -1,0 +1,169 @@
+﻿@Dragoon: #400080;
+@DragoonDark: #240047;
+
+body {
+    background-image:url("../content/background/Gray background.jpg");
+    color: white;
+    //text-transform: uppercase;
+    font-family: Calibri;
+
+    .title {
+        background-color: @Dragoon;
+        padding-left: 20px;
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+
+    .damagePanel {
+        height: 100%;
+        max-height: 550px;
+        overflow-y: auto;
+        font-size: 10px;
+    }
+
+    .buffTimer,
+    .dotTimer,
+    .cooldownTimer {
+        display: inline-block;
+        margin: 0 2px 0 2px; 
+    }
+
+    .iconTimer {
+        text-align: center;
+        color: lightgreen;
+    }
+
+    .skillsPanel {
+        margin-top: 50px;
+    }
+
+    .skillsPanel, 
+    .damagePanel {
+        border: 2px solid @Dragoon;
+        border-radius: 10px;
+        padding:20px;
+        background-color: #262626;
+
+        .damageRow > div {
+            display: inline-block;
+        }
+    }
+
+    .btn-primary {
+        border-color: @Dragoon;
+        background-color: @Dragoon;
+
+        &:active, 
+        &:focus,
+        &:hover {
+            border-color: @Dragoon;
+            background-color: @DragoonDark;
+        }
+    }
+
+    .skill {
+        display: inline-block;
+    }
+
+    .icon {
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        background-size: cover;
+        margin: 5px;
+
+        &.small {
+            width: 20px;
+            height: 20px;
+            margin: 0 2px 0 0;
+        }
+
+        &.TrueThrust {            
+            background-image: url("../content/dragoon/TrueThrust.png");
+        }
+        &.VorpalThrust {            
+            background-image: url("../content/dragoon/VorpalThrust.png");
+        }
+        &.FullThrust {            
+            background-image: url("../content/dragoon/FullThrust.png");
+        }
+        &.ImpulseDrive {            
+            background-image: url("../content/dragoon/ImpulseDrive.png");
+        }
+        &.Disembowel {            
+            background-image: url("../content/dragoon/Disembowel.png");
+        }
+        &.ChaosThrust {            
+            background-image: url("../content/dragoon/ChaosThrust.png");
+        }
+        &.FangAndClaw {            
+            background-image: url("../content/dragoon/FangAndClaw.png");
+        }
+        &.WheelingThrust {            
+            background-image: url("../content/dragoon/WheelingThrust.png");
+        }
+        &.Geirskogul {            
+            background-image: url("../content/dragoon/Geirskogul.png");
+        }
+        &.KeenFlurry {            
+            background-image: url("../content/dragoon/KeenFlurry.png");
+        }
+        &.LegSweep {            
+            background-image: url("../content/dragoon/LegSweep.png");
+        }
+        &.HeavyThrust {            
+            background-image: url("../content/dragoon/HeavyThrust.png");
+        }
+        &.Phlebotomize {            
+            background-image: url("../content/dragoon/Phlebotomize.png");
+        }
+        &.PiercingTalon {            
+            background-image: url("../content/dragoon/PiercingTalon.png");
+        }
+        &.DoomSpike {            
+            background-image: url("../content/dragoon/DoomSpike.png");
+        }
+        &.RingOfThorns {            
+            background-image: url("../content/dragoon/RingOfThorns.png");
+        }
+        &.ElusiveJump {            
+            background-image: url("../content/dragoon/ElusiveJump.png");
+        }
+        &.LifeSurge {            
+            background-image: url("../content/dragoon/LifeSurge.png");
+        }
+        &.BloodForBlood {            
+            background-image: url("../content/dragoon/BloodForBlood.png");
+        }
+        &.PowerSurge {            
+            background-image: url("../content/dragoon/PowerSurge.png");
+        }
+        &.BattleLitany {            
+            background-image: url("../content/dragoon/BattleLitany.png");
+        }
+        &.BloodOfTheDragon {            
+            background-image: url("../content/dragoon/BloodOfTheDragon.png");
+        }
+        &.Invigorate {            
+            background-image: url("../content/dragoon/Invigorate.png");
+        }
+        &.Jump {            
+            background-image: url("../content/dragoon/Jump.png");
+        }
+        &.SpineshatterDive {            
+            background-image: url("../content/dragoon/SpineshatterDive.png");
+        }
+        &.DragonfireDive {            
+            background-image: url("../content/dragoon/DragonfireDive.png");
+        }
+    }
+}
+
+.ct-label {
+    color:white;
+    font-size: 1.75rem;
+}
+
+.modal {
+    color: black;
+}
