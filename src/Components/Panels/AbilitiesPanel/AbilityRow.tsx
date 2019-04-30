@@ -111,14 +111,16 @@ const AbilityStat = styled.span`
 `;
 
 const AbilityProficiencyIndicator = styled.span`
+    display: inline-block;
     ${(props: { isProficient: boolean }) => props.isProficient ?
         `
-    vertical-align: middle;
-    width: 5px;
-    height: 5px;
-    background-color: #96bf6b;
-    border-radius: 50%;
-    ` : ''}
+            vertical-align: middle;
+            width: 5px;
+            height: 5px;
+            background-color: #96bf6b;
+            border-radius: 50%;
+        ` : ''
+    }
 `;
 
 
