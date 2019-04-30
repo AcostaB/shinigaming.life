@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Bart Simpson",
+    "age": 11,
+    "gender": "M",
+    "dateOfBirth": "1990s"
+  },
+  {
+    "id": 2,
+    "name": "Lisa Simpson",
+    "age": 12,
+    "gender": "F",
+    "dateOfBirth": "1990s"
+  },
+  {
+    "id": 3,
+    "name": "Homer Simpson",
+    "age": 40,
+    "gender": "M",
+    "dateOfBirth": "1990s",
+    "addresses": [
+      {
+        "id": 1,
+        "line1": "123 nw",
+        "line2": "apt 84",
+        "city": "springfield",
+        "state": "Missouri",
+        "zip": 32323
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Marge Simpson",
+    "age": 40,
+    "gender": "F",
+    "dateOfBirth": "1990s",
+    "addresses": [
+      {
+        "id": 1,
+        "line1": "123 nw",
+        "line2": "apt 84",
+        "city": "springfield",
+        "state": "Missouri",
+        "zip": 32323
+      },
+      {
+        "id": 2,
+        "line1": "miami beach",
+        "line2": "",
+        "city": "Miami",
+        "state": "Fl",
+        "zip": 33177
+      }
+    ],
+    "favoriteMusicians": [
+      {
+        "id": 2,
+        "name": "Lisa Simpson",
+        "age": 12,
+        "gender": "F",
+        "dateOfBirth": "1990s"
+      },
+      {
+        "id": 5,
+        "name": "Brian Griffin",
+        "age": 7,
+        "gender": "M",
+        "dateOfBirth": "1990s"
+      }
+    ]
+  }
+]

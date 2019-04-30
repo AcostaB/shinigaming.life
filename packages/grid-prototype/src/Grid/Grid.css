@@ -1,0 +1,186 @@
+.grid-preloader {
+  text-align: center;
+}
+
+.rmmGrid-actionRow {
+  background-color: var(--theme-agnostic-base-white);
+}
+
+.rmmGrid-wrapper {
+  border: none;
+  border-top: 3px solid var(--uit-brand-primary) !important;
+  margin-bottom: 0;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow,
+.rmmGrid-wrapper .rmmGrid-headerRow,
+.rmmGrid-wrapper .rmmGrid-filterRow,
+.rmmGrid-wrapper .rmmGrid-dataRow {
+  border-top: none;
+  border-left: 1px solid var(--theme-agnostic-border-grey);
+  border-right: 1px solid var(--theme-agnostic-border-grey);
+  border-bottom: 1px solid var(--theme-agnostic-border-grey);
+}
+
+/* #region Action Row */
+.rmmGrid-wrapper .rmmGrid-actionRow {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow .actionRow-selectAll {
+  margin-left: 23px;
+}
+
+.actionRow-selectAll-label {
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow .actionRow-selectAll input {
+  position: initial;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow .rmmGrid-actionRow-actions > .btn,
+.rmmGrid-wrapper .rmmGrid-actionRow .rmmGrid-actionRow-actions > .dropdown {
+  margin-right: 10px;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow .rmmGrid-actionRow-actions {
+  flex-grow: 1;
+}
+
+.rmmGrid-wrapper .rmmGrid-actionRow .rmmGrid-actionRow-selectedItemCount {
+  margin-right: 20px;
+}
+/* #endregion Action Row */
+
+/* #region Table Header */
+.rmmGrid-wrapper .rmmGrid-headerRow {
+  min-height: 45px;
+  background-color: var(--theme-agnostic-base-white);
+}
+
+.rmmGrid-wrapper .rmmGrid-headerRow .header {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.rmmGrid-wrapper .rmmGrid-headerRow .header.align-text-center {
+  justify-self: center;
+}
+
+.rmmGrid-wrapper .rmmGrid-headerRow button {
+  padding: 0 0 0 5px;
+}
+/* #endregion Table Header */
+
+/* #region Table Filters */
+.rmmGrid-wrapper .rmmGrid-filterRow {
+  min-height: 45px;
+  background-color: var(--theme-agnostic-base-white);
+}
+
+/* #endregion Table Header */
+
+/* #region Table Body */
+.rmmGrid-wrapper .rmmGrid-gridBody {
+  position: relative;
+  background-color: var(--theme-agnostic-base-white);
+}
+
+.rmmGrid-wrapper .rmmGrid-gridBody .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.rmmGrid-wrapper .rmmGrid-gridBody .rmmGrid-dataRow {
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.rmmGrid-wrapper .rmmGrid-gridBody .rmmGrid-dataRow .dataCell:first-child {
+  padding-left: 23px;
+  padding-right: 0;
+}
+
+.rmmGrid-wrapper .rmmGrid-gridBody .rmmGrid-dataRow .checkbox {
+  margin: 0;
+}
+
+.rmmGrid-wrapper
+  .rmmGrid-gridBody
+  .rmmGrid-dataRow
+  .dataCell.align-text-center {
+  justify-self: center;
+}
+/* #endregion Table Body */
+
+.filter-item {
+  text-transform: none;
+}
+
+.dropdown-menu > .filter-item > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.comments-link {
+  cursor: pointer;
+}
+
+.scrollable-comment-area {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.comment-text {
+  white-space: pre-line;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Grid Footer */
+.rmmGrid-wrapper .rmmGrid-pagination {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+/* End Grid Footer */
+
+/* CSS Grid */
+.rmmGrid-actionRow {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.rmmGrid-headerRow,
+.rmmGrid-filterRow,
+.rmmGrid-dataRow {
+  display: grid;
+  /* The property below needs to be set on each page to get the correct column widths */
+  grid-auto-columns: auto;
+}
+
+.rmmGrid-headerRow .header,
+.rmmGrid-filterRow .filter,
+.rmmGrid-dataRow .dataCell {
+  justify-self: left;
+  align-self: center;
+}
+
+.rmmGrid-dataRow {
+  height: 36px;
+}
+
+.rmmGrid-pagination {
+  display: grid;
+  grid-template-columns: 1fr;
+}
