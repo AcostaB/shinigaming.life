@@ -39,79 +39,79 @@ export type Normalized<T> = { [K in keyof T]: NormalizeOne<T[K]> };
 
 // Alternate solution from the same stack overflow answer:
 // export type NormalizeOne<T> =
-//   [T] extends [number] ? number :
-//   [T] extends [number | undefined] ? number | undefined :
-//   [T] extends [string] ? string :
-//   [T] extends [string | undefined] ? string | undefined :
-//   [T] extends [number[]] ? number[] :
-//   [T] extends [number[] | undefined] ? number[] | undefined :
-//   [T] extends [string[]] ? string[] :
-//   [T] extends [string[] | undefined] ? string[] | undefined :
-//   [T] extends [Function] ? never :
-//   [T] extends [Array<Object>] ? number[] :
-//   [T] extends [Array<Object> | undefined] ? number[] | undefined :
-//   [T] extends [Object] ? number :
+//   [T] extends [number]  number :
+//   [T] extends [number ]  number  :
+//   [T] extends [string]  string :
+//   [T] extends [string ]  string  :
+//   [T] extends [number[]]  number[] :
+//   [T] extends [number[] ]  number[]  :
+//   [T] extends [string[]]  string[] :
+//   [T] extends [string[] ]  string[]  :
+//   [T] extends [Function]  never :
+//   [T] extends [Array<Object>]  number[] :
+//   [T] extends [Array<Object> ]  number[]  :
+//   [T] extends [Object]  number :
 //   T;  // not reached due to compiler issue
 
 /**
  * Indicates that a collection of objects have been keyed using a specified property, usually the ID.
  * A good example would be the keyBy method in the lodash api.
  */
-export type Keyed<T> = { [id: number]: T | undefined };
+export type Keyed<T> = { [id: number]: T };
 
-export type Validator = (...param: any[]) => string | null | undefined;
+export type Validator = (...param: any[]) => string | null;
 
 // TODO improve on this. this should only constitute of primitive values (no objects or arrays), no functions
-export type Errors<T> = { [K in keyof T]?: string[] };
+export type Errors<T> = { [K in keyof T]: string[] };
 // TODO: this could potentially be a type
 // export type DogFormChangeHandler<T> =
 
+export type NormalizedEntity<T> = Keyed<Normalized<T>>;
+
+export type NormalizedError = Keyed<Errors<any>>;
+
 export interface NormalizedEntities {
-  [entityNames: string]: Keyed<Normalized<any>> | undefined;
+  [entityNames: string]: NormalizedEntity<infer U>;
 }
 
 export interface NormalizedErrors {
-  [entityNames: string]: Keyed<Errors<any>> | undefined;
+  [entityNames: string]: NormalizedError;
 }
 
 export interface Context {
   [contextName: string]: {
-    entities?: NormalizedEntities;
-    errors?: NormalizedErrors;
+    entities: { [name: string]: NormalizedEntity };
+    errors: { [name: string]: NormalizedErrors };
   };
 }
 
 export interface AppState {
-  entities?: NormalizedEntities;
-  contexts?: {
-    [contextNames: string]:
-    | {
-      entities?: NormalizedEntities;
-      errors?: NormalizedErrors;
-      entities2?: NormalizedEntities;
-      errors2?: NormalizedErrors;
-    }
-    | undefined;
+  entities: { [name: string]: NormalizedEntity };
+  contexts: {
+    [contextNames: string]: {
+      entities: { [name: string]: NormalizedEntity };
+      errors: { [name: string]: NormalizedEntity };
+    };
   };
 }
 
-// TODO better handle these optional parameters. Should they be optional?
+// TODO better handle these optional parameters. Should they be optional
 // TODO Better export type the contexts parameter
 export interface MainState extends AppState {
-  entities?: {};
-  contexts?: {
-    DemoForm?: {
-      entities?: DemoFormEntities;
-      errors?: DemoFormErrors;
+  entities: {};
+  contexts: {
+    DemoForm: {
+      entities: DemoFormEntities;
+      errors: DemoFormErrors;
     };
-    LocationForm?: {
-      entities?: LocationFormEntities;
-      errors?: LocationFormErrors;
+    LocationForm: {
+      entities: LocationFormEntities;
+      errors: LocationFormErrors;
     }
   };
 }
 
-// export type Safe<T> = { [K in keyof T]: T[K] extends undefined ? never : T[K] };
+// export type Safe<T> = { [K in keyof T]: T[K] extends undefined  never : T[K] };
 // export type Safe2<T> = { [K in keyof T]: Exclude<T[K], undefined> };
 // export type Safe3<T> = { [K in keyof T]: number[] };
 // export type Safe4<T> = Exclude<T, undefined>;
@@ -124,47 +124,47 @@ export type test3 = Required<keyof MainState["contexts"]>;
 export type test4 = keyof Required<MainState["contexts"]>;
 export type test5 = keyof Required<Required<MainState["contexts"]>[test4]>;
 export type test6 = Required<Required<MainState>["contexts"]>;
-// export type test7 = Required<Required<IMainState["contexts"]>[test6]>;
+// export type test7 = Required<Required<MainState["contexts"]>[test6]>;
 
 // export type test33 = Safe<{
-//   propertyName?: string;
+//   propertyName: string;
 // }>;
 // export type test332 = Required<{
-//   propertyName?: string;
-//   otherProperty?: {
-//     nested?: {
-//       nestedAgain?: string;
+//   propertyName: string;
+//   otherProperty: {
+//     nested: {
+//       nestedAgain: string;
 //     };
 //   };
 // }>;
 // export type test333 = Safe3<{
-//   propertyName?: string;
+//   propertyName: string;
 // }>;
 // export type test334 = Safe4<{
-//   propertyName?: string;
+//   propertyName: string;
 // }>;
 /**
  * Generic function that builds change handlers through currying.
  * C = Context, CA = Category, E = Entity, I = ID, F = Field, V = Value
  **/
 export type ChangeHandlerBuilder = <
-  C extends keyof Required<Required<IMainState>["contexts"]>,
-  CA extends keyof Required<Required<Required<IMainState>["contexts"]>[C]>,
+  C extends keyof Required<Required<MainState>["contexts"]>,
+  CA extends keyof Required<Required<Required<MainState>["contexts"]>[C]>,
   E extends keyof Required<
-    Required<Required<Required<IMainState>["contexts"]>[C]>[CA]
+    Required<Required<Required<MainState>["contexts"]>[C]>[CA]
   >,
   I extends keyof Required<
-    Required<Required<Required<Required<IMainState>["contexts"]>[C]>[CA]>[E]
+    Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
   >,
   F extends keyof Required<
     Required<
-      Required<Required<Required<Required<IMainState>["contexts"]>[C]>[CA]>[E]
+      Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
     >[I]
   >,
   V extends keyof Required<
     Required<
       Required<
-        Required<Required<Required<Required<IMainState>["contexts"]>[C]>[CA]>[E]
+        Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
       >[I]
     >[F]
   >
