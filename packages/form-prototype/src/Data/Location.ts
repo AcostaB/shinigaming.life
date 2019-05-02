@@ -4,44 +4,44 @@ export const data: Location[] = [
   {
     id: 1,
     locationNum: 1,
-    locationName: "Sailfish Dr.",
+    locationName: "Avenger's Compound",
     address: {
       addressID: 1,
-      line1: "Sailfish Dr.",
+      line1: "101 Avenger Lane",
       line2: "",
-      city: "Manteo",
-      state: "NC",
+      city: "EARTH1",
+      state: "MCU",
       zip: "27954"
     },
     buildings: [
       {
         buildingID: 1,
-        name: "Building 1",
+        name: "Training Grounds",
         address: {
           addressID: 2,
-          line1: "Sailfish Dr.",
-          line2: "",
-          city: "Manteo",
-          state: "NC",
+          line1: "101 Avenger Lane",
+          line2: "Train Street",
+          city: "EARTH1",
+          state: "MCU",
           zip: "27954"
         },
         construction: 'wood',
-        website: 'willywonka.com',
+        website: 'traininggrounds.com',
         apartments: []
       },
       {
         buildingID: 2,
-        name: "Building 2",
+        name: "Residential Building",
         address: {
           addressID: 3,
-          line1: "Sailfish Dr.",
-          line2: "",
-          city: "Manteo",
-          state: "NC",
+          line1: "101 Avenger Lane",
+          line2: "Sleep Street",
+          city: "EARTH1",
+          state: "MCU",
           zip: "27954"
         },
-        construction: 'wood',
-        website: 'willywonka.com',
+        construction: 'concrete',
+        website: 'getsomezzz.com',
         apartments: []
       }
     ]
@@ -49,29 +49,29 @@ export const data: Location[] = [
   {
     id: 3,
     locationNum: 3,
-    locationName: "Awesome Avenue",
+    locationName: "Justice League HQ",
     address: {
       addressID: 4,
-      line1: "Sailfish Dr.",
+      line1: "22 Justice Is Served Lane",
       line2: "",
-      city: "Manteo",
-      state: "NC",
+      city: "EARTH33",
+      state: "DCU",
       zip: "27954"
     },
     buildings: [
       {
         buildingID: 1,
-        name: "Building 1",
+        name: "Watchtower",
         address: {
           addressID: 5,
-          line1: "Awesome Avenue",
-          line2: "",
-          city: "Manteo",
-          state: "NC",
+          line1: "22 Justice Is Served Lane",
+          line2: "12 Watchtower",
+          city: "EARTH33",
+          state: "DCU",
           zip: "27955"
         },
         construction: 'wood',
-        website: 'willywonka.com',
+        website: 'weseeall.com',
         apartments: []
       }
     ]
