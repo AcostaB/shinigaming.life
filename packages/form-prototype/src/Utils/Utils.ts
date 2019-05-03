@@ -1,5 +1,5 @@
 import { isEmpty, filter, map, mapValues } from "lodash";
-import { ChangeHandlerBuilder } from "../Definitions/main";
+import { ChangeHandlerBuilder, ChangeHandlerBuilder2, MainState } from "../Definitions/main";
 
 let counter = 0;
 
@@ -126,4 +126,58 @@ export const changeHandlerBuilder: ChangeHandlerBuilder = context => category =>
   };
 };
 
+// export const changeHandlerBuilder2: ChangeHandlerBuilder2 = context => category => entity => id => field => value => prevState => {
+//   // TODO: need to deal with the calculated types in here.
+//   const prevStateAsRequired = prevState as Required<typeof prevState>;
+
+//   const safeContexts = (prevState.contexts !== undefined
+//     ? prevStateAsRequired.contexts
+//     : {}) as any;
+//   // : {}) as Required<typeof prevStateAsRequired.contexts>;
+
+//   const safeContext: any =
+//     safeContexts[context] !== undefined ? safeContexts[context] : {};
+
+//   const safeCategory: any =
+//     safeContext[category] !== undefined ? safeContext[category] : {};
+
+//   const safeEntity: any =
+//     safeCategory[entity] !== undefined ? safeCategory[entity] : {};
+
+//   const safeID: any = safeEntity[id] !== undefined ? safeEntity[id] : {};
+
+//   return {
+//     ...prevState,
+//     contexts: {
+//       ...prevState.contexts,
+//       [context]: {
+//         ...safeContext,
+//         [category]: {
+//           ...safeCategory,
+//           [entity]: {
+//             ...safeEntity,
+//             [id]: {
+//               ...safeID,
+//               [field]: value
+//             }
+//           }
+//         }
+//       }
+//     }
+//   };
+// };
+
 // const test = changeHandlerBuilder("DemoForm")("entities")("buildings")(789);
+const test1 = changeHandlerBuilder("LocationForm")("entities")("locations")(1);
+
+const test = changeHandlerBuilder("LocationForm")("entities")("locations")(1);
+const test2 = changeHandlerBuilder<'LocationForm', 'entities', 'locations', 1, keyof MainState["contexts"]['LocationForm']['entities']['locations'][1], any>("LocationForm")("entities")("locations")(1);
+
+type testtype = keyof MainState["contexts"]['LocationForm']['entities']['addresses'][1];
+
+// type testa = typeof (changeHandlerBuilder("LocationForm"));
+// type testb = keyof MainState["contexts"]['LocationForm']['entities']['locations'][1];
+// type testc = typeof MainState["contexts"]['LocationForm']['entities'];
+// type testd = typeof MainState["contexts"]['LocationForm']['entities']['addresses'];
+// type teste = typeof MainState["contexts"]['LocationForm']['entities']['addresses'][1];
+// type testf = typeof MainState["contexts"]['LocationForm']['entities']['addresses'][1]['line1'];

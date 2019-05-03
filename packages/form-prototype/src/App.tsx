@@ -1,6 +1,6 @@
 import "./App.css";
 import * as React from "react";
-import { FormContainer } from './Components/FormContainer';
+import { FormContainer } from './Components/LocationFormContainer';
 import styled from 'styled-components/macro';
 import logo from "./logo.svg";
 

@@ -10,18 +10,23 @@ import { ExpandMore as ExpandMoreIcon, Delete as DeleteIcon, Add as AddIcon } fr
 import { keys } from "lodash";
 import styled from "styled-components/macro";
 import { LocationFormEntities, LocationFormErrors } from "../Definitions/LocationForm";
-import { Location } from '../Models/Location';
+import { Location, NormalizedLocation } from '../Models/Location';
 import { Building } from "../Models/Building";
 import { Address } from "../Models/Address";
 import Button from "@material-ui/core/Button";
+import { MainState } from "../Definitions/main";
 
-interface Props {
+interface Props<C extends keyof MainState["contexts"], CA extends keyof MainState["contexts"][C]> {
   // TODO: Make a type alias for this.
   // TODO: this new value can be types. Could possibly type the whole function.
-  entities: LocationFormEntities,
-  errors: LocationFormErrors,
+  entities: LocationFormEntities | {},
+  //errors: LocationFormErrors,
   // TODO fix these anys
-  onFieldChange: (entity: keyof LocationFormEntities) => (field: string) => (id: number) => (newValue: any) => void,
+  onFieldChange:
+  <E extends keyof MainState["contexts"][C][CA]>(entity: E) =>
+    <I extends number>(id: I) =>
+      (field: any) =>
+        (newValue: any) => void,
   // onValidationChange: (entity: keyof LocationFormEntities) => (field: string, id: number) => (newValue: any) => void,
   // TODO: fix this any
   // validateAllHandler: (newErrors: any) => void;
@@ -32,7 +37,7 @@ interface Props {
   clearFormHandler: () => void
 }
 
-export const LocationForm: FunctionComponent<Props> = props => {
+export const LocationForm: FunctionComponent<Props<'LocationForm', 'entities'>> = props => {
   const data: { locations: Location[] } = denormalize(
     { locations: keys(props.entities.locations) },
     { locations: [locationSchema] },

@@ -68,112 +68,60 @@ export type Errors<T> = { [K in keyof T]: string[] };
 
 export type NormalizedEntity<T> = Keyed<Normalized<T>>;
 
-export type NormalizedError = Keyed<Errors<any>>;
+// export type NormalizedError = Keyed<Errors<any>>;
 
-export interface NormalizedEntities {
-  [entityNames: string]: NormalizedEntity<infer U>;
-}
-
-export interface NormalizedErrors {
-  [entityNames: string]: NormalizedError;
-}
-
-export interface Context {
-  [contextName: string]: {
-    entities: { [name: string]: NormalizedEntity };
-    errors: { [name: string]: NormalizedErrors };
-  };
-}
-
-export interface AppState {
-  entities: { [name: string]: NormalizedEntity };
-  contexts: {
-    [contextNames: string]: {
-      entities: { [name: string]: NormalizedEntity };
-      errors: { [name: string]: NormalizedEntity };
-    };
-  };
-}
-
-// TODO better handle these optional parameters. Should they be optional
-// TODO Better export type the contexts parameter
-export interface MainState extends AppState {
+export interface MainState {
   entities: {};
   contexts: {
-    DemoForm: {
-      entities: DemoFormEntities;
-      errors: DemoFormErrors;
-    };
     LocationForm: {
       entities: LocationFormEntities;
-      errors: LocationFormErrors;
-    }
+      // errors: LocationFormErrors;
+    };
   };
 }
 
-// export type Safe<T> = { [K in keyof T]: T[K] extends undefined  never : T[K] };
-// export type Safe2<T> = { [K in keyof T]: Exclude<T[K], undefined> };
-// export type Safe3<T> = { [K in keyof T]: number[] };
-// export type Safe4<T> = Exclude<T, undefined>;
+// /**
+//  * Generic function that builds change handlers through currying.
+//  * C = Context, CA = Category, E = Entity, I = ID, F = Field, V = Value
+//  **/
+// export type ChangeHandlerBuilder = <
+//   C extends keyof MainState["contexts"],
+//   CA extends keyof MainState["contexts"][C],
+//   E extends keyof MainState["contexts"][C][CA],
+//   I extends number,
+//   F extends keyof MainState["contexts"][C][CA][E][I],
+//   V extends keyof MainState["contexts"][C][CA][E][I][F]>
+//   (
+//   context: C
+// ) => (
+//     category: CA
+//   ) => (
+//       entity: E
+//     ) => (
+//         id: I
+//       ) => (
+//           field: F
+//         ) => (
+//             value: V
+//           ) => (prevState: MainState) => MainState;
 
-// export type Required<T> = Exclude<T, undefined>;
-
-export type test1 = keyof Required<MainState>;
-export type test2 = keyof MainState["contexts"];
-export type test3 = Required<keyof MainState["contexts"]>;
-export type test4 = keyof Required<MainState["contexts"]>;
-export type test5 = keyof Required<Required<MainState["contexts"]>[test4]>;
-export type test6 = Required<Required<MainState>["contexts"]>;
-// export type test7 = Required<Required<MainState["contexts"]>[test6]>;
-
-// export type test33 = Safe<{
-//   propertyName: string;
-// }>;
-// export type test332 = Required<{
-//   propertyName: string;
-//   otherProperty: {
-//     nested: {
-//       nestedAgain: string;
-//     };
-//   };
-// }>;
-// export type test333 = Safe3<{
-//   propertyName: string;
-// }>;
-// export type test334 = Safe4<{
-//   propertyName: string;
-// }>;
 /**
- * Generic function that builds change handlers through currying.
- * C = Context, CA = Category, E = Entity, I = ID, F = Field, V = Value
- **/
+* Generic function that builds change handlers through currying.
+* C = Context, CA = Category, E = Entity, I = ID, F = Field, V = Value
+**/
 export type ChangeHandlerBuilder = <
-  C extends keyof Required<Required<MainState>["contexts"]>,
-  CA extends keyof Required<Required<Required<MainState>["contexts"]>[C]>,
-  E extends keyof Required<
-    Required<Required<Required<MainState>["contexts"]>[C]>[CA]
-  >,
-  I extends keyof Required<
-    Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
-  >,
-  F extends keyof Required<
-    Required<
-      Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
-    >[I]
-  >,
-  V extends keyof Required<
-    Required<
-      Required<
-        Required<Required<Required<Required<MainState>["contexts"]>[C]>[CA]>[E]
-      >[I]
-    >[F]
-  >
-  >(
+  C extends keyof MainState["contexts"]>
+
+  (
   context: C
-) => (
+) => <CA extends keyof MainState["contexts"][C]>(
     category: CA
-  ) => (
+  ) => <E extends keyof MainState["contexts"][C][CA]>(
       entity: E
-    ) => (
+    ) => <I extends number>(
         id: I
-      ) => (field: F) => (value: V) => (prevState: MainState) => MainState;
+      ) => <F extends keyof MainState["contexts"][C][CA][E][I]>(
+          field: F
+        ) => <V extends keyof MainState["contexts"][C][CA][E][I][F]>(
+            value: V
+          ) => (prevState: MainState) => MainState;

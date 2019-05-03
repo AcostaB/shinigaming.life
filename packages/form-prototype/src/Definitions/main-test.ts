@@ -1,10 +1,5 @@
-import { NormalizedEntities, NormalizedErrors } from './main.d';
-import { Building } from './../Models/Building';
 import { DemoFormEntities, DemoFormErrors } from './DemoForm';
 import { LocationFormErrors, LocationFormEntities } from './LocationForm';
-import { NormalizedEntity, NormalizedError, Keyed, Normalized, Errors } from './main';
-import { Address } from 'cluster';
-import { Omit } from 'lodash';
 
 // export interface Context {
 //   [contextName: string]: {
@@ -147,9 +142,9 @@ export const changeHandlerBuilder: ChangeHandlerBuilder = context => category =>
   };
 };
 
-var testing1 = changeHandlerBuilder('LocationForm');
-var testing2 = changeHandlerBuilder('LocationForm')('entities');
-var testing3 = changeHandlerBuilder('LocationForm')('entities')('buildings');
+// var testing1 = changeHandlerBuilder('LocationForm');
+// var testing2 = changeHandlerBuilder('LocationForm')('entities');
+// var testing3 = changeHandlerBuilder('LocationForm')('entities')('buildings');
 
 // interface somenumbers {
 //   five: number
